@@ -12,5 +12,6 @@ namespace Domain
         public DbSet<Location> Locations { get; set; }
         public DbSet<GalleryImage> GalleryImages { get; set; }
         public DbSet<Article> Articles { get; set; }
+        public DbSet<ApiSession> ApiSessions { get; set; }
     }
 }
