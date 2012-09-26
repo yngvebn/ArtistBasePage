@@ -36,6 +36,7 @@
       <HintPath>..\src\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
@@ -49,9 +50,20 @@
     <Compile Include="Album.cs" />
     <Compile Include="AlbumType.cs" />
     <Compile Include="Db.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="GalleryImage.cs" />
+    <Compile Include="Location.cs" />
     <Compile Include="Migrations\201209251106507_AddSongsAndAlbums.cs" />
     <Compile Include="Migrations\201209251106507_AddSongsAndAlbums.Designer.cs">
       <DependentUpon>201209251106507_AddSongsAndAlbums.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201209251123354_AddEvent.cs" />
+    <Compile Include="Migrations\201209251123354_AddEvent.Designer.cs">
+      <DependentUpon>201209251123354_AddEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201209251126564_AddGalleryImage.cs" />
+    <Compile Include="Migrations\201209251126564_AddGalleryImage.Designer.cs">
+      <DependentUpon>201209251126564_AddGalleryImage.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +76,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201209251106507_AddSongsAndAlbums.resx">
       <DependentUpon>201209251106507_AddSongsAndAlbums.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201209251123354_AddEvent.resx">
+      <DependentUpon>201209251123354_AddEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201209251126564_AddGalleryImage.resx">
+      <DependentUpon>201209251126564_AddGalleryImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
