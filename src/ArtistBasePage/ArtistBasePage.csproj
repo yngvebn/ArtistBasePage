@@ -166,6 +166,10 @@
     <Compile Include="Areas\v1\Controllers\TokenController.cs" />
     <Compile Include="Areas\v1\v1AreaRegistration.cs" />
     <Compile Include="Areas\v1\ViewModels\ApiSessionViewModel.cs" />
+    <Content Include="Content\admin\header-bg.png" />
+    <Content Include="Content\admin\navigation-hover.png" />
+    <Content Include="Content\admin\navigation-normal.png" />
+    <Content Include="Content\admin\site.css" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
