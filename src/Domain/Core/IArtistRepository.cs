@@ -6,5 +6,6 @@ namespace Domain.Core
     {
         Artist Get(int id);
         Artist FindByEmail(string email);
+        void Create(Artist artist);
     }
 }

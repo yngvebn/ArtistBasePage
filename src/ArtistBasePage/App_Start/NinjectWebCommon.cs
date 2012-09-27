@@ -1,3 +1,6 @@
+using System.Linq;
+using ArtistBasePage.Infrastructure.Installers;
+
 [assembly: WebActivator.PreApplicationStartMethod(typeof(ArtistBasePage.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(ArtistBasePage.App_Start.NinjectWebCommon), "Stop")]
 
@@ -10,6 +13,9 @@ namespace ArtistBasePage.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Ninject.Extensions.Conventions;
+    using Ninject.Extensions.Interception;
+    using Ninject.Extensions.Factory;
 
     public static class NinjectWebCommon 
     {
@@ -42,7 +48,9 @@ namespace ArtistBasePage.App_Start
             var kernel = new StandardKernel();
             kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-            
+            kernel.Bind(c => c.FromThisAssembly().
+                            SelectAllClasses().InheritedFrom<INinjectInstaller>()
+                            .BindAllInterfaces());
             RegisterServices(kernel);
             return kernel;
         }
@@ -53,6 +61,7 @@ namespace ArtistBasePage.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.GetAll<INinjectInstaller>().ToList().ForEach(c => c.Install(kernel));
         }        
     }
 }

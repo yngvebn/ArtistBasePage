@@ -24,5 +24,13 @@ namespace Domain
             ApiSessions.Add(session);
             return session;
         }
+
+        public static Artist Create(string email)
+        {
+            return new Artist()
+                {
+                    Email = email
+                };
+        }
     }
 }

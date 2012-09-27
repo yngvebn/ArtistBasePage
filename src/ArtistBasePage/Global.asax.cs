@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Domain.Core;
 
 namespace ArtistBasePage
 {
@@ -20,5 +21,7 @@ namespace ArtistBasePage
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+
+        public static ICommandExecutor CommandExecutor {get { return DependencyResolver.Current.GetService<ICommandExecutor>(); }}
     }
 }

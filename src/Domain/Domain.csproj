@@ -35,6 +35,12 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\ArtistBasePage\bin\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception">
+      <HintPath>..\packages\Ninject.Extensions.Interception.3.0.0.8\lib\net45-full\Ninject.Extensions.Interception.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Activities" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -53,12 +59,10 @@
     <Compile Include="ApiSession.cs" />
     <Compile Include="Article.cs" />
     <Compile Include="Artist.cs" />
+    <Compile Include="Commands\AddNewArtist.cs" />
+    <Compile Include="Commands\Handlers\AddNewArtistCommandHandler.cs" />
     <Compile Include="Core\ArtistRepository.cs" />
-    <Compile Include="Core\DbSession.cs" />
     <Compile Include="Core\IArtistRepository.cs" />
-    <Compile Include="Core\ISession.cs" />
-    <Compile Include="Core\ISessionManager.cs" />
-    <Compile Include="Core\SessionManager.cs" />
     <Compile Include="Db.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="GalleryImage.cs" />
@@ -115,6 +119,7 @@
       <DependentUpon>201209261714117_AddSessionToArtist.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

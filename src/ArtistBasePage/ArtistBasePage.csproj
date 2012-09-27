@@ -44,8 +44,14 @@
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.2.2.0\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.0.0.4001\lib\net35\Castle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="LinFu.DynamicProxy">
+      <HintPath>..\packages\Ninject.Extensions.Interception.Linfu.3.0.0.8\lib\net35\LinFu.DynamicProxy.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -57,6 +63,18 @@
     </Reference>
     <Reference Include="Ninject.Extensions.Conventions">
       <HintPath>..\packages\ninject.extensions.conventions.3.0.0.11\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Factory">
+      <HintPath>..\packages\Ninject.Extensions.Factory.3.0.1.0\lib\net45-full\Ninject.Extensions.Factory.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception">
+      <HintPath>..\packages\Ninject.Extensions.Interception.3.0.0.8\lib\net45-full\Ninject.Extensions.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception.DynamicProxy">
+      <HintPath>..\packages\Ninject.Extensions.Interception.DynamicProxy.3.0.0.8\lib\net45-full\Ninject.Extensions.Interception.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Interception.LinFu">
+      <HintPath>..\packages\Ninject.Extensions.Interception.Linfu.3.0.0.8\lib\net35\Ninject.Extensions.Interception.LinFu.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Web.Common">
       <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net45-full\Ninject.Web.Common.dll</HintPath>
@@ -143,15 +161,18 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\v1\Controllers\SongController.cs" />
     <Compile Include="Areas\v1\Controllers\TokenController.cs" />
     <Compile Include="Areas\v1\v1AreaRegistration.cs" />
     <Compile Include="Areas\v1\ViewModels\ApiSessionViewModel.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\IMapper.cs" />
+    <Compile Include="Infrastructure\Installers\CommandsInstaller.cs" />
+    <Compile Include="Infrastructure\Installers\RepositoryInstaller.cs" />
+    <Compile Include="Infrastructure\Installers\SessionManagerInstaller.cs" />
     <Compile Include="Infrastructure\TokenAuthentication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -187,6 +208,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Content\Images\Coverart\" />
@@ -195,10 +217,10 @@
     <Folder Include="App_Data\Content\Images\News\" />
     <Folder Include="App_Data\Content\Music\" />
     <Folder Include="App_Data\Content\Videos\" />
+    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\v1\Views\Shared\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
