@@ -1,4 +1,5 @@
 ﻿using Domain.Core;
+using Infrastructure.Commands;
 using Ninject;
 using Ninject.Activation;
 using Ninject.Extensions.Conventions;

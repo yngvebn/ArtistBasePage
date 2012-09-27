@@ -1,4 +1,5 @@
 ﻿using Domain.Core;
+using Infrastructure.Commands;
 
 namespace Domain.Commands
 {

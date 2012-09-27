@@ -171,6 +171,7 @@
     </Compile>
     <Compile Include="Infrastructure\IMapper.cs" />
     <Compile Include="Infrastructure\Installers\CommandsInstaller.cs" />
+    <Compile Include="Infrastructure\Installers\DomainEventsInstaller.cs" />
     <Compile Include="Infrastructure\Installers\RepositoryInstaller.cs" />
     <Compile Include="Infrastructure\Installers\SessionManagerInstaller.cs" />
     <Compile Include="Infrastructure\TokenAuthentication.cs" />
@@ -229,6 +230,10 @@
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{F0E4CE0D-99E0-480F-813A-EB88C0E719CF}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{429E37A5-3142-432D-809E-5CA59EF7A55D}</Project>
+      <Name>Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

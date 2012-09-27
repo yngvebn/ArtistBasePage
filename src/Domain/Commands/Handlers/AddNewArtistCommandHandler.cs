@@ -1,4 +1,7 @@
 ﻿using Domain.Core;
+using Domain.Events;
+using Infrastructure.Commands;
+using Infrastructure.DomainEvents;
 
 namespace Domain.Commands.Handlers
 {
@@ -13,10 +16,12 @@ namespace Domain.Commands.Handlers
 
         public void Handle(AddNewArtist command)
         {
+            var artist = Artist.Create(command.Email);
             using(var session = _sessionManager.OpenSession())
             {
-                session.Session.Set<Artist>().Add(Artist.Create(command.Email));
+                session.Session.Set<Artist>().Add(artist);
             }
+            DomainEvents.Raise(new ArtistWasAdded() { Artist = artist });
         }
     }
 }

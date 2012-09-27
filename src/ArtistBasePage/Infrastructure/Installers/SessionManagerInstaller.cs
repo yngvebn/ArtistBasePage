@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using Domain;
 using Domain.Core;
+using Infrastructure.Commands;
 using Ninject;
 using Ninject.Extensions.Factory;
 

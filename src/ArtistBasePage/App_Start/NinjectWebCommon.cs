@@ -1,5 +1,6 @@
 using System.Linq;
 using ArtistBasePage.Infrastructure.Installers;
+using Infrastructure.DomainEvents;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(ArtistBasePage.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(ArtistBasePage.App_Start.NinjectWebCommon), "Stop")]
@@ -51,6 +52,7 @@ namespace ArtistBasePage.App_Start
             kernel.Bind(c => c.FromThisAssembly().
                             SelectAllClasses().InheritedFrom<INinjectInstaller>()
                             .BindAllInterfaces());
+            DomainEvents.Container = kernel;
             RegisterServices(kernel);
             return kernel;
         }
