@@ -161,6 +161,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\MainController.cs" />
     <Compile Include="Areas\v1\Controllers\SongController.cs" />
     <Compile Include="Areas\v1\Controllers\TokenController.cs" />
     <Compile Include="Areas\v1\v1AreaRegistration.cs" />
@@ -170,10 +171,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\IMapper.cs" />
+    <Compile Include="Infrastructure\IMapping.cs" />
     <Compile Include="Infrastructure\Installers\CommandsInstaller.cs" />
     <Compile Include="Infrastructure\Installers\DomainEventsInstaller.cs" />
+    <Compile Include="Infrastructure\Installers\MappingInstaller.cs" />
     <Compile Include="Infrastructure\Installers\RepositoryInstaller.cs" />
     <Compile Include="Infrastructure\Installers\SessionManagerInstaller.cs" />
+    <Compile Include="Infrastructure\Mappings\ViewModelMappings.cs" />
     <Compile Include="Infrastructure\TokenAuthentication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -190,6 +194,9 @@
     <Content Include="Global.asax" />
     <Content Include="Areas\v1\Views\Web.config" />
     <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_layout.cshtml" />
+    <Content Include="Areas\Admin\Views\_viewstart.cshtml" />
+    <Content Include="Areas\Admin\Views\Main\Index.cshtml" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -218,9 +225,7 @@
     <Folder Include="App_Data\Content\Images\News\" />
     <Folder Include="App_Data\Content\Music\" />
     <Folder Include="App_Data\Content\Videos\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\v1\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

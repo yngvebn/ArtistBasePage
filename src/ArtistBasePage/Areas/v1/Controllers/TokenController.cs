@@ -7,11 +7,12 @@ using System.Web.Mvc;
 using ArtistBasePage.Areas.v1.ViewModels;
 using ArtistBasePage.Infrastructure;
 using Domain;
+using Domain.Commands;
 using Domain.Core;
 
 namespace ArtistBasePage.Areas.v1.Controllers
 {
-    public class TokenController : ApiController
+    public class TokenController : Controller
     {
         private readonly IMapper _mapper;
         private readonly IArtistRepository _artistRepository;
@@ -22,9 +23,11 @@ namespace ArtistBasePage.Areas.v1.Controllers
             _artistRepository = artistRepository;
         }
 
-        public ApiSessionViewModel Get()
+        public JsonResult RequestRead(int id)
         {
-            return _mapper.Map<ApiSessionViewModel, ApiSession>(_artistRepository.Get(1).GetReadonlyToken());
+            MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadOnlyToken() { ArtistId = id });
+            var token = _artistRepository.Get(id).ApiSessions.SingleOrDefault(c => c.Expires > DateTime.Now);
+            return Json(_mapper.Map<ApiSessionViewModel>(token), JsonRequestBehavior.AllowGet);
         }
 
     }

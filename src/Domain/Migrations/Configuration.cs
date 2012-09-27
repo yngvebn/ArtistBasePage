@@ -14,6 +14,8 @@ namespace Domain.Migrations
 
         protected override void Seed(Db context)
         {
+            context.Artists.AddOrUpdate(artist => artist.Email,
+                                        Artist.Create("yngve.nilsen@gmail.com"));
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

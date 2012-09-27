@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/admin/site.css" rel="stylesheet" />
+    <title>_layout</title>
+</head>
+<body>
+
+        <div class="row-fluid">
+            <header class="main">
+                <h1>Admin</h1>
+            </header>
+        </div>
+        <div>
+            <aside class="main">
+                <nav>
+                    <header>Menu</header>
+                    <ul>
+                        <li><a href="#">Menu item 1</a></li>
+                        <li><a href="#">Menu item 2</a></li>
+                        <li><a href="#">Menu item 3</a></li>
+                        <li><a href="#">Menu item 4</a></li>
+                        <li><a href="#">Menu item 5</a></li>
+                        <li><a href="#">Menu item 6</a></li>
+
+                    </ul>
+                </nav>
+                <!--Sidebar content-->
+            </aside>
+            <section class="main">
+                @RenderBody()
+            </section>
+    </div>
+    <div>
+    </div>
+</body>
+</html>

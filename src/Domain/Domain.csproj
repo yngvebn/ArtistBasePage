@@ -60,7 +60,9 @@
     <Compile Include="Article.cs" />
     <Compile Include="Artist.cs" />
     <Compile Include="Commands\AddNewArtist.cs" />
+    <Compile Include="Commands\CreateReadOnlyToken.cs" />
     <Compile Include="Commands\Handlers\AddNewArtistCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\CreateReadOnlyTokenHandler.cs" />
     <Compile Include="Core\ArtistRepository.cs" />
     <Compile Include="Core\IArtistRepository.cs" />
     <Compile Include="Db.cs" />

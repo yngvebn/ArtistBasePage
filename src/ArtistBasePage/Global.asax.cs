@@ -21,6 +21,7 @@ namespace ArtistBasePage
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
         }
 
         public static ICommandExecutor CommandExecutor {get { return DependencyResolver.Current.GetService<ICommandExecutor>(); }}
