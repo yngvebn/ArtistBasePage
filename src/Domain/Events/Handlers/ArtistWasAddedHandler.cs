@@ -15,7 +15,7 @@ namespace Domain.Events.Handlers
 
         public void Handle(ArtistWasAdded domainEvent)
         {
-            var artist = _artistRepository.FindByEmail(domainEvent.Artist.Email);
+       
         }
     }
 }
