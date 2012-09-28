@@ -59,6 +59,7 @@
     <Compile Include="ApiSession.cs" />
     <Compile Include="Article.cs" />
     <Compile Include="Artist.cs" />
+    <Compile Include="BandMember.cs" />
     <Compile Include="Commands\AddNewArtist.cs" />
     <Compile Include="Commands\CreateReadOnlyToken.cs" />
     <Compile Include="Commands\Handlers\AddNewArtistCommandHandler.cs" />
@@ -95,8 +96,21 @@
     <Compile Include="Migrations\201209261714117_AddSessionToArtist.Designer.cs">
       <DependentUpon>201209261714117_AddSessionToArtist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201209280650425_AddedIsBestOfToAlbum.cs" />
+    <Compile Include="Migrations\201209280650425_AddedIsBestOfToAlbum.Designer.cs">
+      <DependentUpon>201209280650425_AddedIsBestOfToAlbum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201209280657411_AddedBandMembers.cs" />
+    <Compile Include="Migrations\201209280657411_AddedBandMembers.Designer.cs">
+      <DependentUpon>201209280657411_AddedBandMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201209280700217_AddedBandMemberRoles.cs" />
+    <Compile Include="Migrations\201209280700217_AddedBandMemberRoles.Designer.cs">
+      <DependentUpon>201209280700217_AddedBandMemberRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs" />
     <Compile Include="Song.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +135,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201209261714117_AddSessionToArtist.resx">
       <DependentUpon>201209261714117_AddSessionToArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201209280650425_AddedIsBestOfToAlbum.resx">
+      <DependentUpon>201209280650425_AddedIsBestOfToAlbum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201209280657411_AddedBandMembers.resx">
+      <DependentUpon>201209280657411_AddedBandMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201209280700217_AddedBandMemberRoles.resx">
+      <DependentUpon>201209280700217_AddedBandMemberRoles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

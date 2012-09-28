@@ -12,6 +12,7 @@ namespace Domain
         public string Twitter { get; private set; }
         public string Password { get; private set; }
         public string Bio { get; private set; }
+        public virtual Collection<BandMember> Members { get; private set; } 
         public virtual Collection<GalleryImage> Gallery { get; private set; }
         public virtual Collection<Event> Events { get; private set; }
         public virtual Collection<Album> Albums { get; private set; }
