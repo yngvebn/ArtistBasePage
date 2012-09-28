@@ -14,6 +14,10 @@ h2 {
     font-size: 16px;
 }
 
+h3 {
+    font-size: 13px;
+}
+
 .container-fluid {
     padding: 0;
 }
@@ -107,8 +111,95 @@ aside.main {
                 aside.main nav ul li a:hover {
                     text-decoration: none;
                     background: url('/content/admin/navigation-hover.png') no-repeat;
-                    
                 }
+
+                img.social {
+                    height: 24px;
+                    width: 24px;
+                }
+input.text {
+    font-size: 15px;
+    height: 18px;
+}
+input.text, textarea {
+    background: #FAF9F3;
+    border: 1px solid #D6D6D6;
+    padding: 3px;
+    margin: 0;
+}
+
+
+input.text.icon {
+    padding: 3px 3px 3px 30px;
+    background-repeat: no-repeat; 
+}
+
+input.text.icon.facebook {
+    background-image: url(/content/images/social/24x24/24x24-facebook.png);
+}
+
+
+input.text.icon.twitter {
+    background-image: url(/content/images/social/24x24/24x24-twitter.png);
+}
+
+
+input.text.icon.lastfm {
+    background-image: url(/content/images/social/24x24/24x24-lastfm.png);
+}
+
+
+input.text.icon.gplus {
+    background-image: url(/content/images/social/24x24/24x24-gplus.png);
+}
+
+input.text.icon.youtube {
+    background-image: url(/content/images/social/24x24/24x24-youtube.png);
+}
+
+
+input.text.icon.linkedin {
+    background-image: url(/content/images/social/24x24/24x24-linkedin.png);
+}
+
+
+input.text.icon.myspace {
+    background-image: url(/content/images/social/24x24/24x24-myspace.png);
+}
+
+
+div.module {
+    -webkit-box-shadow: -2px 0px 20px 0px rgba(1, 1, 1, 0.5);
+    box-shadow: -2px 0px 20px 0px rgba(1, 1, 1, 0.5);
+    -webkit-border-radius: 5px 0px 0px 0px;
+    border-radius: 5px;
+    font-size: 12px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+    div.module h3 {
+        height: 28px;
+        line-height: 28px;
+        padding: 0 13px;
+        margin: 0;
+        color: #5E646D;
+        text-shadow: 0 1px 1px white;
+        border: 1px solid #B6BEC4;
+        border-bottom: 1px solid #99A0A5;
+        box-shadow: inset 0 1px 0 white;
+        border-radius: 5px 5px 0 0;
+        background: #F1F2F4;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F1F2F4), color-stop(100%,#D9DCDF));
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f2f4', endColorstr='#d9dcdf',GradientType=0 );
+    }
+
+    div.module section.content {
+        background: white;
+        border: 1px solid #B6BEC4;
+        border-top: none;
+        padding: 22px;
+        border-radius: 0 0 5px 5px;
+    }
 
 header.main {
     background: url(/content/admin/header-bg.png) repeat-x;

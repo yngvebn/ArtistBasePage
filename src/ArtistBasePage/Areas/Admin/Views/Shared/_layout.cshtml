@@ -43,26 +43,6 @@
     </div>
     <div>
     </div>
-    <script type="text/javascript">
-        function NavigationViewModel() {
-            var self = this;
-
-            self.navigate = function (obj, ev) {
-                location.hash = $(ev.srcElement).attr('href');
-            };
-
-            self.general = function() {
-                location.hash = "general";
-            };
-            self.music = function() {
-                location.hash = "music";
-            };
-            self.editSong = function() {
-                location.hash = "music/edit/3";
-            };
-        }
-
-        ko.applyBindings(new NavigationViewModel(), document.getElementById("menu"));
-    </script>
+    
 </body>
 </html>
