@@ -17,7 +17,7 @@ namespace ArtistBasePage.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { controller="Main", action = "Index", id = UrlParameter.Optional }
+                new { controller="General", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

@@ -5,7 +5,9 @@
 <header>
     <h2>Page header</h2>
 </header>
-
+@section scripts{
+    
+}
 <div class="container-fluid">
     <div class="row-fluid">
 
@@ -18,22 +20,22 @@
             <h3>Social networks</h3>
             <section class="content">
                 <p class="text">
-                    <input class="text icon facebook" type="text" placeholder="http://www.facebook.com/" /><em class="help-inline">Link to your facebook-page</em>
+                    <input class="text icon facebook" data-bind="val: facebook" type="text" placeholder="http://www.facebook.com/" /><em class="help-inline">Link to your facebook-page</em>
                 </p>
                 <p class="text">
-                    <input class="text icon twitter" type="text" placeholder="@(string.Format("@username"))" /><em class="help-inline">Your Twitter username</em>
+                    <input class="text icon twitter" data-bind="val: twitter" type="text" placeholder="@(string.Format("@username"))" /><em class="help-inline">Your Twitter username</em>
                 </p>
                 <p class="text">
-                    <input class="text icon gplus" type="text" placeholder="http://plus.google.com/" /><em class="help-inline">Link to your Google+ page</em>
+                    <input class="text icon gplus" data-bind="val: gplus" type="text" placeholder="http://plus.google.com/" /><em class="help-inline">Link to your Google+ page</em>
                 </p>
                 <p class="text">
-                    <input class="text icon linkedin" type="text" placeholder="http://www.linkedin.com/" /><em class="help-inline">Link to your LinkedIn profile</em>
+                    <input class="text icon linkedin" data-bind="val: linkedin" type="text" placeholder="http://www.linkedin.com/" /><em class="help-inline">Link to your LinkedIn profile</em>
                 </p>
                 <p class="text">
-                    <input class="text icon lastfm" type="text" placeholder="http://www.last.fm/" /><em class="help-inline">Link to your LastFM profile</em>
+                    <input class="text icon lastfm" data-bind="val: lastfm" type="text" placeholder="http://www.last.fm/" /><em class="help-inline">Link to your LastFM profile</em>
                 </p>
                 <p class="text">
-                    <input class="text icon youtube" type="text" placeholder="http://www.youtube.com" /><em class="help-inline">Link to your Youtube page</em>
+                    <input class="text icon youtube" data-bind="val: youtube" type="text" placeholder="http://www.youtube.com" /><em class="help-inline">Link to your Youtube page</em>
                 </p>
 
             </section>

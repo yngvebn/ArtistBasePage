@@ -1,6 +1,9 @@
 using System.Linq;
+using System.Web.Http;
+using System.Web.Mvc;
 using ArtistBasePage.Infrastructure.Installers;
 using Infrastructure.DomainEvents;
+using Ninject.Web.Mvc;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(ArtistBasePage.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(ArtistBasePage.App_Start.NinjectWebCommon), "Stop")]
@@ -47,13 +50,17 @@ namespace ArtistBasePage.App_Start
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
+            //GlobalConfiguration.Configuration.DependencyResolver = new ArtistBasePage.Infrastructure.NinjectDependencyResolver(kernel);
             kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
+            
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
             kernel.Bind(c => c.FromThisAssembly().
                             SelectAllClasses().InheritedFrom<INinjectInstaller>()
                             .BindAllInterfaces());
             DomainEvents.Container = kernel;
             RegisterServices(kernel);
+            
+            
             return kernel;
         }
 
