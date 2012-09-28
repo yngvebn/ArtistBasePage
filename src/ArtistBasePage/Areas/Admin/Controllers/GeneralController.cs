@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ArtistBasePage.Areas.Admin.Controllers
 {
-    public class MainController : Controller
+    public class GeneralController : Controller
     {
         //
         // GET: /Admin/Main/

@@ -9,7 +9,10 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/admin/site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/knockout-2.1.0.js"></script>
     <title>_layout</title>
+   
 </head>
 <body>
 
@@ -20,15 +23,15 @@
         </div>
         <div>
             <aside class="main">
-                <nav>
+                <nav id="menu">
                     <header>Menu</header>
-                    <ul>
-                        <li><a href="#">Menu item 1</a></li>
-                        <li><a href="#">Menu item 2</a></li>
-                        <li><a href="#">Menu item 3</a></li>
-                        <li><a href="#">Menu item 4</a></li>
-                        <li><a href="#">Menu item 5</a></li>
-                        <li><a href="#">Menu item 6</a></li>
+                    <ul data-bind="click: navigate">
+                        <li><a href="/admin/general/index">General</a></li>
+                        <li><a href="#/music/1">Music</a></li>
+                        <li><a href="#/music/2">Videos</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Pictures</a></li>
 
                     </ul>
                 </nav>
@@ -40,5 +43,26 @@
     </div>
     <div>
     </div>
+    <script type="text/javascript">
+        function NavigationViewModel() {
+            var self = this;
+
+            self.navigate = function (obj, ev) {
+                location.hash = $(ev.srcElement).attr('href');
+            };
+
+            self.general = function() {
+                location.hash = "general";
+            };
+            self.music = function() {
+                location.hash = "music";
+            };
+            self.editSong = function() {
+                location.hash = "music/edit/3";
+            };
+        }
+
+        ko.applyBindings(new NavigationViewModel(), document.getElementById("menu"));
+    </script>
 </body>
 </html>
