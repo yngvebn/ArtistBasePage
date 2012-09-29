@@ -6,4 +6,9 @@ namespace Domain.Commands
     {
         public int ArtistId { get; set; } 
     }
+
+    public class CreateReadWriteToken : Command
+    {
+        public int ArtistId { get; set; }
+    }
 }

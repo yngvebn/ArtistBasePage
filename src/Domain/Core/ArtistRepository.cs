@@ -41,6 +41,14 @@ namespace Domain.Core
                 
             }
         }
+
+        public Artist FindByUsername(string username)
+        {
+            using(var session = _sessionManager.OpenSession())
+            {
+                return session.Session.Set<Artist>().SingleOrDefault(c => c.Username == username);
+            }
+        }
     }
 
   

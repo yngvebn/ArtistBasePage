@@ -7,6 +7,7 @@ using ArtistBasePage.Infrastructure;
 
 namespace ArtistBasePage.Areas.Admin.Controllers
 {
+    [Authorize]
     public class GeneralController : Controller
     {
         private readonly IMapper _mapper;

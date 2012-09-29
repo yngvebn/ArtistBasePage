@@ -23,19 +23,20 @@
         </div>
         <div>
             <aside class="main">
-                <nav id="menu">
-                    <header>Menu</header>
-                    <ul data-bind="click: navigate">
-                        <li><a href="/admin/general/index">General</a></li>
-                        <li><a href="#/music/1">Music</a></li>
-                        <li><a href="#/music/2">Videos</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Events</a></li>
-                        <li><a href="#">Pictures</a></li>
+                @if(User.Identity.IsAuthenticated){
+                    <nav id="menu">
+                        <header>Menu</header>
+                        <ul data-bind="click: navigate">
+                            <li><a href="/admin/general/index">General</a></li>
+                            <li><a href="#/music/1">Music</a></li>
+                            <li><a href="#/music/2">Videos</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Events</a></li>
+                            <li><a href="#">Pictures</a></li>
 
-                    </ul>
-                </nav>
-                <!--Sidebar content-->
+                        </ul>
+                    </nav>
+                    }
             </aside>
             <section class="main">
                 @RenderBody()

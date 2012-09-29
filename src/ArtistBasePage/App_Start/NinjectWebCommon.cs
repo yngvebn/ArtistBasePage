@@ -50,7 +50,7 @@ namespace ArtistBasePage.App_Start
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
-            //GlobalConfiguration.Configuration.DependencyResolver = new ArtistBasePage.Infrastructure.NinjectDependencyResolver(kernel);
+            GlobalConfiguration.Configuration.DependencyResolver = new ArtistBasePage.Infrastructure.NinjectDependencyResolver(kernel);
             kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
             
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();

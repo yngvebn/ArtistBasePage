@@ -128,6 +128,11 @@ input.text, textarea {
     margin: 0;
 }
 
+.center {
+    position: relative;
+    left: auto;
+    right: auto;
+}
 
 input.text.icon {
     padding: 3px 3px 3px 30px;

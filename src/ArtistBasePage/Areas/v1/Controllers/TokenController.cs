@@ -23,12 +23,31 @@ namespace ArtistBasePage.Areas.v1.Controllers
             _artistRepository = artistRepository;
         }
 
-        public JsonResult RequestRead(int id)
+        public JsonResult RequestToken(int id)
         {
-            MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadOnlyToken() { ArtistId = id });
-            var token = _artistRepository.Get(id).ApiSessions.SingleOrDefault(c => c.Expires > DateTime.Now);
+            var artist = _artistRepository.Get(id);
+            if(User.Identity.IsAuthenticated && artist.Username == User.Identity.Name)
+            {
+                return RequestReadWrite(artist);
+            }
+            else
+            {
+                return RequestRead(artist);
+            }
+        }
+
+        private JsonResult RequestRead(Artist artist)
+        {
+            MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadOnlyToken() { ArtistId = artist.Id });
+            var token = artist.ApiSessions.Where(c => !c.Write).SingleOrDefault(c => c.Expires > DateTime.Now);
             return Json(_mapper.Map<ApiSessionViewModel>(token), JsonRequestBehavior.AllowGet);
         }
 
+        private JsonResult RequestReadWrite(Artist artist)
+        {
+            MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadWriteToken() { ArtistId = artist.Id });
+            var token = artist.ApiSessions.Where(c => c.Write && c.Read).SingleOrDefault(c => c.Expires > DateTime.Now);
+            return Json(_mapper.Map<ApiSessionViewModel>(token), JsonRequestBehavior.AllowGet);
+        }
     }
 }

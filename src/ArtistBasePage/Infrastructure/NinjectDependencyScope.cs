@@ -20,11 +20,6 @@ namespace ArtistBasePage.Infrastructure
 
         public void Dispose()
         {
-            IDisposable disposable = resolver as IDisposable;
-            if (disposable != null)
-                disposable.Dispose();
-
-            resolver = null;
         }
 
         public object GetService(Type serviceType)
