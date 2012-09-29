@@ -167,7 +167,7 @@
     <Compile Include="Areas\v1\Controllers\ArtistController.cs" />
     <Compile Include="Areas\v1\ViewModels\ArtistViewModel.cs" />
     <Compile Include="Areas\v1\Controllers\SongController.cs" />
-    <Compile Include="Areas\v1\Controllers\TokenController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TokenController.cs" />
     <Compile Include="Areas\v1\v1AreaRegistration.cs" />
     <Compile Include="Areas\v1\ViewModels\ApiSessionViewModel.cs" />
     <Content Include="Content\admin\header-bg.png" />

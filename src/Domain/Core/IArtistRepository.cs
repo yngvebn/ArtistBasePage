@@ -8,5 +8,6 @@ namespace Domain.Core
         Artist FindByEmail(string email);
         void Create(Artist artist);
         Artist FindByUsername(string username);
+        Artist FindByToken(string tokenKey);
     }
 }

@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
+using System.Web.Mvc;
 using ArtistBasePage.Infrastructure;
 using Domain.Core;
 
 namespace ArtistBasePage.Areas.v1.Controllers
 {
-    public class ArtistController : ApiController
+    [TokenAuthentication]
+    public class ArtistController : TokenApiController
     {
         private readonly IMapper _mapper;
         private readonly IArtistRepository _artistRepository;
@@ -45,6 +48,28 @@ namespace ArtistBasePage.Areas.v1.Controllers
         // DELETE api/general/5
         public void Delete(int id)
         {
+        }
+    }
+
+    public class TokenApiController: ApiController
+    {
+        private readonly IArtistRepository _artistRepository;
+        public int ArtistId { get; set; }
+        public TokenApiController()
+        {
+            _artistRepository = DependencyResolver.Current.GetService<IArtistRepository>();
+        }
+
+        protected override void Initialize(System.Web.Http.Controllers.HttpControllerContext controllerContext)
+        {
+            IEnumerable<string> values = new List<string>();
+            var token = controllerContext.Request.Headers.TryGetValues("t", out values);
+            if (values == null)
+                throw new HttpException(401, "Token is required");
+
+            var artist = _artistRepository.FindByToken(values.FirstOrDefault());
+            ArtistId = artist.Id; 
+            base.Initialize(controllerContext);
         }
     }
 }

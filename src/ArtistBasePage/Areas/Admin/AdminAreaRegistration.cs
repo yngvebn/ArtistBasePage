@@ -14,10 +14,14 @@ namespace ArtistBasePage.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
+            context.MapRoute("token",
+                             "token/get",
+                             new { controller = "Token", action = "RequestToken", id = UrlParameter.Optional });
+
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { controller="General", action = "Index", id = UrlParameter.Optional }
+                new { controller = "General", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

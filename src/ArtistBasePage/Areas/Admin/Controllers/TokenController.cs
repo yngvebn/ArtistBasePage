@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
 using ArtistBasePage.Areas.v1.ViewModels;
 using ArtistBasePage.Infrastructure;
@@ -10,7 +8,7 @@ using Domain;
 using Domain.Commands;
 using Domain.Core;
 
-namespace ArtistBasePage.Areas.v1.Controllers
+namespace ArtistBasePage.Areas.Admin.Controllers
 {
     public class TokenController : Controller
     {
@@ -23,15 +21,18 @@ namespace ArtistBasePage.Areas.v1.Controllers
             _artistRepository = artistRepository;
         }
 
-        public JsonResult RequestToken(int id)
+        public JsonResult RequestToken(int? id)
         {
-            var artist = _artistRepository.Get(id);
-            if(User.Identity.IsAuthenticated && artist.Username == User.Identity.Name)
+            
+            if(User.Identity.IsAuthenticated)
             {
+                var artist = _artistRepository.FindByUsername(User.Identity.Name);
                 return RequestReadWrite(artist);
             }
             else
             {
+                if(!id.HasValue) throw new HttpException(404, "Artist ID is required");
+                var artist = _artistRepository.Get(id.Value);
                 return RequestRead(artist);
             }
         }

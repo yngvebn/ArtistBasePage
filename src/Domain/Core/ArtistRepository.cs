@@ -49,6 +49,14 @@ namespace Domain.Core
                 return session.Session.Set<Artist>().SingleOrDefault(c => c.Username == username);
             }
         }
+
+        public Artist FindByToken(string tokenKey)
+        {
+            using (var session = _sessionManager.OpenSession())
+            {
+                return session.Session.Set<Artist>().SingleOrDefault(c => c.ApiSessions.Any(t => t.Token == tokenKey));
+            }
+        }
     }
 
   
