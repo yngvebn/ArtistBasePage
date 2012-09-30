@@ -18,7 +18,17 @@ namespace Domain
         public virtual Collection<Album> Albums { get; private set; }
         public virtual Collection<Article> News { get; private set; }
         public virtual Collection<ApiSession> ApiSessions { get; private set; }
-        public virtual Collection<SocialNetwork> SocialNetworks { get; private set; } 
+        public virtual Collection<SocialNetwork> SocialNetworks { get; private set; }
+
+
+        public void Update(Artist artist)
+        {
+            Email = artist.Email;
+            Phone = artist.Phone;
+            Name = artist.Name;
+            Bio = artist.Bio;
+        }
+
         public ApiSession GetReadonlyToken()
         {
             ApiSession session = ApiSession.ReadOnly(this);
@@ -76,5 +86,9 @@ namespace Domain
         }
 
 
+        public void RemoveSocialNetwork(SocialNetworkType type)
+        {
+            SocialNetworks.Remove(SocialNetworks.SingleOrDefault(c => c.Type == type));
+        }
     }
 }

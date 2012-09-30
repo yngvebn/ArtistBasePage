@@ -61,8 +61,13 @@
     <Compile Include="Artist.cs" />
     <Compile Include="Commands\AddNewArtist.cs" />
     <Compile Include="Commands\CreateReadOnlyToken.cs" />
+    <Compile Include="Commands\DeleteSocialNetworkCommand.cs" />
     <Compile Include="Commands\Handlers\AddNewArtistCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\AddSocialNetworkCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\DeleteSocialNetworkCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\UpdateArtistCommandHandler.cs" />
     <Compile Include="Commands\Handlers\CreateReadOnlyTokenHandler.cs" />
+    <Compile Include="Commands\UpdateArtistCommand.cs" />
     <Compile Include="Core\ArtistRepository.cs" />
     <Compile Include="Core\IArtistRepository.cs" />
     <Compile Include="Db.cs" />

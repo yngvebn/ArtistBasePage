@@ -4,11 +4,12 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ArtistBasePage.Infrastructure;
+using Domain;
+using Domain.Commands;
 using Domain.Core;
 
 namespace ArtistBasePage.Areas.v1.Controllers
 {
-    [TokenAuthentication]
     public class ArtistController : TokenApiController
     {
         private readonly IMapper _mapper;
@@ -31,10 +32,13 @@ namespace ArtistBasePage.Areas.v1.Controllers
         {
         }
 
-        // PUT api/general/5
         public void Put([FromBody]ArtistViewModel artist)
         {
-            
+            MvcApplication.CommandExecutor.ExecuteCommand(new UpdateArtistCommand()
+                                                              {
+                                                                  ArtistId = ArtistId,
+                                                                  Artist = _mapper.Map<Artist>(artist)
+                                                              });
         }
 
         // DELETE api/general/5

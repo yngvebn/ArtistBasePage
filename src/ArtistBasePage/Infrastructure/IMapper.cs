@@ -19,6 +19,8 @@ namespace ArtistBasePage.Infrastructure
             return AutoMapper.Mapper.Map<TSource>(source) as TDestination;
         }
 
+        
+
         public TDestination Map<TDestination>(object source)
             where TDestination : class
         {

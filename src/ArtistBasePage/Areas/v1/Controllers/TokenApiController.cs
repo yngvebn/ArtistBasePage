@@ -4,11 +4,17 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using Domain.Core;
+using Infrastructure.Commands;
 
 namespace ArtistBasePage.Areas.v1.Controllers
 {
     public class TokenApiController: ApiController
     {
+
+        protected CommandResult Execute(Command command)
+        {
+            return MvcApplication.CommandExecutor.ExecuteCommand(command);
+        }
         private readonly IArtistRepository _artistRepository;
         public int ArtistId { get; set; }
         public TokenApiController()

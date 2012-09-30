@@ -12,10 +12,10 @@ namespace ArtistBasePage.Infrastructure.Installers
     {
         public void Install(IKernel kernel)
         {
-            kernel.Bind<ISessionManager>().To<SessionManager>().InRequestScope();
+            kernel.Bind<ISessionManager>().To<SessionManager>();
             kernel.Bind<ISessionManagerInternal>().ToFactory();
 
-            kernel.Bind<DbContext>().To<Db>().InSingletonScope();
+            kernel.Bind<DbContext>().To<Db>().InRequestScope();
         }
     }
 

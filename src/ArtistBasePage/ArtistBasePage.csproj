@@ -163,6 +163,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AuthenticateController.cs" />
     <Compile Include="Areas\Admin\Controllers\GeneralController.cs" />
+    <Compile Include="Areas\v1\Controllers\SocialNetworksController.cs" />
     <Compile Include="Areas\v1\Controllers\TokenApiController.cs" />
     <Compile Include="Infrastructure\IAuthenticationService.cs" />
     <Compile Include="Areas\v1\Controllers\ArtistController.cs" />

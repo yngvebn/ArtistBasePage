@@ -17,8 +17,16 @@ namespace ArtistBasePage.Infrastructure.Mappings
                 .ForMember(c => c.ValidUntil, opt => opt.MapFrom(f => f.Expires))
                 .ForMember(c => c.Token, opt => opt.MapFrom(f => f.Token));
 
-            AutoMapper.Mapper.CreateMap<Artist, ArtistViewModel>().ForMember(c => c.SocialNetworks, opt => opt.MapFrom(d => d.SocialNetworks));
+            AutoMapper.Mapper.CreateMap<Artist, ArtistViewModel>();
             AutoMapper.Mapper.CreateMap<SocialNetwork, SocialNetworkViewModel>();
+        }
+    }
+
+    public class DomainMappings: IMapping
+    {
+        public void Setup()
+        {
+            AutoMapper.Mapper.CreateMap<ArtistViewModel, Artist>();
         }
     }
 }
