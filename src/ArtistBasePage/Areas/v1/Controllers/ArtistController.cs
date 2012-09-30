@@ -21,15 +21,9 @@ namespace ArtistBasePage.Areas.v1.Controllers
         }
 
         // GET api/general
-        public IEnumerable<string> Get()
+        public ArtistViewModel Get()
         {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/general/5
-        public ArtistViewModel Get(int id)
-        {
-            return _mapper.Map<ArtistViewModel>(_artistRepository.Get(id));
+         return _mapper.Map<ArtistViewModel>(_artistRepository.Get(ArtistId));
         }
 
         // POST api/general
@@ -38,8 +32,9 @@ namespace ArtistBasePage.Areas.v1.Controllers
         }
 
         // PUT api/general/5
-        public void Put(int id, [FromBody]string value)
+        public void Put([FromBody]ArtistViewModel artist)
         {
+            
         }
 
         // DELETE api/general/5

@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Domain;
+
 namespace ArtistBasePage.Areas.v1.Controllers
 {
     public class ArtistViewModel
@@ -6,11 +9,13 @@ namespace ArtistBasePage.Areas.v1.Controllers
         public string Name { get;  set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string Facebook { get; set; }
-        public string Twitter { get; set; }
-        public string LinkedIn { get; set; }
-        public string LastFm { get; set; }
-        public string GooglePlus { get; set; }
         public string Bio { get; set; }
+        public List<SocialNetworkViewModel> SocialNetworks { get; set; }
+    }
+
+    public class SocialNetworkViewModel
+    {
+        public SocialNetworkType Type { get; set; }
+        public string Url { get; set; }
     }
 }

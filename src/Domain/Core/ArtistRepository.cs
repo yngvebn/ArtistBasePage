@@ -21,7 +21,8 @@ namespace Domain.Core
         {
             using (var session = _sessionManager.OpenSession())
             {
-                return session.Session.Set<Artist>().Find(id);
+                var artist = session.Session.Set<Artist>().Find(id);
+                return artist;
             }
         }
 
@@ -54,7 +55,7 @@ namespace Domain.Core
         {
             using (var session = _sessionManager.OpenSession())
             {
-                return session.Session.Set<Artist>().SingleOrDefault(c => c.ApiSessions.Any(t => t.Token == tokenKey));
+                return session.Session.Set<Artist>().SingleOrDefault(c => c.ApiSessions.Any(t => t.Token == tokenKey && t.Expires > DateTime.Now));
             }
         }
     }

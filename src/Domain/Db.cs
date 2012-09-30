@@ -13,5 +13,6 @@ namespace Domain
         public DbSet<GalleryImage> GalleryImages { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<ApiSession> ApiSessions { get; set; }
+        public DbSet<SocialNetwork> SocialNetworks { get; set; }
     }
 }

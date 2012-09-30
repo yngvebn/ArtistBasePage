@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using ArtistBasePage.Areas.v1.ViewModels;
 using ArtistBasePage.Infrastructure;
@@ -20,6 +21,8 @@ namespace ArtistBasePage.Areas.Admin.Controllers
             _mapper = mapper;
             _artistRepository = artistRepository;
         }
+
+
 
         public JsonResult RequestToken(int? id)
         {

@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Domain
 {
@@ -9,11 +10,6 @@ namespace Domain
         public string Name { get; private set; }
         public string Email { get; private set; }
         public string Phone { get; private set; }
-        public string Facebook { get; private set; }
-        public string Twitter { get; private set; }
-        public string LinkedIn { get; private set; }
-        public string LastFm { get; private set; }
-        public string GooglePlus { get; private set; }
         public string Password { get; private set; }
 
         public string Bio { get; private set; }
@@ -21,8 +17,8 @@ namespace Domain
         public virtual Collection<Event> Events { get; private set; }
         public virtual Collection<Album> Albums { get; private set; }
         public virtual Collection<Article> News { get; private set; }
-        public virtual Collection<ApiSession> ApiSessions { get; private set; } 
-
+        public virtual Collection<ApiSession> ApiSessions { get; private set; }
+        public virtual Collection<SocialNetwork> SocialNetworks { get; private set; } 
         public ApiSession GetReadonlyToken()
         {
             ApiSession session = ApiSession.ReadOnly(this);
@@ -44,13 +40,18 @@ namespace Domain
                 };
         }
 
-        public void SetSocialNetwork(string facebook = null, string twitter = null, string linkedin = null, string lastfm = null, string googlePlus = null)
+        public void SetSocialNetwork(SocialNetworkType type, string url)
         {
-            Facebook = facebook;
-            Twitter = twitter;
-            LinkedIn = linkedin;
-            LastFm = lastfm;
-            GooglePlus = googlePlus;
+            if(SocialNetworks == null) SocialNetworks = new Collection<SocialNetwork>();
+            var existing = SocialNetworks.SingleOrDefault(c => c.Type == type);
+            if(existing != null)
+            {
+                existing.ChangeUrl(url);
+            }
+            else
+            {
+                SocialNetworks.Add(SocialNetwork.Create(type, url));
+            }
         }
 
 

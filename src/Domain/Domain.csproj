@@ -119,9 +119,15 @@
     <Compile Include="Migrations\201209290759031_AddedUsername.Designer.cs">
       <DependentUpon>201209290759031_AddedUsername.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201209300914473_AddSocialNetworks.cs" />
+    <Compile Include="Migrations\201209300914473_AddSocialNetworks.Designer.cs">
+      <DependentUpon>201209300914473_AddSocialNetworks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
+    <Compile Include="SocialNetwork.cs" />
+    <Compile Include="SocialNetworkType.cs" />
     <Compile Include="Song.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201209290759031_AddedUsername.resx">
       <DependentUpon>201209290759031_AddedUsername.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201209300914473_AddSocialNetworks.resx">
+      <DependentUpon>201209300914473_AddSocialNetworks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
