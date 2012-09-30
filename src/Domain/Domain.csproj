@@ -128,6 +128,10 @@
     <Compile Include="Migrations\201209300914473_AddSocialNetworks.Designer.cs">
       <DependentUpon>201209300914473_AddSocialNetworks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201209301256218_AddLogins.cs" />
+    <Compile Include="Migrations\201209301256218_AddLogins.Designer.cs">
+      <DependentUpon>201209301256218_AddLogins.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
@@ -178,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201209300914473_AddSocialNetworks.resx">
       <DependentUpon>201209300914473_AddSocialNetworks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201209301256218_AddLogins.resx">
+      <DependentUpon>201209301256218_AddLogins.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Domain;
 
 namespace ArtistBasePage.Areas.v1.Controllers
 {
@@ -9,11 +8,5 @@ namespace ArtistBasePage.Areas.v1.Controllers
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Bio { get; set; }
-    }
-
-    public class SocialNetworkViewModel
-    {
-        public SocialNetworkType Type { get; set; }
-        public string Url { get; set; }
     }
 }

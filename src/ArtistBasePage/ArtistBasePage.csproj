@@ -165,6 +165,8 @@
     <Compile Include="Areas\Admin\Controllers\GeneralController.cs" />
     <Compile Include="Areas\v1\Controllers\SocialNetworksController.cs" />
     <Compile Include="Areas\v1\Controllers\TokenApiController.cs" />
+    <Compile Include="Areas\v1\ViewModels\SocialNetworkViewModel.cs" />
+    <Compile Include="Infrastructure\AuthenticationService.cs" />
     <Compile Include="Infrastructure\IAuthenticationService.cs" />
     <Compile Include="Areas\v1\Controllers\ArtistController.cs" />
     <Compile Include="Areas\v1\ViewModels\ArtistViewModel.cs" />
@@ -181,6 +183,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Installers\AuthInstaller.cs" />
+    <Compile Include="Infrastructure\Installers\INinjectInstaller.cs" />
+    <Compile Include="Infrastructure\Mapper.cs" />
+    <Compile Include="Infrastructure\Mappings\DomainMappings.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\IMapper.cs" />
     <Compile Include="Infrastructure\IMapping.cs" />

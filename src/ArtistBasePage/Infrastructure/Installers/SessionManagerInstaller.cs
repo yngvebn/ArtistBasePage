@@ -18,9 +18,4 @@ namespace ArtistBasePage.Infrastructure.Installers
             kernel.Bind<DbContext>().To<Db>().InRequestScope();
         }
     }
-
-    public interface INinjectInstaller
-    {
-        void Install(IKernel kernel);
-    }
 }

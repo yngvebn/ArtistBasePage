@@ -21,12 +21,4 @@ namespace ArtistBasePage.Infrastructure.Mappings
             AutoMapper.Mapper.CreateMap<SocialNetwork, SocialNetworkViewModel>();
         }
     }
-
-    public class DomainMappings: IMapping
-    {
-        public void Setup()
-        {
-            AutoMapper.Mapper.CreateMap<ArtistViewModel, Artist>();
-        }
-    }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Transactions;
@@ -43,11 +44,11 @@ namespace Domain.Core
             }
         }
 
-        public Artist FindByUsername(string username)
+        public IEnumerable<Artist> FindByUsername(string username)
         {
             using(var session = _sessionManager.OpenSession())
             {
-                return session.Session.Set<Artist>().SingleOrDefault(c => c.Username == username);
+                return session.Session.Set<Artist>().Where(d => d.Logins.Any(c => c.Username == username));
             }
         }
 

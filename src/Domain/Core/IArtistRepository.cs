@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace Domain.Core
 {
@@ -7,7 +8,7 @@ namespace Domain.Core
         Artist Get(int id);
         Artist FindByEmail(string email);
         void Create(Artist artist);
-        Artist FindByUsername(string username);
+        IEnumerable<Artist> FindByUsername(string username);
         Artist FindByToken(string tokenKey);
     }
 }
