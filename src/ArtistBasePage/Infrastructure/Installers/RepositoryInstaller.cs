@@ -10,6 +10,7 @@ namespace ArtistBasePage.Infrastructure.Installers
         public void Install(IKernel kernel)
         {
             kernel.Bind<IArtistRepository>().To<ArtistRepository>();
+            kernel.Bind<ITokenRepository>().To<TokenRepository>();
         }
     }
 }

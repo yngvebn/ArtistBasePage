@@ -86,6 +86,11 @@ namespace Domain
         {
             SocialNetworks.Remove(SocialNetworks.SingleOrDefault(c => c.Type == type));
         }
+
+        public bool CanWrite(string token)
+        {
+            return ApiSessions.SingleOrDefault(c => c.Token == token).Write;
+        }
     }
 
     public class UserAlreadyExistsException : Exception

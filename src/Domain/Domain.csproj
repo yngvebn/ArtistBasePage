@@ -71,6 +71,8 @@
     <Compile Include="Commands\UpdateArtistCommand.cs" />
     <Compile Include="Core\ArtistRepository.cs" />
     <Compile Include="Core\IArtistRepository.cs" />
+    <Compile Include="Core\ITokenRepository.cs" />
+    <Compile Include="Core\TokenRepository.cs" />
     <Compile Include="Db.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="Events\ArtistWasAdded.cs" />

@@ -37,16 +37,16 @@ namespace Domain.Core
 
         public void Create(Artist artist)
         {
-            using(var session = _sessionManager.OpenSession())
+            using (var session = _sessionManager.OpenSession())
             {
                 session.Session.Set<Artist>().Add(artist);
-                
+
             }
         }
 
         public IEnumerable<Artist> FindByUsername(string username)
         {
-            using(var session = _sessionManager.OpenSession())
+            using (var session = _sessionManager.OpenSession())
             {
                 return session.Session.Set<Artist>().Where(d => d.Logins.Any(c => c.Username == username));
             }
@@ -61,5 +61,5 @@ namespace Domain.Core
         }
     }
 
-  
+
 }

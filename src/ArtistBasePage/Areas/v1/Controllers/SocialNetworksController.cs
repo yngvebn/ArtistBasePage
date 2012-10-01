@@ -33,10 +33,10 @@ namespace ArtistBasePage.Areas.v1.Controllers
                         });
         }
 
-        public void Delete(SocialNetworkType id)
+        public void Delete(string id)
         {
             MvcApplication.CommandExecutor.ExecuteCommand(new DeleteSocialNetworkCommand()
-                                                              {ArtistId = ArtistId, Type = id});
+                                                              {ArtistId = ArtistId, Type = id.ParseEnum<SocialNetworkType>() });
         }
     }
 }
