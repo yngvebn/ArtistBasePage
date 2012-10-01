@@ -1,8 +1,11 @@
+using System.Collections.Generic;
+using Domain;
+
 namespace ArtistBasePage.Infrastructure
 {
     public interface IAuthenticationService
     {
-        bool Validate(string username, string password);
+        IEnumerable<Artist> GetUserArtists(string username, string password);
         void Login(string username);
         void Logout();
     }

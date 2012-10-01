@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Security;
 using Domain;
@@ -8,18 +9,19 @@ namespace ArtistBasePage.Infrastructure
 {
     public class AuthenticationService : IAuthenticationService
     {
-        private readonly IArtistRepository _artistRepository;
+        private readonly IUserLoginRepository _userLoginRepository;
 
-        public AuthenticationService(IArtistRepository artistRepository)
+        public AuthenticationService(IUserLoginRepository userLoginRepository)
         {
-            _artistRepository = artistRepository;
+            _userLoginRepository = userLoginRepository;
         }
 
-        public bool Validate(string username, string password)
+        public IEnumerable<Artist> GetUserArtists(string username, string password)
         {
-            var artists = _artistRepository.FindByUsername(username);
-            if(!artists.Any()) throw new UserDoesNotExistException(username);
-            return artists.Any(c => c.Logins.Any(u => u.Username == username && u.Password == password.Encrypt()));
+            var login = _userLoginRepository.Get(username);
+            if(login == null) throw new UserDoesNotExistException(username);
+            if (login.Password != password.Encrypt()) throw new InvalidPasswordException(username);
+            return login.Artists;
         }
 
         public void Login(string username)
@@ -30,6 +32,14 @@ namespace ArtistBasePage.Infrastructure
         public void Logout()
         {
             FormsAuthentication.SignOut();
+        }
+    }
+
+    public class InvalidPasswordException : Exception
+    {
+        public InvalidPasswordException(string username)
+            :base(string.Format("The password supplied for user {0} is incorrect", username))
+        {
         }
     }
 

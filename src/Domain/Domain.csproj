@@ -60,9 +60,11 @@
     <Compile Include="ApiSession.cs" />
     <Compile Include="Article.cs" />
     <Compile Include="Artist.cs" />
+    <Compile Include="Commands\AddArtistLogonCommand.cs" />
     <Compile Include="Commands\AddNewArtist.cs" />
     <Compile Include="Commands\CreateReadOnlyToken.cs" />
     <Compile Include="Commands\DeleteSocialNetworkCommand.cs" />
+    <Compile Include="Commands\Handlers\AddArtistLogonCommandHandler.cs" />
     <Compile Include="Commands\Handlers\AddNewArtistCommandHandler.cs" />
     <Compile Include="Commands\Handlers\AddSocialNetworkCommandHandler.cs" />
     <Compile Include="Commands\Handlers\DeleteSocialNetworkCommandHandler.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Core\ArtistRepository.cs" />
     <Compile Include="Core\IArtistRepository.cs" />
     <Compile Include="Core\ITokenRepository.cs" />
+    <Compile Include="Core\IUserLoginRepository.cs" />
     <Compile Include="Core\TokenRepository.cs" />
     <Compile Include="Db.cs" />
     <Compile Include="Event.cs" />
@@ -139,12 +142,17 @@
     <Compile Include="Migrations\201210011019514_AddCreatedDateToArtist.Designer.cs">
       <DependentUpon>201210011019514_AddCreatedDateToArtist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201210011725368_AddedReferenceFromUserLoginToArtist.cs" />
+    <Compile Include="Migrations\201210011725368_AddedReferenceFromUserLoginToArtist.Designer.cs">
+      <DependentUpon>201210011725368_AddedReferenceFromUserLoginToArtist.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="SocialNetwork.cs" />
     <Compile Include="SocialNetworkType.cs" />
     <Compile Include="Song.cs" />
+    <Compile Include="UserLogin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -195,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201210011019514_AddCreatedDateToArtist.resx">
       <DependentUpon>201210011019514_AddCreatedDateToArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201210011725368_AddedReferenceFromUserLoginToArtist.resx">
+      <DependentUpon>201210011725368_AddedReferenceFromUserLoginToArtist.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

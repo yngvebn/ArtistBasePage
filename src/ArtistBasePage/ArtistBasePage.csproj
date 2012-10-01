@@ -163,6 +163,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AuthenticateController.cs" />
     <Compile Include="Areas\Admin\Controllers\GeneralController.cs" />
+    <Compile Include="Areas\Admin\CustomViewPage.cs" />
     <Compile Include="Areas\v1\Controllers\SocialNetworksController.cs" />
     <Compile Include="Areas\v1\Controllers\TokenApiController.cs" />
     <Compile Include="Areas\v1\ViewModels\SocialNetworkViewModel.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Areas\Admin\Controllers\TokenController.cs" />
     <Compile Include="Areas\v1\v1AreaRegistration.cs" />
     <Compile Include="Areas\v1\ViewModels\ApiSessionViewModel.cs" />
+    <Content Include="Scripts\lib\ajaxDataAccess.js" />
     <Content Include="Content\admin\header-bg.png" />
     <Content Include="Content\admin\navigation-hover.png" />
     <Content Include="Content\admin\navigation-normal.png" />
@@ -388,6 +390,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\Authenticate\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Authenticate\SelectArtist.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

@@ -79,7 +79,7 @@ namespace Domain
             if(Logins == null) Logins = new Collection<UserLogin>();
             if (Logins.Any(c => c.Username == username)) throw new UserAlreadyExistsException(username);
 
-            Logins.Add(UserLogin.Create(username, password.Encrypt()));
+            Logins.Add(UserLogin.Create(username, password.Encrypt(), this));
         }
 
         public void RemoveSocialNetwork(SocialNetworkType type)
@@ -98,25 +98,6 @@ namespace Domain
         public UserAlreadyExistsException(string username)
             :base(string.Format("User with username {0} already exists", username))
         {
-        }
-    }
-
-    public class UserLogin
-    {
-        public int Id { get; set; }
-        public string Username { get; private set; }
-        public string Password { get; private set; }
-
-        public DateTime Created { get; private set; }
-        public DateTime? LastLogin { get; private set; }
-        public static UserLogin Create(string username, string password)
-        {
-            return new UserLogin()
-                       {
-                           Username = username,
-                           Password = password,
-                           Created = DateTime.Now
-                       };
         }
     }
 

@@ -14,5 +14,7 @@ namespace Domain
         public DbSet<Article> Articles { get; set; }
         public DbSet<ApiSession> ApiSessions { get; set; }
         public DbSet<SocialNetwork> SocialNetworks { get; set; }
+        public DbSet<UserLogin> UserLogins { get; set; }
     }
+
 }

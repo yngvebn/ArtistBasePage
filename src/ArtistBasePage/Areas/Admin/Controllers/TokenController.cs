@@ -25,48 +25,39 @@ namespace ArtistBasePage.Areas.Admin.Controllers
 
 
 
-        public JsonResult RequestToken(int? id)
+        public JsonResult RequestToken(int id)
         {
 
             if (User.Identity.IsAuthenticated)
             {
-                var artists = _artistRepository.FindByUsername(User.Identity.Name);
-                return RequestReadWrite(artists);
+                var artist = _artistRepository.Get(id);
+                if (artist.Logins.All(c => c.Username != User.Identity.Name))
+                    throw new HttpException(401, "Unauthorized");
+                return RequestReadWrite(artist);
             }
             else
             {
-                if (!id.HasValue) throw new HttpException(404, "Artist ID is required");
-                var artist = _artistRepository.Get(id.Value);
-                return RequestRead(new Artist[] { artist });
+                var artist = _artistRepository.Get(id);
+                return RequestRead(artist);
             }
         }
 
-        private JsonResult RequestRead(IEnumerable<Artist> artists)
+        private JsonResult RequestRead(Artist artist)
         {
-            List<ApiSessionViewModel> tokens = new List<ApiSessionViewModel>();
-            foreach (var artist in artists)
-            {
-                MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadOnlyToken() { ArtistId = artist.Id });
-                var token = _mapper.Map<ApiSessionViewModel>(artist.ApiSessions.Where(c => !c.Write).SingleOrDefault(c => c.Expires > DateTime.Now));
-                token.ArtistId = artist.Id;
-                tokens.Add(token);
-            }
-            return Json(tokens, JsonRequestBehavior.AllowGet);
+            MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadOnlyToken() { ArtistId = artist.Id });
+            var token = _mapper.Map<ApiSessionViewModel>(artist.ApiSessions.Where(c => !c.Write).SingleOrDefault(c => c.Expires > DateTime.Now));
+            token.ArtistId = artist.Id;
+            return Json(_mapper.Map<ApiSessionViewModel>(token), JsonRequestBehavior.AllowGet);
         }
 
-        private JsonResult RequestReadWrite(IEnumerable<Artist> artists)
+        private JsonResult RequestReadWrite(Artist artist)
         {
-            List<ApiSessionViewModel> tokens = new List<ApiSessionViewModel>();
-            foreach(var artist in artists)
-            {
-            MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadWriteToken() { ArtistId = artist.Id });
+                MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadWriteToken() { ArtistId = artist.Id });
                 var token =
                     _mapper.Map<ApiSessionViewModel>(
                         artist.ApiSessions.Where(c => c.Write && c.Read).SingleOrDefault(c => c.Expires > DateTime.Now));
                 token.ArtistId = artist.Id;
-                tokens.Add(token);
-            }
-            return Json(tokens, JsonRequestBehavior.AllowGet);
+            return Json(_mapper.Map<ApiSessionViewModel>(token), JsonRequestBehavior.AllowGet);
         }
     }
 }

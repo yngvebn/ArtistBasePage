@@ -11,13 +11,21 @@ namespace ArtistBasePage.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        private readonly IArtistRepository _artistRepository;
+
+        public HomeController(IArtistRepository artistRepository)
         {
-            
+            _artistRepository = artistRepository;
         }
 
         public ActionResult Index()
         {
+            //MvcApplication.CommandExecutor.ExecuteCommand(new AddArtistLogonCommand()
+            //                                                  {
+            //                                                      ArtistId = 1,
+            //                                                      Username = "yngve",
+            //                                                      Password = "test123"
+            //                                                  });
             return View();
         }
 

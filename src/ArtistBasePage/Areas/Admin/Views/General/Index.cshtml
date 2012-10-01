@@ -6,20 +6,72 @@
     <h2>Page header</h2>
 </header>
 @section scripts{
-    
+    <script type="text/javascript">
+
+        var artistDataAccess = new AjaxDataAccess();
+
+        function GeneralViewModel() {
+            var self = this;
+            self.name = ko.observable();
+            self.email = ko.observable();
+            self.phone = ko.observable();
+            self.bio = ko.observable();
+
+            self.save = function() {
+
+            };
+
+        }
+
+        function MainViewModel() {
+            var self = this;
+            self.general = ko.observable(new GeneralViewModel());
+            artistDataAccess.get("/api/v1/artist", function (data) {
+                ko.mapping.fromJS(data, {}, self.general);
+            });
+        }
+        
+        
+        $(function () {
+            var mainViewModel = new MainViewModel();
+            ko.applyBindings(mainViewModel);
+        });
+    </script>
 }
+
+
 <div class="container-fluid">
     <div class="row-fluid">
 
         <div class="span8 module">
             <h3>General settings</h3>
-            <section class="content"></section>
+            <section class="content" data-bind="with: general">
+                <p>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" data-bind="val: name" />
+                </p>
+                <p>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" data-bind="val: email" />
+                </p>
+                <p>
+                    <label for="phone">Phone</label>
+                    <input type="text" name="phone" data-bind="val: phone" />
+                </p>
+                <p>
+                    <label for="bio">Name</label>
+                    <textarea name="bio" data-bind="val: bio"></textarea>
+                </p>
+                <p>
+                    <button class="btn" data-bind="click: save">Save</button>
+                </p>
+            </section>
         </div>
 
         <div class="span4 module">
             <h3>Social networks</h3>
             <section class="content">
-                <p class="text">
+           @*     <p class="text">
                     <input class="text icon facebook" data-bind="val: facebook" type="text" placeholder="http://www.facebook.com/" /><em class="help-inline">Link to your facebook-page</em>
                 </p>
                 <p class="text">
@@ -36,7 +88,7 @@
                 </p>
                 <p class="text">
                     <input class="text icon youtube" data-bind="val: youtube" type="text" placeholder="http://www.youtube.com" /><em class="help-inline">Link to your Youtube page</em>
-                </p>
+                </p>*@
 
             </section>
         </div>
