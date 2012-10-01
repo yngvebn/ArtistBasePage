@@ -13,8 +13,6 @@ namespace ArtistBasePage.Infrastructure.Mappings
         public void Setup()
         {
             AutoMapper.Mapper.CreateMap<ApiSession, ApiSessionViewModel>()
-                .ForMember(c => c.Issued, opt => opt.MapFrom(f => f.Created))
-                .ForMember(c => c.ValidUntil, opt => opt.MapFrom(f => f.Expires))
                 .ForMember(c => c.Token, opt => opt.MapFrom(f => f.Token));
 
             AutoMapper.Mapper.CreateMap<Artist, ArtistViewModel>();
