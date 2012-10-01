@@ -12,13 +12,18 @@
 
         function GeneralViewModel() {
             var self = this;
+            self.loading = ko.observable(true);
+            self.saving = ko.observable(false);
             self.name = ko.observable();
             self.email = ko.observable();
             self.phone = ko.observable();
             self.bio = ko.observable();
 
-            self.save = function() {
-
+            self.save = function () {
+                self.saving(true);
+                artistDataAccess.save("/api/v1/artist", ko.mapping.toJSON(this), function (data) {
+                    self.saving(false);
+                });
             };
 
         }
@@ -28,14 +33,29 @@
             self.general = ko.observable(new GeneralViewModel());
             artistDataAccess.get("/api/v1/artist", function (data) {
                 ko.mapping.fromJS(data, {}, self.general);
+                self.general().loading(false);
             });
         }
-        
-        
+
+
         $(function () {
             var mainViewModel = new MainViewModel();
             ko.applyBindings(mainViewModel);
         });
+
+        ko.bindingHandlers.displaySaveSuccess = {
+            update: function (element, valueAccessor, allBindingsAccessor) {
+                var saveOverlay = $(element).find(".save-overlay");
+
+                if (valueAccessor()) {
+                    saveOverlay.fadeIn(100);
+                }
+                else {
+                    saveOverlay.fadeOut(800);
+                }
+
+            }
+        };
     </script>
 }
 
@@ -43,27 +63,33 @@
 <div class="container-fluid">
     <div class="row-fluid">
 
-        <div class="span8 module">
+        <div class="span8 module" data-bind="with: general">
+
             <h3>General settings</h3>
-            <section class="content" data-bind="with: general">
+            <section class="content" data-bind="displaySaveSuccess: saving()">
+                <div class="save-overlay">
+                    <div class="backdrop"></div>
+                    <div class="image"></div>
+
+                </div>
                 <p>
                     <label for="name">Name</label>
-                    <input type="text" name="name" data-bind="val: name" />
+                    <input type="text" name="name" data-bind="value: name" />
                 </p>
                 <p>
                     <label for="email">Email</label>
-                    <input type="text" name="email" data-bind="val: email" />
+                    <input type="text" name="email" data-bind="value: email" />
                 </p>
                 <p>
                     <label for="phone">Phone</label>
-                    <input type="text" name="phone" data-bind="val: phone" />
+                    <input type="text" name="phone" data-bind="value: phone" />
                 </p>
                 <p>
                     <label for="bio">Name</label>
-                    <textarea name="bio" data-bind="val: bio"></textarea>
+                    <textarea name="bio" data-bind="value: bio"></textarea>
                 </p>
                 <p>
-                    <button class="btn" data-bind="click: save">Save</button>
+                    <button class="btn" data-bind="click: save, enabled: !loading()">Save</button>
                 </p>
             </section>
         </div>
@@ -71,7 +97,7 @@
         <div class="span4 module">
             <h3>Social networks</h3>
             <section class="content">
-           @*     <p class="text">
+                @*     <p class="text">
                     <input class="text icon facebook" data-bind="val: facebook" type="text" placeholder="http://www.facebook.com/" /><em class="help-inline">Link to your facebook-page</em>
                 </p>
                 <p class="text">

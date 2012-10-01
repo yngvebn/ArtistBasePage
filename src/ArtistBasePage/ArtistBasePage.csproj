@@ -175,6 +175,7 @@
     <Compile Include="Areas\Admin\Controllers\TokenController.cs" />
     <Compile Include="Areas\v1\v1AreaRegistration.cs" />
     <Compile Include="Areas\v1\ViewModels\ApiSessionViewModel.cs" />
+    <Content Include="Content\images\Check_large.png" />
     <Content Include="Scripts\lib\ajaxDataAccess.js" />
     <Content Include="Content\admin\header-bg.png" />
     <Content Include="Content\admin\navigation-hover.png" />

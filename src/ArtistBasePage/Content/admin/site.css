@@ -181,6 +181,35 @@ div.module {
     font-size: 12px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
     margin-top: 20px;
+    position: relative;
+}
+div.module div.save-overlay {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    display: none;
+}
+div.save-overlay div.backdrop {
+    opacity: 0.5;
+    background-color: #aaa;
+    position: absolute;
+        right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+div.save-overlay div.image {
+    position: absolute;
+    background-image: url(/content/images/check_large.png);
+    background-repeat: no-repeat;
+    background-position:  50% 50%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
 }
 
     div.module h3 {
