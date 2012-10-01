@@ -28,7 +28,7 @@ namespace ArtistBasePage.Areas.v1.Controllers
             Execute(new AddSocialNetworkCommand()
                         {
                             ArtistId = ArtistId,
-                            SocialNetworkType = socialNetworkViewModel.Type,
+                            SocialNetworkType = socialNetworkViewModel.Type.ParseEnum<SocialNetworkType>(),
                             Url = socialNetworkViewModel.Url
                         });
         }

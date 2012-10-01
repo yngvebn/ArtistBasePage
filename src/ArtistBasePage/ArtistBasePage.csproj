@@ -196,6 +196,7 @@
     <Compile Include="Infrastructure\Installers\SessionManagerInstaller.cs" />
     <Compile Include="Infrastructure\Mappings\ViewModelMappings.cs" />
     <Compile Include="Infrastructure\NinjectDependencyScope.cs" />
+    <Compile Include="Infrastructure\StringExtensions.cs" />
     <Compile Include="Infrastructure\TokenAuthentication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

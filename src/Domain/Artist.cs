@@ -10,8 +10,10 @@ namespace Domain
         public string Name { get; private set; }
         public string Email { get; private set; }
         public string Phone { get; private set; }
-
         public string Bio { get; private set; }
+
+        public DateTime Created { get; private set; }
+
         public virtual Collection<UserLogin> Logins { get; private set; }
         public virtual Collection<GalleryImage> Gallery { get; private set; }
         public virtual Collection<Event> Events { get; private set; }
@@ -46,6 +48,7 @@ namespace Domain
         {
             return new Artist()
                 {
+                    Created = DateTime.Now,
                     Email = email
                 };
         }
