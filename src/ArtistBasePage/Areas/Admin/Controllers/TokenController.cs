@@ -16,11 +16,13 @@ namespace ArtistBasePage.Areas.Admin.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IArtistRepository _artistRepository;
+        private readonly ITokenRepository _tokenRepository;
 
-        public TokenController(IMapper mapper, IArtistRepository artistRepository)
+        public TokenController(IMapper mapper, IArtistRepository artistRepository, ITokenRepository tokenRepository)
         {
             _mapper = mapper;
             _artistRepository = artistRepository;
+            _tokenRepository = tokenRepository;
         }
 
 
@@ -44,19 +46,17 @@ namespace ArtistBasePage.Areas.Admin.Controllers
 
         private JsonResult RequestRead(Artist artist)
         {
-            MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadOnlyToken() { ArtistId = artist.Id });
-            var token = _mapper.Map<ApiSessionViewModel>(artist.ApiSessions.Where(c => !c.Write).SingleOrDefault(c => c.Expires > DateTime.Now));
-            token.ArtistId = artist.Id;
+            Guid correlationId = Guid.NewGuid();
+            MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadOnlyToken() { ArtistId = artist.Id, CorrelationId = correlationId });
+            var token = _tokenRepository.GetByCorrelationId(correlationId);
             return Json(_mapper.Map<ApiSessionViewModel>(token), JsonRequestBehavior.AllowGet);
         }
 
         private JsonResult RequestReadWrite(Artist artist)
         {
-                MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadWriteToken() { ArtistId = artist.Id });
-                var token =
-                    _mapper.Map<ApiSessionViewModel>(
-                        artist.ApiSessions.Where(c => c.Write && c.Read).SingleOrDefault(c => c.Expires > DateTime.Now));
-                token.ArtistId = artist.Id;
+            Guid correlationId = Guid.NewGuid();
+            MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadWriteToken() { ArtistId = artist.Id, CorrelationId = correlationId });
+            var token = _tokenRepository.GetByCorrelationId(correlationId);
             return Json(_mapper.Map<ApiSessionViewModel>(token), JsonRequestBehavior.AllowGet);
         }
     }

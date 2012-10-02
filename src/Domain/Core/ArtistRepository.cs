@@ -56,7 +56,7 @@ namespace Domain.Core
         {
             using (var session = _sessionManager.OpenSession())
             {
-                return session.Session.Set<Artist>().SingleOrDefault(c => c.ApiSessions.Any(t => t.Token == tokenKey && t.Expires > DateTime.Now));
+                return session.Session.Set<Artist>().SingleOrDefault(c => c.ApiTokens.Any(t => t.Token == tokenKey && t.Expires > DateTime.Now));
             }
         }
     }

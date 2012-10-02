@@ -21,11 +21,19 @@ namespace Domain.Core
             return true;
         }
 
-        public ApiSession Get(string token)
+        public ApiToken Get(string token)
         {
             using (var session = _sessionManager.OpenSession())
             {
-                return session.Session.Set<ApiSession>().SingleOrDefault(c => c.Token == token);
+                return session.Session.Set<ApiToken>().SingleOrDefault(c => c.Token == token);
+            }
+        }
+
+        public ApiToken GetByCorrelationId(Guid correlationId)
+        {
+            using (var session = _sessionManager.OpenSession())
+            {
+                return session.Session.Set<ApiToken>().SingleOrDefault(c => c.CorrelationId== correlationId);
             }
         }
     }

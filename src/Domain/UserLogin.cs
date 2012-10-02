@@ -12,11 +12,18 @@ namespace Domain
         public virtual Collection<Artist> Artists { get; private set; }
         public DateTime Created { get; private set; }
         public DateTime? LastLogin { get; private set; }
-        private UserLogin(string username, string password, Artist artist)
+
+        private UserLogin(string username, string password)
         {
             Username = username;
-            Password = password;
+            Password = password.Encrypt();
             Created = DateTime.Now;
+        }
+
+        public void AddArtist(Artist artist)
+        {
+            if (Artists == null) Artists = new Collection<Artist>();
+            Artists.Add(artist);
         }
 
         public UserLogin()
@@ -24,9 +31,12 @@ namespace Domain
             
         }
 
-        public static UserLogin Create(string username, string password, Artist artist)
+        public static UserLogin Create(string username, string password, Artist artist = null)
         {
-            return new UserLogin(username, password, artist);
+            var userLogin = new UserLogin(username, password);
+            
+            if(artist != null) userLogin.AddArtist(artist);
+            return userLogin;
         }
     }
 }

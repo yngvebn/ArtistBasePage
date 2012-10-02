@@ -14,12 +14,12 @@ namespace Domain
 
         public DateTime Created { get; private set; }
 
+        public virtual Collection<ApiToken> ApiTokens { get; private set; } 
         public virtual Collection<UserLogin> Logins { get; private set; }
         public virtual Collection<GalleryImage> Gallery { get; private set; }
         public virtual Collection<Event> Events { get; private set; }
         public virtual Collection<Album> Albums { get; private set; }
         public virtual Collection<Article> News { get; private set; }
-        public virtual Collection<ApiSession> ApiSessions { get; private set; }
         public virtual Collection<SocialNetwork> SocialNetworks { get; private set; }
 
 
@@ -31,19 +31,6 @@ namespace Domain
             Bio = artist.Bio;
         }
 
-        public ApiSession GetReadonlyToken()
-        {
-            ApiSession session = ApiSession.ReadOnly(this);
-            ApiSessions.Add(session);
-            return session;
-        }
-        public ApiSession GetReadWriteToken()
-        {
-            ApiSession session = ApiSession.ReadWrite(this);
-            ApiSessions.Add(session);
-            return session;
-
-        }
         public static Artist Create(string email)
         {
             return new Artist()
@@ -87,9 +74,14 @@ namespace Domain
             SocialNetworks.Remove(SocialNetworks.SingleOrDefault(c => c.Type == type));
         }
 
-        public bool CanWrite(string token)
+        public void CreateAuthenticatedToken(Guid correlationId)
         {
-            return ApiSessions.SingleOrDefault(c => c.Token == token).Write;
+            ApiTokens.Add(ApiToken.ReadWrite(this, correlationId));
+        }
+
+        public void CreateReadOnlyToken(Guid correlationId)
+        {
+            ApiTokens.Add(ApiToken.ReadOnly(this, correlationId));
         }
     }
 

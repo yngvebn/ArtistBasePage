@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using ArtistBasePage.Areas.v1.Controllers;
@@ -13,13 +14,15 @@ namespace ArtistBasePage.Areas.Admin.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IAuthenticationService _authenticationService;
+        private readonly ITokenRepository _tokenRepository;
         private readonly IUserLoginRepository _userLoginRepository;
         private readonly IArtistRepository _artistRepository;
 
-        public AuthenticateController(IMapper mapper, IAuthenticationService authenticationService, IUserLoginRepository userLoginRepository, IArtistRepository artistRepository)
+        public AuthenticateController(IMapper mapper, IAuthenticationService authenticationService, ITokenRepository tokenRepository, IUserLoginRepository userLoginRepository, IArtistRepository artistRepository)
         {
             _mapper = mapper;
             _authenticationService = authenticationService;
+            _tokenRepository = tokenRepository;
             _userLoginRepository = userLoginRepository;
             _artistRepository = artistRepository;
         }
@@ -45,12 +48,16 @@ namespace ArtistBasePage.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult SelectArtist(int artist, string returnUrl)
         {
-            var token = _artistRepository.Get(artist).GetReadWriteToken();
+            Guid correlationId = Guid.NewGuid();
+            
             var result = MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadWriteToken()
             {
-                ArtistId =artist
+                ArtistId =artist,
+                CorrelationId = correlationId
             });
-            Session.Add("token", result.Message);
+            var token = _tokenRepository.GetByCorrelationId(correlationId);
+            Session.Remove("token");
+            Session.Add("token", token.Token);
             return Redirect(string.IsNullOrEmpty(returnUrl) ? "/admin/general/index" : returnUrl);
         }
 
@@ -64,12 +71,15 @@ namespace ArtistBasePage.Areas.Admin.Controllers
                 _authenticationService.Login(username);
                 if (userArtists.Count() == 1)
                 {
-                   var result = MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadWriteToken()
-                                                                      {
-                                                                          ArtistId = userArtists.First().Id
-                                                                      });
-                    var token = result.Message;
-                    Session.Add("token", token);
+                    Guid correlationId = Guid.NewGuid();
+                   MvcApplication.CommandExecutor.ExecuteCommand(new CreateReadWriteToken()
+                       {
+                           ArtistId = userArtists.First().Id,
+                           CorrelationId = correlationId
+                       });
+                   var token = _tokenRepository.GetByCorrelationId(correlationId);
+                    Session.Remove("token");
+                    Session.Add("token", token.Token);
                     return string.IsNullOrEmpty(returnUrl) ? Redirect("/admin/general/index") : Redirect(returnUrl);
                 }
                 else

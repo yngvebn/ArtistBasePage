@@ -31,16 +31,17 @@ namespace ArtistBasePage.Areas.v1.Controllers
         {
             IEnumerable<string> values = new List<string>();
             var token = controllerContext.Request.Headers.GetValues("t").SingleOrDefault();
-
+            
             if (token == null)
                 throw new HttpException(401, "Token is required");
-            
-            if(!_tokenRepository.IsValid(token))
+
+            var apiToken = _tokenRepository.Get(token);
+
+            if(!apiToken.IsValid)
                 throw new HttpException(401, "Token has expired");
 
-            var artist = _artistRepository.FindByToken(token);
-            ArtistId = artist.Id;
-            CanWrite = artist.CanWrite(token);
+            ArtistId = apiToken.AssociatedArtist.Id;
+            CanWrite = apiToken.IsAuthenticated;
             base.Initialize(controllerContext);
         }
     }

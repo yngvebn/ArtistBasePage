@@ -57,7 +57,7 @@
   <ItemGroup>
     <Compile Include="Album.cs" />
     <Compile Include="AlbumType.cs" />
-    <Compile Include="ApiSession.cs" />
+    <Compile Include="ApiToken.cs" />
     <Compile Include="Article.cs" />
     <Compile Include="Artist.cs" />
     <Compile Include="Commands\AddArtistLogonCommand.cs" />
@@ -146,6 +146,10 @@
     <Compile Include="Migrations\201210011725368_AddedReferenceFromUserLoginToArtist.Designer.cs">
       <DependentUpon>201210011725368_AddedReferenceFromUserLoginToArtist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201210020746587_RefactoredAPIToken.cs" />
+    <Compile Include="Migrations\201210020746587_RefactoredAPIToken.Designer.cs">
+      <DependentUpon>201210020746587_RefactoredAPIToken.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
@@ -206,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201210011725368_AddedReferenceFromUserLoginToArtist.resx">
       <DependentUpon>201210011725368_AddedReferenceFromUserLoginToArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201210020746587_RefactoredAPIToken.resx">
+      <DependentUpon>201210020746587_RefactoredAPIToken.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

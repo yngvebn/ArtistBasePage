@@ -12,7 +12,8 @@ namespace ArtistBasePage.Infrastructure.Mappings
     {
         public void Setup()
         {
-            AutoMapper.Mapper.CreateMap<ApiSession, ApiSessionViewModel>()
+            AutoMapper.Mapper.CreateMap<ApiToken, ApiSessionViewModel>()
+                .ForMember(c => c.ArtistId, opt => opt.MapFrom(a => a.AssociatedArtist.Id))
                 .ForMember(c => c.Token, opt => opt.MapFrom(f => f.Token));
 
             AutoMapper.Mapper.CreateMap<Artist, ArtistViewModel>();

@@ -17,8 +17,7 @@ namespace Domain.Commands.Handlers
         public void Handle(CreateReadOnlyToken command)
         {
             var artist = _artistRepository.Get(command.ArtistId);
-            var token = artist.ApiSessions.Where(c => !c.Write).SingleOrDefault(c => c.Expires > DateTime.Now);
-            if (token == null) artist.GetReadonlyToken();
+            artist.CreateReadOnlyToken(command.CorrelationId);
         }
     }
 
@@ -34,8 +33,7 @@ namespace Domain.Commands.Handlers
         public void Handle(CreateReadWriteToken command)
         {
             var artist = _artistRepository.Get(command.ArtistId);
-            var token = artist.ApiSessions.Where(c => c.Read && c.Write).SingleOrDefault(c => c.Expires > DateTime.Now);
-            if (token == null) artist.GetReadWriteToken();
+            artist.CreateAuthenticatedToken(command.CorrelationId);
         }
     }
 }
