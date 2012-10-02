@@ -7,9 +7,11 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/admin/site.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-0.5.3.min.js"></script>
+    <script src="/signalr/hubs"></script>
     <script src="~/Scripts/knockout-2.1.0.js"></script>
     <script src="~/Scripts/knockout.mapping-latest.js"></script>
     <script src="~/Scripts/lib/ajaxDataAccess.js"></script>
@@ -17,7 +19,13 @@
    
 </head>
 <body>
-
+    <div class="notification">
+        <header><h3>Notification</h3></header>
+        <section><p>This is a notification!</p></section>
+        <footer>
+            <button class="btn-small btn-primary">Action</button>
+        </footer>
+    </div>
         <div class="row-fluid">
             <header class="main">
                 <h1>Admin</h1>
@@ -50,7 +58,23 @@
     <script type="text/javascript">
         var constants = {
             token: '@Token'
-        }
+        };
+        $.connection.hub.start().done(function() {
+
+        });
+
+        
+        
+        $.connection.adminHub.notify = function(message) {
+            var notificationBox = $(".notification");
+            notificationBox.find("h3").text(message.Title);
+            notificationBox.find("section").text(message.Content);
+            notificationBox.fadeIn(100, function() {
+                setTimeout(function() {
+                    notificationBox.fadeOut(300);
+                }, 5000);
+            });
+        };
     </script>
     @RenderSection("scripts", false)
 </body>

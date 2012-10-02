@@ -3,11 +3,11 @@ using Infrastructure.Commands;
 
 namespace Domain.Commands.Handlers
 {
-    public class AddSocialNetworkCommandHandler: ICommandHandler<AddSocialNetworkCommand>
+    public class AddSocialNetworkHandleCommand: IHandleCommand<AddSocialNetworkCommand>
     {
         private readonly IArtistRepository _artistRepository;
 
-        public AddSocialNetworkCommandHandler(IArtistRepository artistRepository)
+        public AddSocialNetworkHandleCommand(IArtistRepository artistRepository)
         {
             _artistRepository = artistRepository;
         }

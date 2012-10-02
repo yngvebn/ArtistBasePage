@@ -42,6 +42,7 @@ namespace ArtistBasePage.App_Start
         {
             bootstrapper.ShutDown();
         }
+
         
         /// <summary>
         /// Creates the kernel that will manage your application.

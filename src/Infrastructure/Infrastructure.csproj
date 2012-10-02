@@ -64,7 +64,7 @@
     <Compile Include="Commands\CommandResult.cs" />
     <Compile Include="Commands\CommandStatus.cs" />
     <Compile Include="Commands\ICommandExecutor.cs" />
-    <Compile Include="Commands\ICommandHandler.cs" />
+    <Compile Include="Commands\IHandleCommand.cs" />
     <Compile Include="SessionManager\ISessionManager.cs" />
     <Compile Include="SessionManager\SessionAndTransactionWrapper.cs" />
     <Compile Include="SessionManager\SessionManager.cs" />
@@ -72,7 +72,7 @@
     <Compile Include="SessionManager\ISessionManagerInternal.cs" />
     <Compile Include="DomainEvents\DomainEvents.cs" />
     <Compile Include="DomainEvents\IDomainEvent.cs" />
-    <Compile Include="DomainEvents\IDomainEventHandler.cs" />
+    <Compile Include="DomainEvents\IHandleDomainEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

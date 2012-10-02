@@ -20,10 +20,10 @@ namespace ArtistBasePage.Controllers
 
         public ActionResult Index()
         {
-            MvcApplication.CommandExecutor.ExecuteCommandAsync(new AsyncCommandTest()
-                                                              {
-                                                                  Hello = "lakdsjf"
-                                                              });
+            //MvcApplication.CommandExecutor.ExecuteCommandAsync(new AsyncCommandTest()
+            //                                                  {
+            //                                                      Hello = "lakdsjf"
+            //                                                  });
             return View();
         }
 

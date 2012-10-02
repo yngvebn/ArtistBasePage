@@ -15,6 +15,7 @@ namespace Domain
         public DbSet<ApiToken> ApiSessions { get; set; }
         public DbSet<SocialNetwork> SocialNetworks { get; set; }
         public DbSet<UserLogin> UserLogins { get; set; }
+        public DbSet<LastFmInfo> LastFmInfos { get; set; }
     }
 
 }

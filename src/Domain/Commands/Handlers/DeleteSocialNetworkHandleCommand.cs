@@ -3,11 +3,11 @@ using Infrastructure.Commands;
 
 namespace Domain.Commands.Handlers
 {
-    public class DeleteSocialNetworkCommandHandler: ICommandHandler<DeleteSocialNetworkCommand>
+    public class DeleteSocialNetworkHandleCommand: IHandleCommand<DeleteSocialNetworkCommand>
     {
         private readonly IArtistRepository _artistRepository;
 
-        public DeleteSocialNetworkCommandHandler(IArtistRepository artistRepository)
+        public DeleteSocialNetworkHandleCommand(IArtistRepository artistRepository)
         {
             _artistRepository = artistRepository;
         }

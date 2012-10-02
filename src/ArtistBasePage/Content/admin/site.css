@@ -113,14 +113,16 @@ aside.main {
                     background: url('/content/admin/navigation-hover.png') no-repeat;
                 }
 
-                img.social {
-                    height: 24px;
-                    width: 24px;
-                }
+img.social {
+    height: 24px;
+    width: 24px;
+}
+
 input.text {
     font-size: 15px;
     height: 18px;
 }
+
 input.text, textarea {
     background: #FAF9F3;
     border: 1px solid #D6D6D6;
@@ -136,41 +138,41 @@ input.text, textarea {
 
 input.text.icon {
     padding: 3px 3px 3px 30px;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
 }
 
-input.text.icon.facebook {
-    background-image: url(/content/images/social/24x24/24x24-facebook.png);
-}
+    input.text.icon.facebook {
+        background-image: url(/content/images/social/24x24/24x24-facebook.png);
+    }
 
 
-input.text.icon.twitter {
-    background-image: url(/content/images/social/24x24/24x24-twitter.png);
-}
+    input.text.icon.twitter {
+        background-image: url(/content/images/social/24x24/24x24-twitter.png);
+    }
 
 
-input.text.icon.lastfm {
-    background-image: url(/content/images/social/24x24/24x24-lastfm.png);
-}
+    input.text.icon.lastfm {
+        background-image: url(/content/images/social/24x24/24x24-lastfm.png);
+    }
 
 
-input.text.icon.gplus {
-    background-image: url(/content/images/social/24x24/24x24-gplus.png);
-}
+    input.text.icon.gplus {
+        background-image: url(/content/images/social/24x24/24x24-gplus.png);
+    }
 
-input.text.icon.youtube {
-    background-image: url(/content/images/social/24x24/24x24-youtube.png);
-}
-
-
-input.text.icon.linkedin {
-    background-image: url(/content/images/social/24x24/24x24-linkedin.png);
-}
+    input.text.icon.youtube {
+        background-image: url(/content/images/social/24x24/24x24-youtube.png);
+    }
 
 
-input.text.icon.myspace {
-    background-image: url(/content/images/social/24x24/24x24-myspace.png);
-}
+    input.text.icon.linkedin {
+        background-image: url(/content/images/social/24x24/24x24-linkedin.png);
+    }
+
+
+    input.text.icon.myspace {
+        background-image: url(/content/images/social/24x24/24x24-myspace.png);
+    }
 
 
 div.module {
@@ -183,57 +185,94 @@ div.module {
     margin-top: 20px;
     position: relative;
 }
-div.module div.save-overlay {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    display: none;
-}
+
+    div.module div.save-overlay {
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        display: none;
+    }
+
 div.save-overlay div.backdrop {
     opacity: 0.5;
     background-color: #aaa;
     position: absolute;
-        right: 0;
-    top: 0;
-    bottom: 0;
-    left: 0;
-}
-div.save-overlay div.image {
-    position: absolute;
-    background-image: url(/content/images/check_large.png);
-    background-repeat: no-repeat;
-    background-position:  50% 50%;
     right: 0;
     top: 0;
     bottom: 0;
     left: 0;
-
 }
 
-    div.module h3 {
-        height: 28px;
-        line-height: 28px;
-        padding: 0 13px;
-        margin: 0;
-        color: #5E646D;
-        text-shadow: 0 1px 1px white;
-        border: 1px solid #B6BEC4;
-        border-bottom: 1px solid #99A0A5;
-        box-shadow: inset 0 1px 0 white;
-        border-radius: 5px 5px 0 0;
-        background: #F1F2F4;
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F1F2F4), color-stop(100%,#D9DCDF));
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f2f4', endColorstr='#d9dcdf',GradientType=0 );
+div.save-overlay div.image {
+    position: absolute;
+    background-image: url(/content/images/check_large.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+div.module h3 {
+    height: 28px;
+    line-height: 28px;
+    padding: 0 13px;
+    margin: 0;
+    color: #5E646D;
+    text-shadow: 0 1px 1px white;
+    border: 1px solid #B6BEC4;
+    border-bottom: 1px solid #99A0A5;
+    box-shadow: inset 0 1px 0 white;
+    border-radius: 5px 5px 0 0;
+    background: #F1F2F4;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F1F2F4), color-stop(100%,#D9DCDF));
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f2f4', endColorstr='#d9dcdf',GradientType=0 );
+}
+
+div.module section.content {
+    background: white;
+    border: 1px solid #B6BEC4;
+    border-top: none;
+    padding: 22px;
+    border-radius: 0 0 5px 5px;
+}
+
+div.notification {
+    position: absolute;
+    height: 100px;
+    width: 300px;
+    right: 20px;
+    top: 20px;
+    z-index: 1000;
+    background-color: #515E68;
+        border: 1px solid #333;
+    -webkit-box-shadow: -2px 0px 20px 0px rgba(1, 1, 1, 0.5);
+    box-shadow: -2px 0px 20px 0px rgba(1, 1, 1, 0.5);
+    -webkit-border-radius: 5px 0px 0px 0px;
+    border-radius: 5px;
+    color: #efefef;
+    padding: 8px 8px 0px 8px;
+    display: none;
+}
+
+    div.notification header {
+
     }
 
-    div.module section.content {
-        background: white;
-        border: 1px solid #B6BEC4;
-        border-top: none;
-        padding: 22px;
-        border-radius: 0 0 5px 5px;
+        div.notification header h3 {
+        }
+
+    div.notification footer {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        float: right;
+    }
+
+    div.notification section {
     }
 
 header.main {

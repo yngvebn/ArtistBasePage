@@ -1,6 +1,9 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Domain.Events;
+using DotLastFm.Models;
+using Infrastructure.DomainEvents;
 
 namespace Domain
 {
@@ -21,7 +24,9 @@ namespace Domain
         public virtual Collection<Album> Albums { get; private set; }
         public virtual Collection<Article> News { get; private set; }
         public virtual Collection<SocialNetwork> SocialNetworks { get; private set; }
+        public virtual Collection<Notification> Notifications { get; private set; } 
 
+        public virtual LastFmInfo LastFmInfo { get; private set; }
 
         public void Update(Artist artist)
         {
@@ -82,6 +87,31 @@ namespace Domain
         public void CreateReadOnlyToken(Guid correlationId)
         {
             ApiTokens.Add(ApiToken.ReadOnly(this, correlationId));
+        }
+
+        public void UpdateLastFmInfo(string name, string bio)
+        {
+            if (LastFmInfo == null) 
+                LastFmInfo = LastFmInfo.Create(this, name, bio);
+            else
+            {
+                LastFmInfo.Update(name, bio);
+            }
+        }
+
+        public void AddNotification(Notification connectToLastFmNotification)
+        {
+            if(Notifications == null) Notifications = new Collection<Notification>();
+            if(Notifications.All(c => c.Type == connectToLastFmNotification.Type && !c.Read))
+            {
+                Notifications.Add(connectToLastFmNotification);    
+                DomainEvents.Raise(new NotificationAdded()
+                                       {
+                                           Artist = this,
+                                           LastNotification = connectToLastFmNotification
+                                       });
+            }
+            
         }
     }
 

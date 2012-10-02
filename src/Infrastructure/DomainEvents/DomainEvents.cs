@@ -20,7 +20,7 @@ namespace Infrastructure.DomainEvents
         {
             if (Container != null)
             {
-                foreach (var handler in Container.GetAll<IDomainEventHandler<T>>())
+                foreach (var handler in Container.GetAll<IHandleDomainEvent<T>>())
                     handler.Handle(args);
             }
 

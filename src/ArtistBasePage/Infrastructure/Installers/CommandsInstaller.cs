@@ -14,7 +14,7 @@ namespace ArtistBasePage.Infrastructure.Installers
             kernel.Bind<ICommandExecutor>().To<CommandExecutor>();
 
             kernel.Bind(c => c.FromAssemblyContaining<IArtistRepository>().
-                SelectAllClasses().InheritedFrom(typeof(ICommandHandler<>))
+                SelectAllClasses().InheritedFrom(typeof(IHandleCommand<>))
                 .BindAllInterfaces());
 
             kernel.Intercept(InterceptSetup).With<SessionAndTransactionWrapper>();
@@ -22,7 +22,7 @@ namespace ArtistBasePage.Infrastructure.Installers
 
         private bool InterceptSetup(IContext obj)
         {
-            return obj.Binding.Service.FullName.Contains("ICommandHandler");
+            return obj.Binding.Service.FullName.Contains("IHandleCommand");
         }
     }
 }

@@ -5,32 +5,32 @@ using Infrastructure.Commands;
 
 namespace Domain.Commands.Handlers
 {
-    public class CreateReadOnlyTokenHandler : ICommandHandler<CreateReadOnlyToken>
+    public class CreateReadOnlyToken : IHandleCommand<Commands.CreateReadOnlyToken>
     {
         private readonly IArtistRepository _artistRepository;
 
-        public CreateReadOnlyTokenHandler(IArtistRepository artistRepository)
+        public CreateReadOnlyToken(IArtistRepository artistRepository)
         {
             _artistRepository = artistRepository;
         }
 
-        public void Handle(CreateReadOnlyToken command)
+        public void Handle(Commands.CreateReadOnlyToken command)
         {
             var artist = _artistRepository.Get(command.ArtistId);
             artist.CreateReadOnlyToken(command.CorrelationId);
         }
     }
 
-    public class CreateReadWriteTokenHandler : ICommandHandler<CreateReadWriteToken>
+    public class CreateReadWriteToken : IHandleCommand<Commands.CreateReadWriteToken>
     {
         private readonly IArtistRepository _artistRepository;
 
-        public CreateReadWriteTokenHandler(IArtistRepository artistRepository)
+        public CreateReadWriteToken(IArtistRepository artistRepository)
         {
             _artistRepository = artistRepository;
         }
 
-        public void Handle(CreateReadWriteToken command)
+        public void Handle(Commands.CreateReadWriteToken command)
         {
             var artist = _artistRepository.Get(command.ArtistId);
             artist.CreateAuthenticatedToken(command.CorrelationId);

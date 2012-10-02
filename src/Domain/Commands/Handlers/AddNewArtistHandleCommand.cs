@@ -5,11 +5,11 @@ using Infrastructure.DomainEvents;
 
 namespace Domain.Commands.Handlers
 {
-    public class AddNewArtistCommandHandler: ICommandHandler<AddNewArtist>
+    public class AddNewArtistHandleCommand: IHandleCommand<AddNewArtist>
     {
         private readonly ISessionManager _sessionManager;
 
-        public AddNewArtistCommandHandler(ISessionManager sessionManager)
+        public AddNewArtistHandleCommand(ISessionManager sessionManager)
         {
             _sessionManager = sessionManager;
         }

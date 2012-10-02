@@ -4,16 +4,16 @@ using Infrastructure.DomainEvents;
 
 namespace Domain.Events.Handlers
 {
-    public class ArtistWasAddedHandler: IDomainEventHandler<ArtistWasAdded>
+    public class ArtistWasAdded: IHandleDomainEvent<Events.ArtistWasAdded>
     {
         private readonly IArtistRepository _artistRepository;
 
-        public ArtistWasAddedHandler(IArtistRepository artistRepository)
+        public ArtistWasAdded(IArtistRepository artistRepository)
         {
             _artistRepository = artistRepository;
         }
 
-        public void Handle(ArtistWasAdded domainEvent)
+        public void Handle(Events.ArtistWasAdded domainEvent)
         {
        
         }

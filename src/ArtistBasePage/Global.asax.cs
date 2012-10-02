@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Net.Http.Formatting;
-using System.Web;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Domain.Core;
 using Infrastructure.Commands;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
+using Ninject;
+using SignalR;
+using SignalR.Ninject;
 
 namespace ArtistBasePage
 {
@@ -21,12 +14,16 @@ namespace ArtistBasePage
     {
         protected void Application_Start()
         {
+            GlobalHost.DependencyResolver = new NinjectDependencyResolver(DependencyResolver.Current.GetService<IKernel>());
+            RouteTable.Routes.MapHubs();
             AreaRegistration.RegisterAllAreas();
             
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            
         }
 
         public static ICommandExecutor CommandExecutor {get { return DependencyResolver.Current.GetService<ICommandExecutor>(); }}

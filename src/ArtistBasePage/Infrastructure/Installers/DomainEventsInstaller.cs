@@ -10,7 +10,11 @@ namespace ArtistBasePage.Infrastructure.Installers
         public void Install(IKernel kernel)
         {
             kernel.Bind(c => c.FromAssemblyContaining<IArtistRepository>().
-                SelectAllClasses().InheritedFrom(typeof(IDomainEventHandler<>))
+                SelectAllClasses().InheritedFrom(typeof(IHandleDomainEvent<>))
+                .BindAllInterfaces());
+
+            kernel.Bind(c => c.FromThisAssembly().
+                SelectAllClasses().InheritedFrom(typeof(IHandleDomainEvent<>))
                 .BindAllInterfaces());
         }
     }

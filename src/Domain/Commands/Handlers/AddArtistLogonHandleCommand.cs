@@ -3,11 +3,11 @@ using Infrastructure.Commands;
 
 namespace Domain.Commands.Handlers
 {
-    public class AddArtistLogonCommandHandler: ICommandHandler<AddArtistLogonCommand>
+    public class AddArtistLogonHandleCommand: IHandleCommand<AddArtistLogonCommand>
     {
         private readonly IArtistRepository _artistRepository;
 
-        public AddArtistLogonCommandHandler(IArtistRepository artistRepository)
+        public AddArtistLogonHandleCommand(IArtistRepository artistRepository)
         {
             _artistRepository = artistRepository;
         }

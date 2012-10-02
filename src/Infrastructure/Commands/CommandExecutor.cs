@@ -49,7 +49,7 @@ namespace Infrastructure.Commands
 
         private object FindHandlerForCommand(Command command)
         {
-            var handlerType = typeof(ICommandHandler<>).MakeGenericType(command.GetType());
+            var handlerType = typeof(IHandleCommand<>).MakeGenericType(command.GetType());
             dynamic handler = _kernel.Get(handlerType);
             return handler;
         }

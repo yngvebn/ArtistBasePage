@@ -1,6 +1,6 @@
 namespace Infrastructure.Commands
 {
-    public interface ICommandHandler<in T>
+    public interface IHandleCommand<in T>
     {
         void Handle(T command);
     }

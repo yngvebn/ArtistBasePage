@@ -64,13 +64,21 @@
     <Compile Include="Commands\AddNewArtist.cs" />
     <Compile Include="Commands\CreateReadOnlyToken.cs" />
     <Compile Include="Commands\DeleteSocialNetworkCommand.cs" />
-    <Compile Include="Commands\Handlers\AddArtistLogonCommandHandler.cs" />
-    <Compile Include="Commands\Handlers\AddNewArtistCommandHandler.cs" />
-    <Compile Include="Commands\Handlers\AddSocialNetworkCommandHandler.cs" />
-    <Compile Include="Commands\Handlers\DeleteSocialNetworkCommandHandler.cs" />
-    <Compile Include="Commands\Handlers\UpdateArtistCommandHandler.cs" />
-    <Compile Include="Commands\Handlers\CreateReadOnlyTokenHandler.cs" />
+    <Compile Include="Commands\Handlers\AddArtistLogonHandleCommand.cs" />
+    <Compile Include="Commands\Handlers\AddNewArtistHandleCommand.cs" />
+    <Compile Include="Commands\Handlers\AddSocialNetworkHandleCommand.cs" />
+    <Compile Include="Commands\Handlers\DeleteSocialNetworkHandleCommand.cs" />
+    <Compile Include="Commands\Handlers\LookForLastFmInformationHandler.cs" />
+    <Compile Include="Commands\Handlers\UpdateArtistHandleCommand.cs" />
+    <Compile Include="Commands\Handlers\CreateReadOnlyToken.cs" />
+    <Compile Include="Commands\LookForLastFmInformation.cs" />
     <Compile Include="Commands\UpdateArtistCommand.cs" />
+    <Compile Include="Events\NotificationAdded.cs" />
+    <Compile Include="Migrations\201210021549522_AddedLastFmAndNotifications.cs" />
+    <Compile Include="Migrations\201210021549522_AddedLastFmAndNotifications.Designer.cs">
+      <DependentUpon>201210021549522_AddedLastFmAndNotifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notifications\ConnectToLastFmNotification.cs" />
     <Compile Include="Core\ArtistRepository.cs" />
     <Compile Include="Core\IArtistRepository.cs" />
     <Compile Include="Core\ITokenRepository.cs" />
@@ -79,8 +87,15 @@
     <Compile Include="Db.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="Events\ArtistWasAdded.cs" />
-    <Compile Include="Events\Handlers\ArtistWasAddedHandler.cs" />
+    <Compile Include="Events\ArtistWasUpdated.cs" />
+    <Compile Include="Events\Handlers\AddNotificationWhenEventsOccur.cs" />
+    <Compile Include="Events\Handlers\ArtistWasAdded.cs" />
+    <Compile Include="Events\Handlers\LookForLastFmInformationWhenArtistWasUpdated.cs" />
+    <Compile Include="Events\Handlers\UpdateArtistWhenLastFmInfoWasFound.cs" />
+    <Compile Include="Events\LastFmInfoFound.cs" />
+    <Compile Include="Events\LastFmInfoWasUpdated.cs" />
     <Compile Include="GalleryImage.cs" />
+    <Compile Include="LastFmInfo.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Migrations\201209251106507_AddSongsAndAlbums.cs" />
     <Compile Include="Migrations\201209251106507_AddSongsAndAlbums.Designer.cs">
@@ -151,6 +166,7 @@
       <DependentUpon>201210020746587_RefactoredAPIToken.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Notification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="SocialNetwork.cs" />
@@ -214,8 +230,15 @@
     <EmbeddedResource Include="Migrations\201210020746587_RefactoredAPIToken.resx">
       <DependentUpon>201210020746587_RefactoredAPIToken.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201210021549522_AddedLastFmAndNotifications.resx">
+      <DependentUpon>201210021549522_AddedLastFmAndNotifications.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dotLastFm\dotLastFm.csproj">
+      <Project>{E20DADDD-C52D-4E51-8974-E4EF1E7A34B0}</Project>
+      <Name>dotLastFm</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{429E37A5-3142-432D-809E-5CA59EF7A55D}</Project>
       <Name>Infrastructure</Name>
