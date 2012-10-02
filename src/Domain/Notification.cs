@@ -8,6 +8,10 @@ namespace Domain
         public NotificationType Type { get; protected set; }
 
         public bool Read { get; set; }
+
+        public string CancelText { get; set; }
+        public string AcceptAction { get; set; }
+
     }
 
     public enum NotificationType

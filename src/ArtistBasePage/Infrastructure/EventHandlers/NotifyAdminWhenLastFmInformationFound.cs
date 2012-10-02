@@ -13,7 +13,9 @@ namespace ArtistBasePage.Infrastructure.EventHandlers
             GlobalHost.ConnectionManager.GetHubContext<AdminHub>().Clients.Notify(new NotificationViewModel()
             {
                 Content = domainEvent.LastNotification.Content,
-                Title = domainEvent.LastNotification.Title
+                Title = domainEvent.LastNotification.Title,
+                AcceptAction = domainEvent.LastNotification.AcceptAction,
+               CancelText = domainEvent.LastNotification.CancelText
             });
         }
     }

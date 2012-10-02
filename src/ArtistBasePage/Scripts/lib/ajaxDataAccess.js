@@ -24,9 +24,12 @@
     var save = function(url, data, success) {
         ajax('put', url, success, data);
     };
-
+    var create = function(url, data, success) {
+        ajax('post', url, success, { });
+    };
     return {
         get: get,
-        save: save
+        save: save,
+        create: create
     };
 });

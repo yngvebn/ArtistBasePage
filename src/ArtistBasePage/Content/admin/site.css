@@ -245,7 +245,7 @@ div.notification {
     height: 100px;
     width: 300px;
     right: 20px;
-    top: 20px;
+    top: 50px;
     z-index: 1000;
     background-color: #515E68;
         border: 1px solid #333;
@@ -281,6 +281,12 @@ header.main {
     height: 80px;
 }
 
+header.main section.controls {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    float: right;
+}
     header.main h1 {
         color: white;
         text-shadow: 2px 2px 2px #222;

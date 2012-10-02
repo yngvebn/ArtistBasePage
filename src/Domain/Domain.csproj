@@ -78,6 +78,10 @@
     <Compile Include="Migrations\201210021549522_AddedLastFmAndNotifications.Designer.cs">
       <DependentUpon>201210021549522_AddedLastFmAndNotifications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201210021645245_AddedNotificationLogic.cs" />
+    <Compile Include="Migrations\201210021645245_AddedNotificationLogic.Designer.cs">
+      <DependentUpon>201210021645245_AddedNotificationLogic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Notifications\ConnectToLastFmNotification.cs" />
     <Compile Include="Core\ArtistRepository.cs" />
     <Compile Include="Core\IArtistRepository.cs" />
@@ -232,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201210021549522_AddedLastFmAndNotifications.resx">
       <DependentUpon>201210021549522_AddedLastFmAndNotifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201210021645245_AddedNotificationLogic.resx">
+      <DependentUpon>201210021645245_AddedNotificationLogic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
