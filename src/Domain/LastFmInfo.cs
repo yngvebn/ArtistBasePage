@@ -11,6 +11,9 @@ namespace Domain
         public bool IsConnected { get; private set; }
         public string Bio { get; private set; }
         public string Name { get; private set; }
+        public bool UseEvents { get; private set; }
+        public bool UsePictures { get; private set; }
+        public bool UseBio { get; private set; }
 
         [ForeignKey("Id")]
         [Required]
@@ -50,6 +53,13 @@ namespace Domain
                                        LastFmInfo = this,
                                        Artist = AssociatedArtist
                                    });
+        }
+
+        public void UpdateSettings(bool useBio, bool useEvents, bool usePictures)
+        {
+            UseBio = useBio;
+            UsePictures = usePictures;
+            UseEvents = useEvents;
         }
     }
 }

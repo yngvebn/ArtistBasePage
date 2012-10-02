@@ -118,6 +118,11 @@ namespace Domain
         {
             LastFmInfo.Connect();
         }
+
+        public void UpdateLastFmSettings(bool useBio, bool useEvents, bool usePictures)
+        {
+            LastFmInfo.UpdateSettings(useBio, useEvents, usePictures);
+        }
     }
 
     public class UserAlreadyExistsException : Exception

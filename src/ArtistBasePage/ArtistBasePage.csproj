@@ -168,6 +168,8 @@
     <Compile Include="Areas\Admin\Hubs\AdminHub.cs" />
     <Compile Include="Areas\Admin\ViewModels\NotificationViewModel.cs" />
     <Compile Include="Areas\v1\Controllers\LastFmController.cs" />
+    <Compile Include="Areas\v1\Controllers\PicturesController.cs" />
+    <Compile Include="Areas\v1\ViewModels\LastFmInfoViewModel.cs" />
     <Compile Include="Areas\v1\Controllers\NotificationController.cs" />
     <Compile Include="Areas\v1\Controllers\SocialNetworksController.cs" />
     <Compile Include="Areas\v1\Controllers\TokenApiController.cs" />
@@ -393,7 +395,6 @@
     <Content Include="Content\images\social\64x64\64x64-yahoo.png" />
     <Content Include="Content\images\social\64x64\64x64-youtube.png" />
     <Content Include="Global.asax" />
-    <Content Include="Areas\v1\Views\Web.config" />
     <Content Include="Areas\Admin\Views\Web.config" />
     <Content Include="Areas\Admin\Views\Shared\_layout.cshtml" />
     <Content Include="Areas\Admin\Views\_viewstart.cshtml" />
@@ -430,7 +431,6 @@
     <Folder Include="App_Data\Content\Music\" />
     <Folder Include="App_Data\Content\Videos\" />
     <Folder Include="Areas\Admin\Scripts\" />
-    <Folder Include="Areas\v1\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

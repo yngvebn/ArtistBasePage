@@ -37,7 +37,7 @@ namespace ArtistBasePage.Areas.v1.Controllers
 
             var apiToken = _tokenRepository.Get(token);
 
-            if(!apiToken.IsValid)
+            if(apiToken == null || !apiToken.IsValid)
                 throw new HttpException(401, "Token has expired");
 
             ArtistId = apiToken.AssociatedArtist.Id;

@@ -63,6 +63,8 @@
     <Compile Include="Commands\AddArtistLogonCommand.cs" />
     <Compile Include="Commands\AddNewArtist.cs" />
     <Compile Include="Commands\Handlers\HandleUserConnectedWithSignalR.cs" />
+    <Compile Include="Commands\Handlers\UpdateLastFmInfoCommandHandler.cs" />
+    <Compile Include="Commands\UpdateLastFmInfoCommand.cs" />
     <Compile Include="Commands\UserDisconnectedWithSignalR.cs" />
     <Compile Include="Commands\ConnectArtistToLastFm.cs" />
     <Compile Include="Commands\CreateReadOnlyToken.cs" />
@@ -78,6 +80,8 @@
     <Compile Include="Commands\LookForLastFmInformation.cs" />
     <Compile Include="Commands\UpdateArtistCommand.cs" />
     <Compile Include="Commands\UserConnectedWithSignalR.cs" />
+    <Compile Include="Core\ILastFmExternalRepository.cs" />
+    <Compile Include="Core\LastFmExternalRepository.cs" />
     <Compile Include="Events\ArtistWasConnectedToLastFm.cs" />
     <Compile Include="Events\NotificationAdded.cs" />
     <Compile Include="Migrations\201210021549522_AddedLastFmAndNotifications.cs" />
@@ -91,6 +95,14 @@
     <Compile Include="Migrations\201210021727493_AddSignalRConnections.cs" />
     <Compile Include="Migrations\201210021727493_AddSignalRConnections.Designer.cs">
       <DependentUpon>201210021727493_AddSignalRConnections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201210021857300_AddedSettingsToLastFmInfo.cs" />
+    <Compile Include="Migrations\201210021857300_AddedSettingsToLastFmInfo.Designer.cs">
+      <DependentUpon>201210021857300_AddedSettingsToLastFmInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201210021915110_ChangedLastFmInfo.cs" />
+    <Compile Include="Migrations\201210021915110_ChangedLastFmInfo.Designer.cs">
+      <DependentUpon>201210021915110_ChangedLastFmInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Notifications\ConnectToLastFmNotification.cs" />
     <Compile Include="Core\ArtistRepository.cs" />
@@ -253,6 +265,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201210021727493_AddSignalRConnections.resx">
       <DependentUpon>201210021727493_AddSignalRConnections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201210021857300_AddedSettingsToLastFmInfo.resx">
+      <DependentUpon>201210021857300_AddedSettingsToLastFmInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201210021915110_ChangedLastFmInfo.resx">
+      <DependentUpon>201210021915110_ChangedLastFmInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

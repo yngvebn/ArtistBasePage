@@ -71,6 +71,7 @@
     <Compile Include="Models\AlbumWithDetails.cs" />
     <Compile Include="Models\ArtistSimilarArtist.cs" />
     <Compile Include="Models\ArtistWithDetails.cs" />
+    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Stats.cs" />
     <Compile Include="Models\TagTopAlbum.cs" />
     <Compile Include="Models\TagTopArtist.cs" />

@@ -2,4 +2,65 @@
     ViewBag.Title = "LastFm";
 }
 
-<h2>LastFm</h2>
+<div class="module span4">
+    <h3>General settings</h3>
+    <section class="content" data-bind="displaySaveSuccess: saving()">
+            <div class="save-overlay">
+                    <div class="backdrop"></div>
+                    <div class="image"></div>
+
+                </div>
+            
+        <div class="well">Use these settings to control how you want to use your Last.fm data</div>
+        <p>
+            <label class="checkbox">
+                <input type="checkbox" data-bind="checked: useBio">
+                Use bio from Last.fm
+            </label>
+            <label class="checkbox">
+                <input type="checkbox" data-bind="checked: useEvents">
+                Display events from Last.fm
+            </label>
+            <label class="checkbox">
+                <input type="checkbox"  data-bind="checked: usePictures">
+                Get pictures from Last.fm
+            </label>
+        </p>
+        <p>
+            <button data-bind="click: save" class="btn-primary">Save</button>
+        </p>
+    </section>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        var lastFmDataAccess;
+        function LastFmSettingsViewModel() {
+            var self = this;
+            self.saving = ko.observable(true);
+            self.useBio = ko.observable();
+            self.useEvents = ko.observable();
+            self.usePictures = ko.observable();
+            
+            
+            self.save = function() {
+                self.saving(true);
+                lastFmDataAccess.save("/api/v1/lastfm", ko.mapping.toJSON(this), function() {
+                    self.saving(false);
+                });
+            };
+
+            
+        }
+
+        var lastFmSettingsViewModel;
+        $(function () {
+            lastFmDataAccess = new AjaxDataAccess();
+            lastFmSettingsViewModel = new LastFmSettingsViewModel();
+            lastFmDataAccess.get("/api/v1/lastfm", function (data) {
+                ko.mapping.fromJS(data, {}, lastFmSettingsViewModel);
+            });
+            ko.applyBindings(lastFmSettingsViewModel, document.getElementById('main'));
+        });
+    </script>
+}
