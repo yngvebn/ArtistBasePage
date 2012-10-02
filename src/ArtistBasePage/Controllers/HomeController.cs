@@ -20,12 +20,10 @@ namespace ArtistBasePage.Controllers
 
         public ActionResult Index()
         {
-            //MvcApplication.CommandExecutor.ExecuteCommand(new AddArtistLogonCommand()
-            //                                                  {
-            //                                                      ArtistId = 1,
-            //                                                      Username = "yngve",
-            //                                                      Password = "test123"
-            //                                                  });
+            MvcApplication.CommandExecutor.ExecuteCommandAsync(new AsyncCommandTest()
+                                                              {
+                                                                  Hello = "lakdsjf"
+                                                              });
             return View();
         }
 

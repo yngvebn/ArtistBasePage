@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using System.Threading.Tasks;
+using Ninject;
 
 namespace Infrastructure.Commands
 {
@@ -19,6 +20,26 @@ namespace Infrastructure.Commands
             {
                 handler.Handle(command as dynamic);
                 return CommandResult.Executed("Command executed successfully");
+            }
+            finally
+            {
+                _kernel.Release(handler);
+            }
+        }
+
+        public Task<CommandResult> ExecuteCommandAsync(Command command)
+        {
+            dynamic handler = FindHandlerForCommand(command);
+
+            try
+            {
+                var task = Task.Run(() => 
+                    {
+                        handler.Handle(command as dynamic);
+                        return CommandResult.Executed("Command executed successfully");
+                    });
+                
+                return task;
             }
             finally
             {
