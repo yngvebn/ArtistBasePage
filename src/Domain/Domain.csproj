@@ -62,17 +62,23 @@
     <Compile Include="Artist.cs" />
     <Compile Include="Commands\AddArtistLogonCommand.cs" />
     <Compile Include="Commands\AddNewArtist.cs" />
+    <Compile Include="Commands\Handlers\HandleUserConnectedWithSignalR.cs" />
+    <Compile Include="Commands\UserDisconnectedWithSignalR.cs" />
+    <Compile Include="Commands\ConnectArtistToLastFm.cs" />
     <Compile Include="Commands\CreateReadOnlyToken.cs" />
     <Compile Include="Commands\DeleteSocialNetworkCommand.cs" />
     <Compile Include="Commands\Handlers\AddArtistLogonHandleCommand.cs" />
     <Compile Include="Commands\Handlers\AddNewArtistHandleCommand.cs" />
     <Compile Include="Commands\Handlers\AddSocialNetworkHandleCommand.cs" />
+    <Compile Include="Commands\Handlers\ConnectArtistToLastFmCommandHandler.cs" />
     <Compile Include="Commands\Handlers\DeleteSocialNetworkHandleCommand.cs" />
     <Compile Include="Commands\Handlers\LookForLastFmInformationHandler.cs" />
     <Compile Include="Commands\Handlers\UpdateArtistHandleCommand.cs" />
     <Compile Include="Commands\Handlers\CreateReadOnlyToken.cs" />
     <Compile Include="Commands\LookForLastFmInformation.cs" />
     <Compile Include="Commands\UpdateArtistCommand.cs" />
+    <Compile Include="Commands\UserConnectedWithSignalR.cs" />
+    <Compile Include="Events\ArtistWasConnectedToLastFm.cs" />
     <Compile Include="Events\NotificationAdded.cs" />
     <Compile Include="Migrations\201210021549522_AddedLastFmAndNotifications.cs" />
     <Compile Include="Migrations\201210021549522_AddedLastFmAndNotifications.Designer.cs">
@@ -81,6 +87,10 @@
     <Compile Include="Migrations\201210021645245_AddedNotificationLogic.cs" />
     <Compile Include="Migrations\201210021645245_AddedNotificationLogic.Designer.cs">
       <DependentUpon>201210021645245_AddedNotificationLogic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201210021727493_AddSignalRConnections.cs" />
+    <Compile Include="Migrations\201210021727493_AddSignalRConnections.Designer.cs">
+      <DependentUpon>201210021727493_AddSignalRConnections.cs</DependentUpon>
     </Compile>
     <Compile Include="Notifications\ConnectToLastFmNotification.cs" />
     <Compile Include="Core\ArtistRepository.cs" />
@@ -173,6 +183,7 @@
     <Compile Include="Notification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
+    <Compile Include="SignalRConnection.cs" />
     <Compile Include="SocialNetwork.cs" />
     <Compile Include="SocialNetworkType.cs" />
     <Compile Include="Song.cs" />
@@ -239,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201210021645245_AddedNotificationLogic.resx">
       <DependentUpon>201210021645245_AddedNotificationLogic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201210021727493_AddSignalRConnections.resx">
+      <DependentUpon>201210021727493_AddSignalRConnections.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -162,6 +162,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AuthenticateController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ExternalController.cs" />
     <Compile Include="Areas\Admin\Controllers\GeneralController.cs" />
     <Compile Include="Areas\Admin\CustomViewPage.cs" />
     <Compile Include="Areas\Admin\Hubs\AdminHub.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Areas\v1\Controllers\TokenApiController.cs" />
     <Compile Include="Areas\v1\ViewModels\SocialNetworkViewModel.cs" />
     <Compile Include="Infrastructure\AuthenticationService.cs" />
+    <Compile Include="Infrastructure\EventHandlers\DisplayLastFmOptionsWhenUserIsConnected.cs" />
     <Compile Include="Infrastructure\EventHandlers\NotifyAdminWhenLastFmInformationFound.cs" />
     <Compile Include="Infrastructure\IAuthenticationService.cs" />
     <Compile Include="Areas\v1\Controllers\ArtistController.cs" />
@@ -399,6 +401,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\Authenticate\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Authenticate\SelectArtist.cshtml" />
+    <Content Include="Areas\Admin\Views\External\LastFm.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

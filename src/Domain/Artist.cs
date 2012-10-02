@@ -113,6 +113,11 @@ namespace Domain
             }
             
         }
+
+        public void ConnectToLastFm()
+        {
+            LastFmInfo.Connect();
+        }
     }
 
     public class UserAlreadyExistsException : Exception

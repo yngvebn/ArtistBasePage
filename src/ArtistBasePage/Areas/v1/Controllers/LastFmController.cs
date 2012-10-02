@@ -1,4 +1,5 @@
 using System.Web.Http;
+using Domain.Commands;
 
 namespace ArtistBasePage.Areas.v1.Controllers
 {
@@ -7,7 +8,10 @@ namespace ArtistBasePage.Areas.v1.Controllers
         [HttpPost]
         public void Connect()
         {
-            
+            Execute(new ConnectArtistToLastFm()
+                        {
+                            ArtistId = ArtistId
+                        });
         }
     }
 }

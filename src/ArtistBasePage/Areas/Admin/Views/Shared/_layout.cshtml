@@ -72,7 +72,9 @@
 
         });
 
-        
+        $.connection.adminHub.redirect = function(url) {
+            document.location = url;
+        };
         $.connection.adminHub.notify = function (message) {
             var apiDataAccess = new AjaxDataAccess();
 

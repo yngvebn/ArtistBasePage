@@ -36,5 +36,20 @@ namespace Domain
             lastFmInfo.Update(name, bio);
             return lastFmInfo;
         }
+
+        public void Disconnect()
+        {
+            IsConnected = false;
+        }
+
+        public void Connect()
+        {
+            IsConnected = true;
+            DomainEvents.Raise(new ArtistWasConnectedToLastFm()
+                                   {
+                                       LastFmInfo = this,
+                                       Artist = AssociatedArtist
+                                   });
+        }
     }
 }

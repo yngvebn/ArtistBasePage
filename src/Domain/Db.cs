@@ -16,6 +16,7 @@ namespace Domain
         public DbSet<SocialNetwork> SocialNetworks { get; set; }
         public DbSet<UserLogin> UserLogins { get; set; }
         public DbSet<LastFmInfo> LastFmInfos { get; set; }
+        public DbSet<SignalRConnection> SignalRConnections { get; set; }
     }
 
 }
