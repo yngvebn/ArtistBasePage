@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ArtistBasePage.Areas.Admin.ViewModels;
 using ArtistBasePage.Areas.v1.Controllers;
 using ArtistBasePage.Areas.v1.ViewModels;
 using Domain;
@@ -18,6 +19,8 @@ namespace ArtistBasePage.Infrastructure.Mappings
 
             AutoMapper.Mapper.CreateMap<Artist, ArtistViewModel>();
             AutoMapper.Mapper.CreateMap<SocialNetwork, SocialNetworkViewModel>();
+
+            AutoMapper.Mapper.CreateMap<Notification, NotificationViewModel>();
         }
     }
 }

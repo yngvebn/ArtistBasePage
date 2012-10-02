@@ -168,6 +168,7 @@
     <Compile Include="Areas\Admin\Hubs\AdminHub.cs" />
     <Compile Include="Areas\Admin\ViewModels\NotificationViewModel.cs" />
     <Compile Include="Areas\v1\Controllers\LastFmController.cs" />
+    <Compile Include="Areas\v1\Controllers\NotificationController.cs" />
     <Compile Include="Areas\v1\Controllers\SocialNetworksController.cs" />
     <Compile Include="Areas\v1\Controllers\TokenApiController.cs" />
     <Compile Include="Areas\v1\ViewModels\SocialNetworkViewModel.cs" />

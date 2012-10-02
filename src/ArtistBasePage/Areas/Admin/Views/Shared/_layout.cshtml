@@ -34,8 +34,11 @@
         <header class="main">
             <h1>Admin</h1>
 
-            <section class="controls">
+            <section id="main-controls" class="controls">
                 <img src="~/Content/icons/mail.png" />
+                <span data-bind="if: hasUnread">
+                <div class="unread" data-bind="text: unreadCount"></div>
+                    </span>
             </section>
         </header>
     </div>
@@ -57,7 +60,7 @@
                 </nav>
             }
         </aside>
-        <section class="main">
+        <section id="main" class="main">
             @RenderBody()
         </section>
     </div>
@@ -68,32 +71,59 @@
         var constants = {
             token: '@Token'
         };
+
+
+
         $.connection.hub.start().done(function () {
 
         });
 
-        $.connection.adminHub.redirect = function(url) {
+        $.connection.adminHub.redirect = function (url) {
             document.location = url;
         };
-        $.connection.adminHub.notify = function (message) {
-            var apiDataAccess = new AjaxDataAccess();
+        var controlsViewModel;
+        $(function () {
+            controlsViewModel = new ControlsViewModel();
+            ko.applyBindings(controlsViewModel, document.getElementById('main-controls'));
 
-            var notificationBox = $(".notification");
-            notificationBox.find("h3").text(message.Title);
-            var content = notificationBox.find("section");
-            content.text(message.Content);
-            notificationBox.find("button").text(message.CancelText);
-            content.click(function () {
-                apiDataAccess.create(message.AcceptAction, {}, function () {
-                    console.log('done');
+        });
+        function ControlsViewModel() {
+            var self = this;
+            self.unreadNotifications = ko.observableArray([]);
+            self.hasUnread = ko.computed(function () {
+                return self.unreadNotifications().length > 0;
+            })
+            self.unreadCount = ko.computed(function () {
+                return self.unreadNotifications().length;
+            });
+
+            var notificationDataAccess = new AjaxDataAccess();
+            notificationDataAccess.get("/api/v1/notification", function(data) {
+                self.unreadNotifications.push(data);
+            });
+
+            $.connection.adminHub.notify = function (message) {
+                self.unreadNotifications.push(message);
+
+                var apiDataAccess = new AjaxDataAccess();
+
+                var notificationBox = $(".notification");
+                notificationBox.find("h3").text(message.Title);
+                var content = notificationBox.find("section");
+                content.text(message.Content);
+                notificationBox.find("button").text(message.CancelText);
+                content.click(function () {
+                    apiDataAccess.create(message.AcceptAction, {}, function () {
+                        console.log('done');
+                    });
                 });
-            });
-            notificationBox.fadeIn(200, function () {
-                setTimeout(function () {
-                    notificationBox.fadeOut(800);
-                }, 15000);
-            });
-        };
+                notificationBox.fadeIn(200, function () {
+                    setTimeout(function () {
+                        notificationBox.fadeOut(800);
+                    }, 15000);
+                });
+            };
+        }
     </script>
     @RenderSection("scripts", false)
 </body>

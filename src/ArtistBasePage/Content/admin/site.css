@@ -261,7 +261,7 @@ div.notification {
     div.notification header {
 
     }
-
+    
         div.notification header h3 {
         }
 
@@ -287,6 +287,21 @@ header.main section.controls {
     top: 15px;
     float: right;
 }
+
+header.main section.controls div.unread {
+    position: absolute;
+    top: 4px;
+    right: -7px;
+    background-color: cadetblue;
+    color: white;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 0px 4px;
+    border-radius: 10px;
+    display: block;
+
+}
+
     header.main h1 {
         color: white;
         text-shadow: 2px 2px 2px #222;
