@@ -1,21 +1,27 @@
-﻿using Domain.Core;
+﻿using System.Linq;
+using Domain.Core;
+using Infrastructure.Commands;
 using Infrastructure.DomainEvents;
 
 namespace Domain.Events.Handlers
 {
-    public class UpdateArtistWhenLastFmInfoWasFound: IHandleDomainEvent<LastFmInfoFound>
+    public class UpdateArtistWhenLastFmInfoWasFound : IHandleDomainEvent<LastFmInfoFound>
     {
-        private readonly IArtistRepository _artistRepository;
+        private readonly ISessionManager _sessionManager;
 
-        public UpdateArtistWhenLastFmInfoWasFound(IArtistRepository artistRepository)
+        public UpdateArtistWhenLastFmInfoWasFound(ISessionManager sessionManager)
         {
-            _artistRepository = artistRepository;
+            _sessionManager = sessionManager;
         }
 
         public void Handle(LastFmInfoFound domainEvent)
         {
-            var artist = _artistRepository.Get(domainEvent.Artist.Id);
-            artist.UpdateLastFmInfo(domainEvent.LastFmArtist.Name, domainEvent.LastFmArtist.Bio.Content);
+            using (var session = _sessionManager.OpenSession())
+            {
+                var artist = session.Session.Set<Artist>().SingleOrDefault(a => a.Id == domainEvent.Artist.Id);
+                artist.UpdateLastFmInfo(domainEvent.LastFmArtist.Name, domainEvent.LastFmArtist.Bio.Content);
+                session.Session.SaveChanges();
+            }
         }
     }
 }

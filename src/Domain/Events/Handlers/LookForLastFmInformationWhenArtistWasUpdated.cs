@@ -1,4 +1,5 @@
-﻿using Domain.Commands;
+﻿using System.Threading.Tasks;
+using Domain.Commands;
 using DotLastFm.Api;
 using Infrastructure.Commands;
 using Infrastructure.DomainEvents;
@@ -16,10 +17,12 @@ namespace Domain.Events.Handlers
 
         public void Handle(ArtistWasUpdated domainEvent)
         {
-            _commandExecutor.ExecuteCommandAsync(new LookForLastFmInformation()
+            
+            Task<CommandResult>.Factory.StartNew(() => _commandExecutor.ExecuteCommand(new LookForLastFmInformation()
                                                      {
                                                          Artist = domainEvent.Artist
-                                                     });
+                                                     }));
+            
         }
     }
 }

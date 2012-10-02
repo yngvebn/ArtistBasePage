@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using System.Transactions;
 using Ninject.Extensions.Interception;
 
@@ -19,6 +20,7 @@ namespace Infrastructure.Commands
                 using (var scope = new TransactionScope(TransactionScopeOption.Required,
                                                         new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted }))
                 {
+                    
                     invocation.Proceed();
                     session.Session.SaveChanges();
                     scope.Complete();
