@@ -104,6 +104,10 @@
     <Compile Include="Migrations\201210021915110_ChangedLastFmInfo.Designer.cs">
       <DependentUpon>201210021915110_ChangedLastFmInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201210030550293_RemoveUsePicturesFromLastFm.cs" />
+    <Compile Include="Migrations\201210030550293_RemoveUsePicturesFromLastFm.Designer.cs">
+      <DependentUpon>201210030550293_RemoveUsePicturesFromLastFm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Notifications\ConnectToLastFmNotification.cs" />
     <Compile Include="Core\ArtistRepository.cs" />
     <Compile Include="Core\IArtistRepository.cs" />
@@ -271,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201210021915110_ChangedLastFmInfo.resx">
       <DependentUpon>201210021915110_ChangedLastFmInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201210030550293_RemoveUsePicturesFromLastFm.resx">
+      <DependentUpon>201210030550293_RemoveUsePicturesFromLastFm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -39,8 +39,7 @@ namespace ArtistBasePage.Areas.v1.Controllers
                         {
                             ArtistId = ArtistId,
                             UseBio = model.UseBio,
-                            UseEvents = model.UseEvents,
-                            UsePictures = model.UsePictures
+                            UseEvents = model.UseEvents
                         });
         }
     }

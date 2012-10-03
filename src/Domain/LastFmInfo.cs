@@ -12,7 +12,6 @@ namespace Domain
         public string Bio { get; private set; }
         public string Name { get; private set; }
         public bool UseEvents { get; private set; }
-        public bool UsePictures { get; private set; }
         public bool UseBio { get; private set; }
 
         [ForeignKey("Id")]
@@ -55,10 +54,9 @@ namespace Domain
                                    });
         }
 
-        public void UpdateSettings(bool useBio, bool useEvents, bool usePictures)
+        public void UpdateSettings(bool useBio, bool useEvents)
         {
             UseBio = useBio;
-            UsePictures = usePictures;
             UseEvents = useEvents;
         }
     }

@@ -21,10 +21,6 @@
                 <input type="checkbox" data-bind="checked: useEvents">
                 Display events from Last.fm
             </label>
-            <label class="checkbox">
-                <input type="checkbox"  data-bind="checked: usePictures">
-                Get pictures from Last.fm
-            </label>
         </p>
         <p>
             <button data-bind="click: save" class="btn-primary">Save</button>
@@ -37,10 +33,9 @@
         var lastFmDataAccess;
         function LastFmSettingsViewModel() {
             var self = this;
-            self.saving = ko.observable(true);
+            self.saving = ko.observable(false);
             self.useBio = ko.observable();
             self.useEvents = ko.observable();
-            self.usePictures = ko.observable();
             
             
             self.save = function() {

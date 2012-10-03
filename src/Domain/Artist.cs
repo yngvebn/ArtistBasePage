@@ -121,7 +121,9 @@ namespace Domain
 
         public void UpdateLastFmSettings(bool useBio, bool useEvents, bool usePictures)
         {
-            LastFmInfo.UpdateSettings(useBio, useEvents, usePictures);
+            LastFmInfo.UpdateSettings(useBio, useEvents);
+            if (LastFmInfo.UseBio)
+                Bio = LastFmInfo.Bio;
         }
     }
 

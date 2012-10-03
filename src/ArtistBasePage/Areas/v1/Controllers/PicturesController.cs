@@ -23,13 +23,6 @@ namespace ArtistBasePage.Areas.v1.Controllers
             _lastFmRepository = lastFmRepository;
         }
 
-        public IEnumerable<PictureViewModel> Get()
-        {
-            var artist = _artistRepository.Get(ArtistId);
-            if (artist.LastFmInfo.UsePictures)
-                foreach (var image in _lastFmRepository.Get(ArtistId))
-                    yield return _mapper.Map<PictureViewModel>(image);
-        }
 
     }
 

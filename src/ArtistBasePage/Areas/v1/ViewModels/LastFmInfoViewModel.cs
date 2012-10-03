@@ -4,6 +4,5 @@ namespace ArtistBasePage.Areas.v1.ViewModels
     {
         public bool UseBio { get; set; }
         public bool UseEvents { get; set; }
-        public bool UsePictures { get; set; }
     }
 }
