@@ -33,13 +33,15 @@
     <div class="row-fluid">
         <header class="main">
             <h1>Admin</h1>
-
-            <section id="main-controls" class="controls">
-                <img src="~/Content/icons/mail.png" />
-                <span data-bind="if: hasUnread">
-                <div class="unread" data-bind="text: unreadCount"></div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <section id="main-controls" class="controls">
+                    <img src="~/Content/icons/mail.png" />
+                    <span data-bind="if: hasUnread">
+                        <div class="unread" data-bind="text: unreadCount"></div>
                     </span>
-            </section>
+                </section>
+            }
         </header>
     </div>
     <div>
@@ -83,9 +85,10 @@
         };
         var controlsViewModel;
         $(function () {
-            controlsViewModel = new ControlsViewModel();
-            ko.applyBindings(controlsViewModel, document.getElementById('main-controls'));
-
+            if (constants.token !== '') {
+                controlsViewModel = new ControlsViewModel();
+                ko.applyBindings(controlsViewModel, document.getElementById('main-controls'));
+            }
         });
         function ControlsViewModel() {
             var self = this;
@@ -98,7 +101,7 @@
             });
 
             var notificationDataAccess = new AjaxDataAccess();
-            notificationDataAccess.get("/api/v1/notification", function(data) {
+            notificationDataAccess.get("/api/v1/notification", function (data) {
                 self.unreadNotifications.push(data);
             });
 
@@ -124,7 +127,7 @@
                 });
             };
         }
-        
+
         ko.bindingHandlers.displaySaveSuccess = {
             update: function (element, valueAccessor, allBindingsAccessor) {
                 var saveOverlay = $(element).find(".save-overlay");

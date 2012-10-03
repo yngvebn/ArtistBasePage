@@ -61,11 +61,13 @@
     <Compile Include="Article.cs" />
     <Compile Include="Artist.cs" />
     <Compile Include="Commands\AddArtistLogonCommand.cs" />
+    <Compile Include="Commands\AddConnectionIdToUserCommand.cs" />
     <Compile Include="Commands\AddNewArtist.cs" />
     <Compile Include="Commands\Handlers\HandleUserConnectedWithSignalR.cs" />
     <Compile Include="Commands\Handlers\UpdateLastFmInfoCommandHandler.cs" />
     <Compile Include="Commands\UpdateLastFmInfoCommand.cs" />
-    <Compile Include="Commands\UserDisconnectedWithSignalR.cs" />
+    <Compile Include="Events\Handlers\HandleUserConnectedWithSignalR.cs" />
+    <Compile Include="Events\UserDisconnectedWithSignalR.cs" />
     <Compile Include="Commands\ConnectArtistToLastFm.cs" />
     <Compile Include="Commands\CreateReadOnlyToken.cs" />
     <Compile Include="Commands\DeleteSocialNetworkCommand.cs" />
@@ -79,7 +81,7 @@
     <Compile Include="Commands\Handlers\CreateReadOnlyToken.cs" />
     <Compile Include="Commands\LookForLastFmInformation.cs" />
     <Compile Include="Commands\UpdateArtistCommand.cs" />
-    <Compile Include="Commands\UserConnectedWithSignalR.cs" />
+    <Compile Include="Events\UserConnectedWithSignalR.cs" />
     <Compile Include="Core\ILastFmExternalRepository.cs" />
     <Compile Include="Core\LastFmExternalRepository.cs" />
     <Compile Include="Events\ArtistWasConnectedToLastFm.cs" />

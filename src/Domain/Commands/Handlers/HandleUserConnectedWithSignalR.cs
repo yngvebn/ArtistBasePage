@@ -1,10 +1,11 @@
 ﻿using Domain.Core;
+using Domain.Events;
 using Infrastructure.Commands;
 
 namespace Domain.Commands.Handlers
 {
 
-    public class HandleUserDisconnectedWithSignalR: IHandleCommand<UserDisconnectedWithSignalR>
+    public class HandleUserDisconnectedWithSignalR: IHandleCommand<RemoveConnectionIdToUserCommand>
     {
         private readonly IUserLoginRepository _userLoginRepository;
 
@@ -13,13 +14,13 @@ namespace Domain.Commands.Handlers
             _userLoginRepository = userLoginRepository;
         }
 
-        public void Handle(UserDisconnectedWithSignalR command)
+        public void Handle(RemoveConnectionIdToUserCommand command)
         {
             _userLoginRepository.Get(command.Username).DisconnectWithSignalR(command.ConnectionId);
         }
     }
 
-    public class HandleUserConnectedWithSignalR: IHandleCommand<UserConnectedWithSignalR>
+    public class HandleUserConnectedWithSignalR: IHandleCommand<AddConnectionIdToUserCommand>
     {
         
         private readonly IUserLoginRepository _userLoginRepository;
@@ -28,7 +29,7 @@ namespace Domain.Commands.Handlers
         {
             _userLoginRepository = userLoginRepository;
         }
-        public void Handle(UserConnectedWithSignalR command)
+        public void Handle(AddConnectionIdToUserCommand command)
         {
             _userLoginRepository.Get(command.Username).ConnectWithSignalR(command.ConnectionId);
         }

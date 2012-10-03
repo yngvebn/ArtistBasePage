@@ -2,7 +2,9 @@
 using System.Threading.Tasks;
 using Domain.Commands;
 using Domain.Core;
+using Domain.Events;
 using Infrastructure.Commands;
+using Infrastructure.DomainEvents;
 using SignalR.Hubs;
 
 namespace ArtistBasePage.Areas.Admin.Hubs
@@ -14,7 +16,7 @@ namespace ArtistBasePage.Areas.Admin.Hubs
         {
             if (Context.User == null) return null;
             return Task.Factory.StartNew(() =>
-            MvcApplication.CommandExecutor.ExecuteCommand(new UserConnectedWithSignalR()
+                        DomainEvents.Raise(new UserConnectedWithSignalR()
                                                               {
                                                                   Username = Context.User.Identity.Name,
                                                                   ConnectionId = Context.ConnectionId
@@ -29,7 +31,7 @@ namespace ArtistBasePage.Areas.Admin.Hubs
         public Task Disconnect()
         {
             if (Context.User == null) return null;
-           return Task.Factory.StartNew(() => MvcApplication.CommandExecutor.ExecuteCommand(new UserDisconnectedWithSignalR()
+           return Task.Factory.StartNew(() => DomainEvents.Raise(new UserDisconnectedWithSignalR()
             {
                 Username = Context.User.Identity.Name,
                 ConnectionId = Context.ConnectionId
