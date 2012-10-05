@@ -7,13 +7,12 @@ namespace Domain
         public int Id { get; set; }
         public string ConnectionId { get; set; }
         public DateTime Updated { get; set; }
-        public UserLogin UserLogin { get; set; }
-        public static SignalRConnection Create(string connectionId, UserLogin user)
+        public virtual UserLogin UserLogin { get; set; }
+        public static SignalRConnection Create(string connectionId)
         {
             return new SignalRConnection()
                        {
                            ConnectionId = connectionId,
-                           UserLogin = user,
                            Updated = DateTime.Now
                        };
         }

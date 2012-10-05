@@ -6,5 +6,6 @@ namespace Domain.Core
     public interface ILastFmExternalRepository
     {
         IEnumerable<Image> Get(int artistId);
+        IEnumerable<DotLastFm.Models.Event> GetEvents(int artistId);
     }
 }

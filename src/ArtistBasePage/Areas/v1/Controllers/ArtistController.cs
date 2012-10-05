@@ -10,6 +10,21 @@ using Domain.Core;
 
 namespace ArtistBasePage.Areas.v1.Controllers
 {
+    public class EventController: TokenApiController
+    {
+        private readonly ILastFmExternalRepository _lastFmExternalRepository;
+
+        public EventController(ILastFmExternalRepository lastFmExternalRepository)
+        {
+            _lastFmExternalRepository = lastFmExternalRepository;
+        }
+
+        public IEnumerable<object> Get()
+        {
+            return _lastFmExternalRepository.GetEvents(ArtistId);
+        } 
+    }
+
     public class ArtistController : TokenApiController
     {
         private readonly IMapper _mapper;

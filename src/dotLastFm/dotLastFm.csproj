@@ -34,15 +34,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.5.9\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=102.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="RestSharp, Version=104.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RestSharp.102.7\lib\net35\RestSharp.dll</HintPath>
+      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -69,9 +70,15 @@
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\AlbumTrack.cs" />
     <Compile Include="Models\AlbumWithDetails.cs" />
+    <Compile Include="Models\ArtistEvent.cs" />
+    <Compile Include="Models\ArtistEventListWrapper.cs" />
     <Compile Include="Models\ArtistSimilarArtist.cs" />
     <Compile Include="Models\ArtistWithDetails.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\EventArtists.cs" />
+    <Compile Include="Models\EventWrapper.cs" />
+    <Compile Include="Models\GeoLocation.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Stats.cs" />
     <Compile Include="Models\TagTopAlbum.cs" />
     <Compile Include="Models\TagTopArtist.cs" />
@@ -87,6 +94,7 @@
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\TopTag.cs" />
     <Compile Include="Models\TrackSimilar.cs" />
+    <Compile Include="Models\Venue.cs" />
     <Compile Include="Models\Wrappers\AlbumWithDetailsWrapper.cs" />
     <Compile Include="Models\Wrappers\ArtistWithDetailsWrapper.cs" />
     <Compile Include="Models\Wrappers\TagSimilarWrapper.cs" />

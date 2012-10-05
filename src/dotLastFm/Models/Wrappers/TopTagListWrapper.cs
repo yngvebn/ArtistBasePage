@@ -4,6 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System.Collections.ObjectModel;
+
 namespace DotLastFm.Models.Wrappers
 {
     using System.Collections.Generic;
@@ -27,4 +29,6 @@ namespace DotLastFm.Models.Wrappers
             set;
         } 
     }
+
+
 }

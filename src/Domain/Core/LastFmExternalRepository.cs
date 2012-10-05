@@ -21,5 +21,11 @@ namespace Domain.Core
             var apiResponse = _lastFmApi.Artist.GetInfo(lastFmName);
             return apiResponse.Images;
         }
+
+        public IEnumerable<DotLastFm.Models.Event> GetEvents(int artistId)
+        {
+            var lastFmName = _artistRepository.Get(artistId).LastFmInfo.Name;
+            return _lastFmApi.Artist.GetEvents(lastFmName);
+        }
     }
 }

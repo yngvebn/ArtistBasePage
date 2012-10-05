@@ -17,8 +17,8 @@ namespace Domain.Events.Handlers
         {
             _commandExecutor.ExecuteCommand(new AddConnectionIdToUserCommand()
                 {
-                    ConnectionId = domainEvent.ConnectionId,
-                    Username = domainEvent.Username
+                    Username = domainEvent.Username,
+                    ConnectionId = domainEvent.ConnectionId
                 });
         }
     }
@@ -37,7 +37,6 @@ namespace Domain.Events.Handlers
             _commandExecutor.ExecuteCommand(new RemoveConnectionIdToUserCommand()
                 {
                     ConnectionId = domainEvent.ConnectionId,
-                    Username = domainEvent.Username
                 });
         }
     }

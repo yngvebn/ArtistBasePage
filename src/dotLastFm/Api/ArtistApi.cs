@@ -49,6 +49,16 @@ namespace DotLastFm.Api
             return null;
         }
 
+        public IEnumerable<Event> GetEvents(string artist)
+        {
+            var call = Rest.Method("artist.getEvents")
+                .AddParam("artist", artist);
+
+            var result = call.Execute<ArtistEventListWrapper>();
+
+            return result.Events.Events;
+        } 
+
         /// <summary>
         /// Get the top tags for an artist on Last.fm, ordered by popularity.
         /// </summary>

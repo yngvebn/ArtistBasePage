@@ -9,34 +9,35 @@ using SignalR.Hubs;
 
 namespace ArtistBasePage.Areas.Admin.Hubs
 {
-    public class AdminHub: Hub, IConnected, IDisconnect
+    public class AdminHub : Hub //, IConnected, IDisconnect
     {
 
-        public Task Connect()
-        {
-            if (Context.User == null) return null;
-            return Task.Factory.StartNew(() =>
-                        DomainEvents.Raise(new UserConnectedWithSignalR()
-                                                              {
-                                                                  Username = Context.User.Identity.Name,
-                                                                  ConnectionId = Context.ConnectionId
-                                                              }));
-        }
+        //public Task Connect()
+        //{
+        //    if (Context.User == null || string.IsNullOrEmpty(Context.User.Identity.Name)) return null;
+        //    DomainEvents.Raise(new UserConnectedWithSignalR()
+        //                           {
+        //                               Username = Context.User.Identity.Name,
+        //                               ConnectionId = Context.ConnectionId
+        //                           });
+        //    return Task.Factory.StartNew(() => { });
 
-        public Task Reconnect(IEnumerable<string> groups)
-        {
-            return null;
-        }
+        //}
 
-        public Task Disconnect()
-        {
-            if (Context.User == null) return null;
-           return Task.Factory.StartNew(() => DomainEvents.Raise(new UserDisconnectedWithSignalR()
-            {
-                Username = Context.User.Identity.Name,
-                ConnectionId = Context.ConnectionId
-            }));
-        }
+        //public Task Reconnect(IEnumerable<string> groups)
+        //{
+        //    return null;
+        //}
+
+        //public Task Disconnect()
+        //{
+            
+        //    DomainEvents.Raise(new UserDisconnectedWithSignalR()
+        //     {
+        //         ConnectionId = Context.ConnectionId
+        //     });
+        //    return Task.Factory.StartNew(() => { });
+        //}
     }
 
 

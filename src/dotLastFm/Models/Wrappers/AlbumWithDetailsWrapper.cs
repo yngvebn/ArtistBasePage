@@ -4,6 +4,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System.Collections.Generic;
+using RestSharp.Deserializers;
+
 namespace DotLastFm.Models.Wrappers
 {
     /// <summary>
@@ -23,4 +26,5 @@ namespace DotLastFm.Models.Wrappers
             set;
         }
     }
+
 }

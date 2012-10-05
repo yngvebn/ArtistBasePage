@@ -6,6 +6,7 @@ namespace Domain.Core
     public interface IUserLoginRepository
     {
         UserLogin Get(string username);
+        UserLogin GetByConnectionId(string connectionId);
     }
 
     public class UserLoginRepository: IUserLoginRepository
@@ -25,6 +26,15 @@ namespace Domain.Core
                 return
                     session.Session.Set<UserLogin>().SingleOrDefault(
                         c => c.Username == username);
+            }
+        }
+
+        public UserLogin GetByConnectionId(string connectionId)
+        {
+            using (var session = _sessionManager.OpenSession())
+            {
+                return
+                    session.Session.Set<UserLogin>().SingleOrDefault(c => c.SignalRConnections.Any(s => s.ConnectionId == connectionId));
             }
         }
     }

@@ -42,13 +42,11 @@ namespace Domain
 
         public void ConnectWithSignalR(string connectionId)
         {
-            if(SignalRConnections == null) SignalRConnections = new Collection<SignalRConnection>();
-            SignalRConnections.Add(SignalRConnection.Create(connectionId, this));
+            SignalRConnections.Add(SignalRConnection.Create(connectionId));
         }
 
         public void DisconnectWithSignalR(string connectionId)
         {
-            if (SignalRConnections == null) SignalRConnections = new Collection<SignalRConnection>();
             SignalRConnections.Remove(SignalRConnections.SingleOrDefault(c => c.ConnectionId == connectionId));
         }
     }

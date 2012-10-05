@@ -45,5 +45,7 @@ namespace DotLastFm.Api
         /// <param name="artist">The artist name.</param>
         /// <returns>The Artist object with metadata.</returns>
         ArtistWithDetails GetInfo(string artist);
+
+        IEnumerable<Event> GetEvents(string artist);
     }
 }

@@ -16,7 +16,7 @@ namespace Domain.Commands.Handlers
 
         public void Handle(RemoveConnectionIdToUserCommand command)
         {
-            _userLoginRepository.Get(command.Username).DisconnectWithSignalR(command.ConnectionId);
+            _userLoginRepository.GetByConnectionId(command.ConnectionId).DisconnectWithSignalR(command.ConnectionId);
         }
     }
 

@@ -75,7 +75,7 @@
         };
 
 
-
+        if(constants.token == ""){
         $.connection.hub.start().done(function () {
 
         });
@@ -83,6 +83,8 @@
         $.connection.adminHub.redirect = function (url) {
             document.location = url;
         };
+        }
+        
         var controlsViewModel;
         $(function () {
             if (constants.token !== '') {
