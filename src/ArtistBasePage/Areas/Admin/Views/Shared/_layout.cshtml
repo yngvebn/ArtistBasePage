@@ -15,6 +15,7 @@
     <script src="~/Scripts/knockout-2.1.0.js"></script>
     <script src="~/Scripts/knockout.mapping-latest.js"></script>
     <script src="~/Scripts/lib/ajaxDataAccess.js"></script>
+    <script src="~/Areas/Admin/Scripts/resources.js"></script>
     <title>_layout</title>
 
 </head>
@@ -55,7 +56,7 @@
                         <li><a href="#/music/1">Music</a></li>
                         <li><a href="#/music/2">Videos</a></li>
                         <li><a href="#">News</a></li>
-                        <li><a href="#">Events</a></li>
+                        <li><a href="/admin/events/index">Events</a></li>
                         <li><a href="#">Pictures</a></li>
 
                     </ul>
@@ -70,24 +71,23 @@
     </div>
 
     <script type="text/javascript">
-        var constants = {
-            token: '@Token'
-        };
+        Resources.token = '@Token';
 
 
-        if(constants.token == ""){
-        $.connection.hub.start().done(function () {
 
-        });
+        if(Resources.token == ""){
+            $.connection.hub.start().done(function () {
 
-        $.connection.adminHub.redirect = function (url) {
-            document.location = url;
-        };
+            });
+
+            $.connection.adminHub.redirect = function (url) {
+                document.location = url;
+            };
         }
         
         var controlsViewModel;
         $(function () {
-            if (constants.token !== '') {
+            if (Resources.token !== '') {
                 controlsViewModel = new ControlsViewModel();
                 ko.applyBindings(controlsViewModel, document.getElementById('main-controls'));
             }

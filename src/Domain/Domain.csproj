@@ -63,6 +63,8 @@
     <Compile Include="Commands\AddArtistLogonCommand.cs" />
     <Compile Include="Commands\AddConnectionIdToUserCommand.cs" />
     <Compile Include="Commands\AddNewArtist.cs" />
+    <Compile Include="Commands\AddNewEventCommand.cs" />
+    <Compile Include="Commands\Handlers\AddNewEventCommandHandler.cs" />
     <Compile Include="Commands\Handlers\HandleUserConnectedWithSignalR.cs" />
     <Compile Include="Commands\Handlers\UpdateLastFmInfoCommandHandler.cs" />
     <Compile Include="Commands\UpdateLastFmInfoCommand.cs" />
@@ -109,6 +111,10 @@
     <Compile Include="Migrations\201210030550293_RemoveUsePicturesFromLastFm.cs" />
     <Compile Include="Migrations\201210030550293_RemoveUsePicturesFromLastFm.Designer.cs">
       <DependentUpon>201210030550293_RemoveUsePicturesFromLastFm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201210060742231_ChangedEvent.cs" />
+    <Compile Include="Migrations\201210060742231_ChangedEvent.Designer.cs">
+      <DependentUpon>201210060742231_ChangedEvent.cs</DependentUpon>
     </Compile>
     <Compile Include="Notifications\ConnectToLastFmNotification.cs" />
     <Compile Include="Core\ArtistRepository.cs" />
@@ -280,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201210030550293_RemoveUsePicturesFromLastFm.resx">
       <DependentUpon>201210030550293_RemoveUsePicturesFromLastFm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201210060742231_ChangedEvent.resx">
+      <DependentUpon>201210060742231_ChangedEvent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

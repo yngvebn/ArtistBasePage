@@ -125,6 +125,13 @@ namespace Domain
             if (LastFmInfo.UseBio)
                 Bio = LastFmInfo.Bio;
         }
+
+        public void AddEvent(string title, DateTime start)
+        {
+            Events.Add(Event.Create(title, start));
+        }
+
+        
     }
 
     public class UserAlreadyExistsException : Exception

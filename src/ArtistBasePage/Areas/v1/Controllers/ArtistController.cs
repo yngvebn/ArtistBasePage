@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -10,21 +9,6 @@ using Domain.Core;
 
 namespace ArtistBasePage.Areas.v1.Controllers
 {
-    public class EventController: TokenApiController
-    {
-        private readonly ILastFmExternalRepository _lastFmExternalRepository;
-
-        public EventController(ILastFmExternalRepository lastFmExternalRepository)
-        {
-            _lastFmExternalRepository = lastFmExternalRepository;
-        }
-
-        public IEnumerable<object> Get()
-        {
-            return _lastFmExternalRepository.GetEvents(ArtistId);
-        } 
-    }
-
     public class ArtistController : TokenApiController
     {
         private readonly IMapper _mapper;

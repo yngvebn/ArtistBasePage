@@ -21,7 +21,7 @@
 
             self.save = function () {
                 self.saving(true);
-                artistDataAccess.save("/api/v1/artist", ko.mapping.toJSON(this), function (data) {
+                artistDataAccess.save(Resources.api.artist, ko.mapping.toJSON(this), function (data) {
                     self.saving(false);
                 });
             };
@@ -31,7 +31,7 @@
         function MainViewModel() {
             var self = this;
             self.general = ko.observable(new GeneralViewModel());
-            artistDataAccess.get("/api/v1/artist", function (data) {
+            artistDataAccess.get(Resources.api.artist, function (data) {
                 ko.mapping.fromJS(data, {}, self.general);
                 self.general().loading(false);
             });

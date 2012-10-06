@@ -4,7 +4,7 @@
         $.ajax({
             headers:
                 {
-                    t: constants.token
+                    t: Resources.token
                 },
             url: url,
             type: method,
