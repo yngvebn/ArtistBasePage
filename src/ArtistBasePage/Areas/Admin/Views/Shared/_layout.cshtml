@@ -10,12 +10,15 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/admin/site.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Areas/Admin/Scripts/resources.js"></script>
+    <script src="~/Areas/Admin/Scripts/dialog.js"></script>
     <script src="~/Scripts/jquery.signalR-0.5.3.min.js"></script>
     <script src="/signalr/hubs"></script>
     <script src="~/Scripts/knockout-2.1.0.js"></script>
     <script src="~/Scripts/knockout.mapping-latest.js"></script>
     <script src="~/Scripts/lib/ajaxDataAccess.js"></script>
-    <script src="~/Areas/Admin/Scripts/resources.js"></script>
+    
+    <script src="~/Areas/Admin/Scripts/ko.extensions.js"></script>
     <title>_layout</title>
 
 </head>
@@ -71,79 +74,22 @@
     </div>
 
     <script type="text/javascript">
+    </script>
+
+    <script src="~/Areas/Admin/Scripts/ko.vm.controls.js"></script>
+    @RenderSection("scripts", false)
+    <script type="text/javascript">
+        console.log('setting token to @Token');
         Resources.token = '@Token';
 
-
-
-        if(Resources.token == ""){
-            $.connection.hub.start().done(function () {
-
-            });
-
-            $.connection.adminHub.redirect = function (url) {
-                document.location = url;
-            };
-        }
-        
-        var controlsViewModel;
         $(function () {
-            if (Resources.token !== '') {
-                controlsViewModel = new ControlsViewModel();
-                ko.applyBindings(controlsViewModel, document.getElementById('main-controls'));
-            }
+            $.each(Startup.startFunctions, function (i, func) {
+                func();
+            });
         });
-        function ControlsViewModel() {
-            var self = this;
-            self.unreadNotifications = ko.observableArray([]);
-            self.hasUnread = ko.computed(function () {
-                return self.unreadNotifications().length > 0;
-            })
-            self.unreadCount = ko.computed(function () {
-                return self.unreadNotifications().length;
-            });
 
-            var notificationDataAccess = new AjaxDataAccess();
-            notificationDataAccess.get("/api/v1/notification", function (data) {
-                self.unreadNotifications.push(data);
-            });
 
-            $.connection.adminHub.notify = function (message) {
-                self.unreadNotifications.push(message);
-
-                var apiDataAccess = new AjaxDataAccess();
-
-                var notificationBox = $(".notification");
-                notificationBox.find("h3").text(message.Title);
-                var content = notificationBox.find("section");
-                content.text(message.Content);
-                notificationBox.find("button").text(message.CancelText);
-                content.click(function () {
-                    apiDataAccess.create(message.AcceptAction, {}, function () {
-                        console.log('done');
-                    });
-                });
-                notificationBox.fadeIn(200, function () {
-                    setTimeout(function () {
-                        notificationBox.fadeOut(800);
-                    }, 15000);
-                });
-            };
-        }
-
-        ko.bindingHandlers.displaySaveSuccess = {
-            update: function (element, valueAccessor, allBindingsAccessor) {
-                var saveOverlay = $(element).find(".save-overlay");
-
-                if (valueAccessor()) {
-                    saveOverlay.fadeIn(100);
-                }
-                else {
-                    saveOverlay.fadeOut(800);
-                }
-
-            }
-        };
     </script>
-    @RenderSection("scripts", false)
+    @RenderSection("dialogs", false)
 </body>
 </html>

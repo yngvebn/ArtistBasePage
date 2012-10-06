@@ -187,6 +187,11 @@
     <Compile Include="Areas\Admin\Controllers\TokenController.cs" />
     <Compile Include="Areas\v1\v1AreaRegistration.cs" />
     <Compile Include="Areas\v1\ViewModels\ApiSessionViewModel.cs" />
+    <Content Include="Areas\Admin\Scripts\dialog.js" />
+    <Content Include="Areas\Admin\Scripts\ko.extensions.js" />
+    <Content Include="Areas\Admin\Scripts\ko.vm.controls.js" />
+    <Content Include="Areas\Admin\Scripts\ko.vm.general.js" />
+    <Content Include="Areas\Admin\Scripts\resources.js" />
     <Content Include="Content\icons\mail.png" />
     <Content Include="Content\images\Check_large.png" />
     <Content Include="Scripts\lib\ajaxDataAccess.js" />
@@ -434,7 +439,6 @@
     <Folder Include="App_Data\Content\Images\News\" />
     <Folder Include="App_Data\Content\Music\" />
     <Folder Include="App_Data\Content\Videos\" />
-    <Folder Include="Areas\Admin\Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

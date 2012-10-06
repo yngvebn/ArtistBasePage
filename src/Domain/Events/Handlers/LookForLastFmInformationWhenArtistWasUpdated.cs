@@ -17,8 +17,6 @@ namespace Domain.Events.Handlers
 
         public void Handle(ArtistWasUpdated domainEvent)
         {
-            System.Threading.Thread.Sleep(5000);
-            
             Task<CommandResult>.Factory.StartNew(() => _commandExecutor.ExecuteCommand(new LookForLastFmInformation()
                                                      {
                                                          Artist = domainEvent.Artist
