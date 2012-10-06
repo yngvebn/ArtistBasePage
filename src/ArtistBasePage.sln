@@ -16,6 +16,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotLastFm", "dotLastFm\dotLastFm.csproj", "{E20DADDD-C52D-4E51-8974-E4EF1E7A34B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook", "Facebook\Facebook.csproj", "{BC1D5DA5-FE51-42B4-98E4-E84617C7D4C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplication", "TestApplication\TestApplication.csproj", "{D98CE1A3-E6FF-4953-9C7F-66C9555430B3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +42,14 @@ Global
 		{E20DADDD-C52D-4E51-8974-E4EF1E7A34B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E20DADDD-C52D-4E51-8974-E4EF1E7A34B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E20DADDD-C52D-4E51-8974-E4EF1E7A34B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC1D5DA5-FE51-42B4-98E4-E84617C7D4C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC1D5DA5-FE51-42B4-98E4-E84617C7D4C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC1D5DA5-FE51-42B4-98E4-E84617C7D4C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC1D5DA5-FE51-42B4-98E4-E84617C7D4C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D98CE1A3-E6FF-4953-9C7F-66C9555430B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D98CE1A3-E6FF-4953-9C7F-66C9555430B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D98CE1A3-E6FF-4953-9C7F-66C9555430B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D98CE1A3-E6FF-4953-9C7F-66C9555430B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
