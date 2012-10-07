@@ -10,6 +10,7 @@ namespace ArtistBasePage.Infrastructure
     {
         public override void OnActionExecuting(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
+            
             var tc = actionContext.ControllerContext.Controller as TokenApiController;
             if (!tc.CanWrite && actionContext.Request.Method != HttpMethod.Get)
             {
@@ -18,6 +19,7 @@ namespace ArtistBasePage.Infrastructure
             }
             else
             {
+
                 base.OnActionExecuting(actionContext);    
             }
             

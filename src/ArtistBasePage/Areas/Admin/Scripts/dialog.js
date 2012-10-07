@@ -5,9 +5,13 @@
         modaloverlay.hide();
         
         var dialogElement = $("#" + id);
+        dialogElement.find("[data-action='close']").on('click', function() {
+            dialog.close(id);
+        });
         dialogElement.css('margin-top', '5%');
         dialogElement.animate({ marginTop: '10%', opacity: 1 }, 200, 'swing');
         $('body').append(modaloverlay);
+        
         modaloverlay.fadeTo(50, 0.3);
     },
     close:function (id) {

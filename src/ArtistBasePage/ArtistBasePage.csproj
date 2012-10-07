@@ -194,6 +194,7 @@
     <Content Include="Areas\Admin\Scripts\ko.vm.general.js" />
     <Content Include="Areas\Admin\Scripts\resources.js" />
     <Content Include="Content\icons\mail.png" />
+    <Content Include="Content\images\add-event.png" />
     <Content Include="Content\images\Check_large.png" />
     <Content Include="Scripts\lib\ajaxDataAccess.js" />
     <Content Include="Content\admin\header-bg.png" />
@@ -415,6 +416,7 @@
     <Content Include="Areas\Admin\Views\Authenticate\SelectArtist.cshtml" />
     <Content Include="Areas\Admin\Views\External\LastFm.cshtml" />
     <Content Include="Areas\Admin\Views\Events\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Events\_NewEvent.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

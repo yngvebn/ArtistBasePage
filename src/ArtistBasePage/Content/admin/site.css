@@ -360,20 +360,20 @@ td {
 }
 
 tbody tr:nth-child(even) {
-background: #F8FAFC;
+    background: #F8FAFC;
 }
 
 
 div.dialog {
     position: relative;
-    width: 400px;
+    /*width: 400px;*/
     height: auto;
+    max-width: 500px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 5%;
     background-color: #efefef;
     z-index: 10000;
-    
     background-color: #515E68;
     border: 3px solid #333;
     -webkit-box-shadow: -2px 0px 20px 0px rgba(1, 1, 1, 0.5);
@@ -384,24 +384,24 @@ div.dialog {
     opacity: 0;
 }
 
-div.dialog header {
-    border-radius: 5px 5px 0px 0px;
-    margin: 0px 0px 10px 0;
-    background-color: #bfced9;
-    padding: 10px;
-    line-height: 20px;
-    font-weight: bold;
-    color: #333;
-}
+    div.dialog header {
+        border-radius: 5px 5px 0px 0px;
+        margin: 0px 0px 10px 0;
+        background-color: #bfced9;
+        padding: 10px;
+        line-height: 20px;
+        font-weight: bold;
+        color: #333;
+    }
 
-div.dialog section {
-    margin: 10px;
-}
+    div.dialog section {
+        margin: 10px;
+    }
 
-div.dialog footer {
-    text-align: right;    
-    margin: 10px;
-}
+    div.dialog footer {
+        text-align: right;
+        margin: 10px;
+    }
 
 div.modal-overlay {
     z-index: 9999;
@@ -412,5 +412,38 @@ div.modal-overlay {
     bottom: 0;
     background-color: #aaa;
     opacity: 0;
-    
 }
+
+.event-source-selector {
+    width: 480px;
+}
+
+    .event-source-selector .selector {
+        position: relative;
+        color: #333;
+        cursor: pointer;
+        width: 220px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        margin: 15px 7px;
+        float: left;
+        background-color: #bfced9;
+        padding: 10px 0px;
+        height: 280px;
+        border: 3px solid #f3f3f3;
+        text-align: center;
+    }
+    .event-source-selector .selector > * {
+        margin: 10px;
+    }
+    .event-source-selector .selector p {
+        position: absolute;
+        bottom: 0;
+    }
+
+        .event-source-selector .selector:hover {
+               -webkit-box-shadow: -2px 0px 20px 0px rgba(1, 1, 1, 0.5);
+    box-shadow: -2px 0px 20px 0px rgba(1, 1, 1, 0.5);
+    background-color: #e8f2f9;
+ 
+        }
