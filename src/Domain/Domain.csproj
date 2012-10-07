@@ -88,6 +88,8 @@
     <Compile Include="Core\LastFmExternalRepository.cs" />
     <Compile Include="Events\ArtistWasConnectedToLastFm.cs" />
     <Compile Include="Events\NotificationAdded.cs" />
+    <Compile Include="FacebookEvent.cs" />
+    <Compile Include="Exceptions\FacebookEventAlreadyExistsException.cs" />
     <Compile Include="Migrations\201210021549522_AddedLastFmAndNotifications.cs" />
     <Compile Include="Migrations\201210021549522_AddedLastFmAndNotifications.Designer.cs">
       <DependentUpon>201210021549522_AddedLastFmAndNotifications.cs</DependentUpon>
@@ -115,6 +117,10 @@
     <Compile Include="Migrations\201210060742231_ChangedEvent.cs" />
     <Compile Include="Migrations\201210060742231_ChangedEvent.Designer.cs">
       <DependentUpon>201210060742231_ChangedEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201210071153050_AddedFacebookEventsToArtist.cs" />
+    <Compile Include="Migrations\201210071153050_AddedFacebookEventsToArtist.Designer.cs">
+      <DependentUpon>201210071153050_AddedFacebookEventsToArtist.cs</DependentUpon>
     </Compile>
     <Compile Include="Notifications\ConnectToLastFmNotification.cs" />
     <Compile Include="Core\ArtistRepository.cs" />
@@ -211,6 +217,8 @@
     <Compile Include="SocialNetwork.cs" />
     <Compile Include="SocialNetworkType.cs" />
     <Compile Include="Song.cs" />
+    <Compile Include="StringExtensions.cs" />
+    <Compile Include="Exceptions\UserAlreadyExistsException.cs" />
     <Compile Include="UserLogin.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201210060742231_ChangedEvent.resx">
       <DependentUpon>201210060742231_ChangedEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201210071153050_AddedFacebookEventsToArtist.resx">
+      <DependentUpon>201210071153050_AddedFacebookEventsToArtist.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

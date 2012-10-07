@@ -24,8 +24,8 @@ namespace Domain
         public virtual Collection<Album> Albums { get; private set; }
         public virtual Collection<Article> News { get; private set; }
         public virtual Collection<SocialNetwork> SocialNetworks { get; private set; }
-        public virtual Collection<Notification> Notifications { get; private set; } 
-
+        public virtual Collection<Notification> Notifications { get; private set; }
+        public virtual Collection<FacebookEvent> FacebookEvents { get; private set; } 
         public virtual LastFmInfo LastFmInfo { get; private set; }
 
         public void Update(Artist artist)
@@ -131,26 +131,13 @@ namespace Domain
             Events.Add(Event.Create(title, start));
         }
 
+        public void AddFacebookEvent(string facebookId)
+        {
+            if (FacebookEvents.Any(c => c.FacebookId == facebookId))
+                throw new FacebookEventAlreadyExistsException(facebookId);
+            FacebookEvents.Add(FacebookEvent.Create(facebookId));
+        }
+
         
-    }
-
-    public class UserAlreadyExistsException : Exception
-    {
-        public UserAlreadyExistsException(string username)
-            :base(string.Format("User with username {0} already exists", username))
-        {
-        }
-    }
-
-    public static class StringExtensions
-    {
-        public static string Encrypt(this string text)
-        {
-            var x = new System.Security.Cryptography.MD5CryptoServiceProvider();
-            byte[] data = System.Text.Encoding.ASCII.GetBytes(text);
-            data = x.ComputeHash(data);
-            string md5Hash = System.Text.Encoding.ASCII.GetString(data);
-            return md5Hash;
-        }
     }
 }

@@ -68,7 +68,10 @@ namespace Facebook.Api.Rest
             }
 
             var response = Client.Execute<TModel>(request);
-
+            if(response.StatusCode != HttpStatusCode.OK)
+            {
+                throw new FacebookApiException<TModel>(response);
+            }
             
             return response.Data;
         }
@@ -94,5 +97,12 @@ namespace Facebook.Api.Rest
 
             return response.Content;
         }
+    }
+    
+    public class FacebookError
+    {
+        public string Message { get; set; }
+        public string Type { get; set; }
+        public string Code { get; set; }
     }
 }

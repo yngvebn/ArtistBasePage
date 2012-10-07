@@ -180,6 +180,7 @@
     <Compile Include="Infrastructure\AuthenticationService.cs" />
     <Compile Include="Infrastructure\EventHandlers\DisplayLastFmOptionsWhenUserIsConnected.cs" />
     <Compile Include="Infrastructure\EventHandlers\NotifyAdminWhenLastFmInformationFound.cs" />
+    <Compile Include="Infrastructure\Facebook\FacebookConfig.cs" />
     <Compile Include="Infrastructure\IAuthenticationService.cs" />
     <Compile Include="Areas\v1\Controllers\ArtistController.cs" />
     <Compile Include="Areas\v1\ViewModels\ArtistViewModel.cs" />
@@ -205,6 +206,7 @@
     </Compile>
     <Compile Include="Infrastructure\Installers\AuthInstaller.cs" />
     <Compile Include="Infrastructure\Installers\DotLastFmInstaller.cs" />
+    <Compile Include="Infrastructure\Installers\FacebookApiInstaller.cs" />
     <Compile Include="Infrastructure\Installers\INinjectInstaller.cs" />
     <Compile Include="Infrastructure\LastFm\LastFmConfig.cs" />
     <Compile Include="Infrastructure\Mapper.cs" />
@@ -451,6 +453,10 @@
     <ProjectReference Include="..\dotLastFm\dotLastFm.csproj">
       <Project>{E20DADDD-C52D-4E51-8974-E4EF1E7A34B0}</Project>
       <Name>dotLastFm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Facebook\Facebook.csproj">
+      <Project>{BC1D5DA5-FE51-42B4-98E4-E84617C7D4C0}</Project>
+      <Name>Facebook</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{429E37A5-3142-432D-809E-5CA59EF7A55D}</Project>

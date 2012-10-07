@@ -35,6 +35,6 @@ namespace Facebook.Api
             get;
         }
 
-        string Token { get; set; }
+        string Token { get; }
     }
 }

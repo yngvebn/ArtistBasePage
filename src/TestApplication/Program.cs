@@ -8,7 +8,8 @@ using Facebook.Api;
 
 namespace TestApplication
 {
-    class Program
+    class 
+        Program
     {
         static void Main(string[] args)
         {
@@ -16,9 +17,8 @@ namespace TestApplication
             IFacebookApi facebook = new FacebookApi(config);
 
             var token = facebook.Auth.GetAccessToken();
-            config.Token = token.Token;
 
-            var ev  = facebook.Event.GetEvent("413315265383656");
+            var ev  = facebook.Event.GetEvent("413315265383656918398");
             ev.Venue= facebook.Event.GetLocation(ev.Venue.Id);
         }
     }
@@ -28,6 +28,6 @@ namespace TestApplication
         public string BaseUrl { get { return "https://graph.facebook.com/"; } }
         public string ClientId { get { return "159997617394589"; } }
         public string Secret { get { return "ced7de09d14698199c88de1e6c2b35ad"; } }
-        public string Token { get; set; }
+        public string Token { get { return "159997617394589|lxqDIRGGL-6lNMVZtERkbJTNOeM"; } }
     }
 }
