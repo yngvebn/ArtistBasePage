@@ -138,6 +138,11 @@ namespace Domain
             FacebookEvents.Add(FacebookEvent.Create(facebookId));
         }
 
-        
+
+        public void RemoveFacebookEvent(string facebookEventId)
+        {
+            var ev =FacebookEvents.SingleOrDefault(c => c.FacebookId == facebookEventId);
+            FacebookEvents.Remove(ev);
+        }
     }
 }

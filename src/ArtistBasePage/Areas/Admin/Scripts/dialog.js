@@ -5,6 +5,8 @@
         modaloverlay.hide();
         
         var dialogElement = $("#" + id);
+        dialogElement.css('position', 'relative');
+        dialogElement.css('z-index', '20000');
         dialogElement.find("[data-action='close']").on('click', function() {
             dialog.close(id);
         });
@@ -17,11 +19,28 @@
     close:function (id) {
         var modaloverlay = $("div.modal-overlay");
         var dialogElement = $("#" + id);
+        dialogElement.css('position', 'absolute');
         dialogElement.animate({ marginTop: '12%', opacity: 0 }, 200, 'swing');
         modaloverlay.animate({ opacity: 0 }, function() {
             modaloverlay.remove();
         });
+        dialogElement.css('z-index', '-20000');
+    },
+    confirm: function (title, text, onOk, onCancel) {
+        var dialogBox = $("#confirm-box");
+        dialogBox.find('.title').text(title);
+        dialogBox.find('.confirm-text').text(text);
+        dialogBox.find('[data-action="ok"]').off('click');
+        dialogBox.find('[data-action="ok"]').on('click', function () {
+            onOk();
+            dialog.close("confirm-box");
+        });
+        dialogBox.find('[data-action="close"]').off('click', onOk);
+        dialogBox.find('[data-action="close"]').on('click', onCancel);
+        dialog.open("confirm-box");
+
     }
+    
     
 };
 Startup.registerStart(function() {

@@ -10,6 +10,8 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/admin/site.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/amplify.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
     <script src="~/Areas/Admin/Scripts/resources.js"></script>
     <script src="~/Areas/Admin/Scripts/dialog.js"></script>
     <script src="~/Scripts/jquery.signalR-0.5.3.min.js"></script>
@@ -91,5 +93,6 @@
 
     </script>
     @RenderSection("dialogs", false)
+    @Html.Partial("_Confirm")
 </body>
 </html>

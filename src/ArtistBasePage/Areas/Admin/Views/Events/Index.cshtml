@@ -4,15 +4,47 @@
 
 <h2>Index</h2>
 
-<button class="btn-primary" data-dialog="new-event" id="dialog">Add a new event</button>
 
+<div class="span20 module">
+    <h3>Your events</h3>
+    <section class="content">
+        <button class="btn-primary" data-dialog="new-event" id="dialog">Add a new event</button><br/>
 
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>When</th>
+                    <th>Location</th>
+                    <th>Source</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: events">
+                <tr>
+                    <td><span data-bind="text: title"></span></td>
+                    <td><span data-bind="text: when"></span></td>
+                    <td><span data-bind="text: location"></span></td>
+                    <td><img data-bind="attr: { src: sourceImageUrl }"/></td>
+                    <td><a href="#" data-bind="click: remove">Delete</a></td>
+                </tr>
+            </tbody>
+
+        </table>
+        
+    </section>
+</div>
 @section dialogs
 {
-    
-    @Html.Partial("_NewEvent")
 
-    }
+    @Html.Partial("_NewEvent")
+    
+}
+
+@section scripts{
+    <script src="~/Areas/Admin/Scripts/ko.vm.events.js"></script>
+    <script src="~/Areas/Admin/Scripts/ko.vm.newevent.js"></script>
+}
 
 
 

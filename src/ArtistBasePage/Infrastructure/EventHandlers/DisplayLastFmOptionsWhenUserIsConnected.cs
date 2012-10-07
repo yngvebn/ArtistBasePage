@@ -10,7 +10,7 @@ namespace ArtistBasePage.Infrastructure.EventHandlers
     {
         public void Handle(ArtistWasConnectedToLastFm domainEvent)
         {
-            dynamic clients = GlobalHost.ConnectionManager.GetHubContext<AdminHub>().Clients.Redirect("/admin/external/lastfm");
+            GlobalHost.ConnectionManager.GetHubContext<AdminHub>().Clients.Redirect("/admin/external/lastfm");
         }
     }
 }

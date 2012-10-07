@@ -365,7 +365,7 @@ tbody tr:nth-child(even) {
 
 
 div.dialog {
-    position: relative;
+    position: absolute;
     /*width: 400px;*/
     height: auto;
     max-width: 500px;
@@ -373,7 +373,7 @@ div.dialog {
     margin-right: auto;
     margin-top: 5%;
     background-color: #efefef;
-    z-index: 10000;
+    z-index: -20000;
     background-color: #515E68;
     border: 3px solid #333;
     -webkit-box-shadow: -2px 0px 20px 0px rgba(1, 1, 1, 0.5);
@@ -412,6 +412,16 @@ div.modal-overlay {
     bottom: 0;
     background-color: #aaa;
     opacity: 0;
+}
+div#new-event {
+    height: 400px;
+}
+div#new-event section > div {
+    height: 300px;
+    position: absolute;
+    top: 50px;
+    
+
 }
 
 .event-source-selector {

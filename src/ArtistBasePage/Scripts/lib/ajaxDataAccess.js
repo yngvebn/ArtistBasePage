@@ -25,11 +25,16 @@
         ajax('put', url, success, data);
     };
     var create = function(url, data, success) {
-        ajax('post', url, success, { });
+        ajax('post', url, success, data);
     };
+    var remove = function (url, data, success) {
+        ajax('delete', url, success, data);
+    };
+
     return {
         get: get,
         save: save,
-        create: create
+        create: create,
+        remove: remove
     };
 });

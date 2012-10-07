@@ -1,24 +1,57 @@
-﻿    <div id="new-event" class="dialog">
-        <header>
-            Create a new event
-        </header>
-        <section>
-            <div class="event-source-selector clearfix">
-                <div class="selector">
-                    <strong>Import from Facebook</strong>
-                    <img src="~/Content/images/social/128x128/128x128-facebook.png" />
-                    <p>Select this if the event already exists on Facebook, and you just want to import it.</p>
-                </div>    
-                <div class="selector">
-                    <strong>Create from scratch</strong>
-                    <img src="~/Content/images/add-event.png" />
-                    <p>If you haven't created the event on either Last.fm or Facebook, begin from scratch by clicking here.</p>
-                </div>
-           
+﻿<div id="new-event" class="dialog">
+    <header>
+        Create a new event
+    </header>
+    <section>
+        <div id="step1" class="event-source-selector clearfix">
+            <div data-bind="click: createFromFacebook" class="selector">
+                <strong>Import from Facebook</strong>
+                <img src="~/Content/images/social/128x128/128x128-facebook.png" />
+                <p>Select this if the event already exists on Facebook, and you just want to import it.</p>
             </div>
-            
-        </section>
-        @*<footer>
+            <div class="selector">
+                <strong>Create from scratch</strong>
+                <img src="~/Content/images/add-event.png" />
+                <p>If you haven't created the event on either Last.fm or Facebook, begin from scratch by clicking here.</p>
+            </div>
+        </div>
+        <div id="step2_facebook" style="display: none;">
+            <p>
+                <label for="facebook_url">Paste the address to your event here:</label><br />
+                <input data-bind="value: facebookUrl" type="text" style="width: 95%;" name="facebook_url" /><br />
+                <em>How? Go to the event on Facebook, and copy the address from the address-bar on your browser. It will look something like
+                        this: https://www.facebook.com/events/331218348435
+                </em>
+                <p>
+                    <button class="btn" data-bind="click: lookupFacebookEvent">Continue</button>
+                </p>
+            </p>
+        </div>
+        <div id="step3_facebook" style="display:none;">
+            <p>
+                
+                <strong>This is what we found:</strong>
+                <h4 data-bind="text: title"></h4>
+                <p data-bind="text: description"></p>
+
+            </p>
+            <p><button class="btn" data-bind="click: addFacebookEvent">Yup, that's the one. Add it!</button></p>
+
+        </div>
+        <div id="finish_facebook" style="display:none; padding-top:40px; text-align:center;">
+            <p>
+                <h3>Great! All done</h3>
+                <p>You've added the event <em data-bind="text: title"></em> to your events. Any changes you make on Facebook will be reflected when this event is displayed on your web-site.
+
+                </p>
+                <p>
+                    <button data-action="close" data-bind="click: facebookDone" class="btn">Ok. Thanks! (Closes this dialog)</button>
+                </p>
+            </p>
+
+        </div>
+    </section>
+    @*<footer>
             <button class="btn" data-action="close">Cancel</button>
         </footer>*@
-    </div>
+</div>

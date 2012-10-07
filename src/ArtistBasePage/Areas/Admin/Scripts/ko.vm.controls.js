@@ -1,6 +1,8 @@
 ﻿if (Resources.token == "") {
     $.connection.hub.start().done(function () {
-
+        $.each(Startup.signalRFunctions, function (i, func) {
+            func();
+        });
     });
 
     $.connection.adminHub.redirect = function (url) {

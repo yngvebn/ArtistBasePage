@@ -29,11 +29,17 @@ namespace ArtistBasePage.Infrastructure.Mappings
 
             AutoMapper.Mapper.CreateMap<DotLastFm.Models.Event, EventViewModel>()
                 .ForMember(c => c.Title, opt => opt.MapFrom(m => m.Title))
+                .ForMember(c => c.StartTime, opt => opt.MapFrom(m => m.StartDate))
+                .ForMember(c => c.Location, opt => opt.MapFrom(m => m.Venue.Name))
                 .ForMember(c => c.Source, opt => opt.UseValue(EventOrigin.LastFm));
 
 
             AutoMapper.Mapper.CreateMap<Facebook.Models.Event, EventViewModel>()
+                .ForMember(c => c.Id, opt => opt.MapFrom(m => m.Id))
                 .ForMember(c => c.Title, opt => opt.MapFrom(m => m.Name))
+                .ForMember(c => c.Location, opt => opt.MapFrom(m => m.Location))
+                .ForMember(c => c.StartTime, opt => opt.MapFrom(m => m.Start_Time.ToLocalTime(TimeZones.PacificStandardTime)))
+                .ForMember(c => c.Description, opt => opt.MapFrom(m => m.Description))
                 .ForMember(c => c.Source, opt => opt.UseValue(EventOrigin.Facebook));
 
 
