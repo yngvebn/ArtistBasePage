@@ -19,6 +19,7 @@ namespace TestApplication
             config.Token = token.Token;
 
             var ev  = facebook.Event.GetEvent("413315265383656");
+            ev.Venue= facebook.Event.GetLocation(ev.Venue.Id);
         }
     }
 

@@ -25,13 +25,14 @@ namespace Facebook.Api
         {
         }
 
+        public Venue GetLocation(string venueId)
+        {
+            return Get<Venue>(venueId);
+        }
+
         public Event GetEvent(string eventId)
         {
-            var call = Rest.Method(eventId, Method.GET).AddParam("access_token", Api.Config.Token);
-                
-                           
-            var ev = call.Execute<Event>();
-            return ev;
+            return Get<Event>(eventId);
         }
 
     }

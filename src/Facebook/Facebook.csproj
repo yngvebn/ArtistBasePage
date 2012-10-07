@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\AutenticationApi.cs" />
+    <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Api\EventApi.cs" />
     <Compile Include="Api\IAuthenticationApi.cs" />
     <Compile Include="Api\IEventApi.cs" />

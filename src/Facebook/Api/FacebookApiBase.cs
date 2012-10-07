@@ -5,6 +5,7 @@
 //-----------------------------------------------------------------------
 
 using Facebook.Api.Rest;
+using RestSharp;
 
 namespace Facebook.Api
 {
@@ -42,6 +43,12 @@ namespace Facebook.Api
         {
             get;
             set;
+        }
+
+        protected T Get<T>(string objectId) where T: new()
+        {
+            var call = Rest.Method(objectId, Method.GET).AddParam("access_token", Api.Config.Token);
+            return call.Execute<T>();
         }
     }
 }

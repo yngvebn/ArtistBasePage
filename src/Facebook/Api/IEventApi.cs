@@ -14,8 +14,8 @@ namespace Facebook.Api
     /// </summary>
     public interface IEventApi
     {
-       
 
+        Venue GetLocation(string venueId);
         Event GetEvent(string eventId);
     }
 }
