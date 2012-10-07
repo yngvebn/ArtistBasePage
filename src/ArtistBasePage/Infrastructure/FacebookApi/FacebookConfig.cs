@@ -1,6 +1,6 @@
 ﻿using Facebook.Api;
 
-namespace ArtistBasePage.Infrastructure.Facebook
+namespace ArtistBasePage.Infrastructure.FacebookApi
 {
     public class FacebookConfig: IFacebookConfig
     {

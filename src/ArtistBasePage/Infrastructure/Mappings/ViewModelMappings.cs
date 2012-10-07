@@ -27,6 +27,19 @@ namespace ArtistBasePage.Infrastructure.Mappings
                 .ForMember(c => c.UseBio, opt => opt.MapFrom(d => d.UseBio))
                 .ForMember(c => c.UseEvents, opt => opt.MapFrom(d => d.UseEvents));
 
+            AutoMapper.Mapper.CreateMap<DotLastFm.Models.Event, EventViewModel>()
+                .ForMember(c => c.Title, opt => opt.MapFrom(m => m.Title))
+                .ForMember(c => c.Source, opt => opt.UseValue(EventOrigin.LastFm));
+
+
+            AutoMapper.Mapper.CreateMap<Facebook.Models.Event, EventViewModel>()
+                .ForMember(c => c.Title, opt => opt.MapFrom(m => m.Name))
+                .ForMember(c => c.Source, opt => opt.UseValue(EventOrigin.Facebook));
+
+
+            AutoMapper.Mapper.CreateMap<Domain.Event, EventViewModel>()
+                .ForMember(c => c.Title, opt => opt.MapFrom(m => m.Title))
+                .ForMember(c => c.Source, opt => opt.UseValue(EventOrigin.Site));
         }
 
     }

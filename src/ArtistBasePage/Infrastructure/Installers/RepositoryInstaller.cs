@@ -13,6 +13,7 @@ namespace ArtistBasePage.Infrastructure.Installers
             kernel.Bind<ITokenRepository>().To<TokenRepository>();
             kernel.Bind<IUserLoginRepository>().To<UserLoginRepository>();
             kernel.Bind<ILastFmExternalRepository>().To<LastFmExternalRepository>();
+            kernel.Bind<IFacebookExternalRepository>().To<FacebookExternalRepository>();
         }
     }
 }

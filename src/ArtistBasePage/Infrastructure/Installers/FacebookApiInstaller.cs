@@ -1,4 +1,4 @@
-using ArtistBasePage.Infrastructure.Facebook;
+using ArtistBasePage.Infrastructure.FacebookApi;
 using Facebook.Api;
 using Ninject;
 using Ninject.Extensions.Conventions;

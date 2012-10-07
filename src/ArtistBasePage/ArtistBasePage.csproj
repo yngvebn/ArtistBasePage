@@ -180,7 +180,7 @@
     <Compile Include="Infrastructure\AuthenticationService.cs" />
     <Compile Include="Infrastructure\EventHandlers\DisplayLastFmOptionsWhenUserIsConnected.cs" />
     <Compile Include="Infrastructure\EventHandlers\NotifyAdminWhenLastFmInformationFound.cs" />
-    <Compile Include="Infrastructure\Facebook\FacebookConfig.cs" />
+    <Compile Include="Infrastructure\FacebookApi\FacebookConfig.cs" />
     <Compile Include="Infrastructure\IAuthenticationService.cs" />
     <Compile Include="Areas\v1\Controllers\ArtistController.cs" />
     <Compile Include="Areas\v1\ViewModels\ArtistViewModel.cs" />

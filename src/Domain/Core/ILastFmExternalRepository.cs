@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using DotLastFm.Models;
+using Facebook;
 
 namespace Domain.Core
 {
