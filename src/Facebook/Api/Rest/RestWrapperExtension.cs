@@ -4,6 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using RestSharp;
+
 namespace Facebook.Api.Rest
 {
     /// <summary>
@@ -17,9 +19,9 @@ namespace Facebook.Api.Rest
         /// <param name="wrapper">The wrapper.</param>
         /// <param name="method">The method.</param>
         /// <returns>Fluent wrapper</returns>
-        public static FluentRestWrapper Method(this RestWrapper wrapper, string method)
+        public static FluentRestWrapper Method(this RestWrapper wrapper, string method, Method type = RestSharp.Method.GET)
         {
-            return new FluentRestWrapper(wrapper, method);
+            return new FluentRestWrapper(wrapper, method, type);
         }
     }
 }

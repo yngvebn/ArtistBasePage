@@ -22,7 +22,7 @@ namespace Facebook.Api
         /// <summary>
         /// Gets the Last.fm's API key.
         /// </summary>
-        string ApiKey
+        string ClientId
         {
             get;
         }
@@ -34,5 +34,7 @@ namespace Facebook.Api
         {
             get;
         }
+
+        string Token { get; set; }
     }
 }

@@ -14,14 +14,19 @@ namespace TestApplication
         {
             IFacebookConfig config = new FacebookConfig();
             IFacebookApi facebook = new FacebookApi(config);
-            
+
+            var token = facebook.Auth.GetAccessToken();
+            config.Token = token.Token;
+
+            var ev  = facebook.Event.GetEvent("413315265383656");
         }
     }
 
     internal class FacebookConfig : IFacebookConfig
     {
         public string BaseUrl { get { return "https://graph.facebook.com/"; } }
-        public string ApiKey { get { return "159997617394589"; } }
+        public string ClientId { get { return "159997617394589"; } }
         public string Secret { get { return "ced7de09d14698199c88de1e6c2b35ad"; } }
+        public string Token { get; set; }
     }
 }

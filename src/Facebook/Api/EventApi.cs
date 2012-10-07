@@ -5,8 +5,9 @@
 //-----------------------------------------------------------------------
 
 using System.Collections.Generic;
-using DotLastFm.Models;
 using Facebook.Api.Rest;
+using Facebook.Models;
+using RestSharp;
 
 namespace Facebook.Api
 {
@@ -26,7 +27,8 @@ namespace Facebook.Api
 
         public Event GetEvent(string eventId)
         {
-            var call = Rest.Method("artist.getTopTags");
+            var call = Rest.Method(eventId, Method.GET).AddParam("access_token", Api.Config.Token);
+                
                            
             var ev = call.Execute<Event>();
             return ev;

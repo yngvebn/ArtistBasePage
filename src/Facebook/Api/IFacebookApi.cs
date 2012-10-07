@@ -28,5 +28,10 @@ namespace Facebook.Api
         {
             get;
         }
+
+        IAuthenticationApi Auth
+        {
+            get;
+        }
     }
 }

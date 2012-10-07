@@ -22,6 +22,7 @@ namespace Facebook
             Config = config;
             
             Event = new EventApi(this);
+            Auth = new AutenticationApi(this);
         }
 
         /// <summary>
@@ -31,6 +32,13 @@ namespace Facebook
         {
             get;
             private set;
+        }
+
+        public IAuthenticationApi Auth { get; private set; }
+
+        public void Authenticate()
+        {
+            throw new System.NotImplementedException();
         }
 
         public IEventApi Event

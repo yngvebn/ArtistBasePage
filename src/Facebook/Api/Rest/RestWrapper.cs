@@ -44,8 +44,6 @@ namespace Facebook.Api.Rest
                 if (client == null)
                 {
                     client = new RestClient(config.BaseUrl);
-                    client.ClearHandlers();
-                    client.AddDefaultParameter("api_key", config.ApiKey, ParameterType.GetOrPost); 
                 }
 
                 return client;
@@ -59,11 +57,11 @@ namespace Facebook.Api.Rest
         /// <param name="method">The method.</param>
         /// <param name="parameters">The parameters.</param>
         /// <returns>Created model</returns>
-        public TModel Execute<TModel>(string method, params Parameter[] parameters) where TModel : new()
-        {            
-            var request = new RestRequest(Method.GET);
-            
-            request.AddParameter("method", method, ParameterType.GetOrPost);
+        public TModel Execute<TModel>(string method, Method type, params Parameter[] parameters) where TModel : new()
+        {
+            var request = new RestRequest(method, type);
+
+            //request.AddParameter("method", method, ParameterType.UrlSegment);
             foreach (var p in parameters)
             {
                 request.AddParameter(p);
@@ -71,9 +69,30 @@ namespace Facebook.Api.Rest
 
             var response = Client.Execute<TModel>(request);
 
-          
-
+            
             return response.Data;
+        }
+
+        /// <summary>
+        /// Executes the specified method.
+        /// </summary>
+        /// <typeparam name="TModel">The type of the model.</typeparam>
+        /// <param name="method">The method.</param>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns>Created model</returns>
+        public string Execute(string method, Method type, params Parameter[] parameters)
+        {
+            var request = new RestRequest(method, type);
+
+            //request.AddParameter("method", method, ParameterType.UrlSegment);
+            foreach (var p in parameters)
+            {
+                request.AddParameter(p);
+            }
+
+            var response = Client.Execute(request);
+
+            return response.Content;
         }
     }
 }

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\EventApi.cs" />
+    <Compile Include="Api\IAuthenticationApi.cs" />
     <Compile Include="Api\IEventApi.cs" />
     <Compile Include="Api\IFacebookApi.cs" />
     <Compile Include="Api\IFacebookConfig.cs" />
@@ -54,6 +55,8 @@
     <Compile Include="Api\Rest\RestWrapperExtension.cs" />
     <Compile Include="FacebookApi.cs" />
     <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Venue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

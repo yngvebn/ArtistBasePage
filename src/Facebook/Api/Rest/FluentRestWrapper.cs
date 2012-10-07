@@ -29,16 +29,19 @@ namespace Facebook.Api.Rest
         /// </summary>
         private readonly string method;
 
+        private readonly RestSharp.Method type;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="FluentRestWrapper"/> class.
         /// </summary>
         /// <param name="restWrapper">The rest wrapper.</param>
         /// <param name="method">The method.</param>
-        public FluentRestWrapper(RestWrapper restWrapper, string method)
+        public FluentRestWrapper(RestWrapper restWrapper, string method, Method type = Method.GET)
         {
             this.parameters = new List<Parameter>();
             this.restWrapper = restWrapper;
             this.method = method;
+            this.type = type;
         }
 
         /// <summary>
@@ -47,9 +50,9 @@ namespace Facebook.Api.Rest
         /// <param name="name">The name.</param>
         /// <param name="value">The value.</param>
         /// <returns>Fluent wrapper</returns>
-        public FluentRestWrapper AddParam(string name, object value)
+        public FluentRestWrapper AddParam(string name, object value, ParameterType type = ParameterType.GetOrPost)
         {
-            this.parameters.Add(new Parameter { Name = name, Value = value, Type = ParameterType.GetOrPost });
+            this.parameters.Add(new Parameter { Name = name, Value = value, Type = type});
             return this;
         }
 
@@ -60,7 +63,18 @@ namespace Facebook.Api.Rest
         /// <returns>Returning type</returns>
         public TModel Execute<TModel>() where TModel : new()
         {
-            return this.restWrapper.Execute<TModel>(this.method, this.parameters.ToArray());
+            return this.restWrapper.Execute<TModel>(this.method, this.type, this.parameters.ToArray());
         }
+
+        /// <summary>
+        /// Executes this instance.
+        /// </summary>
+        /// <typeparam name="TModel">The type of the model.</typeparam>
+        /// <returns>Returning type</returns>
+        public string Execute()
+        {
+            return this.restWrapper.Execute(this.method, this.type, this.parameters.ToArray());
+        }
+
     }
 }

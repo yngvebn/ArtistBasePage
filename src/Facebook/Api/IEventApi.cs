@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------
 
 using System.Collections.Generic;
-using DotLastFm.Models;
+using Facebook.Models;
 
 namespace Facebook.Api
 {
