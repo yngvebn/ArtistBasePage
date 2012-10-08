@@ -20,7 +20,7 @@ namespace ArtistBasePage.Areas.v1.Controllers
             _artistRepository = artistRepository;
         }
 
-        // GET api/general
+        
         public ArtistViewModel Get()
         {
             return _mapper.Map<ArtistViewModel>(_artistRepository.Get(ArtistId));

@@ -72,6 +72,7 @@
     <Compile Include="Commands\Handlers\DeleteFacebookEventCommandHandler.cs" />
     <Compile Include="Commands\Handlers\HandleUserConnectedWithSignalR.cs" />
     <Compile Include="Commands\Handlers\UpdateLastFmInfoCommandHandler.cs" />
+    <Compile Include="Commands\SetFlickrRequestToken.cs" />
     <Compile Include="Commands\UpdateLastFmInfoCommand.cs" />
     <Compile Include="Core\IFacebookExternalRepository.cs" />
     <Compile Include="Events\EventWasAdded.cs" />
@@ -129,6 +130,14 @@
     <Compile Include="Migrations\201210071153050_AddedFacebookEventsToArtist.cs" />
     <Compile Include="Migrations\201210071153050_AddedFacebookEventsToArtist.Designer.cs">
       <DependentUpon>201210071153050_AddedFacebookEventsToArtist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201210082007495_AddedFlickrInfo.cs" />
+    <Compile Include="Migrations\201210082007495_AddedFlickrInfo.Designer.cs">
+      <DependentUpon>201210082007495_AddedFlickrInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201210082021315_AddedFlickrRequestTokens.cs" />
+    <Compile Include="Migrations\201210082021315_AddedFlickrRequestTokens.Designer.cs">
+      <DependentUpon>201210082021315_AddedFlickrRequestTokens.cs</DependentUpon>
     </Compile>
     <Compile Include="Notifications\ConnectToLastFmNotification.cs" />
     <Compile Include="Core\ArtistRepository.cs" />
@@ -308,6 +317,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201210071153050_AddedFacebookEventsToArtist.resx">
       <DependentUpon>201210071153050_AddedFacebookEventsToArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201210082007495_AddedFlickrInfo.resx">
+      <DependentUpon>201210082007495_AddedFlickrInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201210082021315_AddedFlickrRequestTokens.resx">
+      <DependentUpon>201210082021315_AddedFlickrRequestTokens.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

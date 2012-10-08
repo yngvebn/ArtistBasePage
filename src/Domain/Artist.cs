@@ -146,9 +146,14 @@ namespace Domain
             FacebookEvents.Remove(ev);
         }
 
+        public void RequestFlickrToken(string token, string secret)
+        {
+            FlickrInfo = FlickrInfo.Create(this, token, secret);
+        }
+
         public void ConnectToFlickr(string token, string secret)
         {
-            this.FlickrInfo = FlickrInfo.Connect(this, token, secret);
+            FlickrInfo.Connect(token, secret);
         }
     }
 

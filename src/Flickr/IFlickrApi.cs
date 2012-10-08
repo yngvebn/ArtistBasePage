@@ -38,6 +38,7 @@ namespace Flickr
 
         public string GetAuthUrl(string requestToken)
         {
+            
             return _flickr.OAuthCalculateAuthorizationUrl(requestToken, AuthLevel.Read);
         }
     }
