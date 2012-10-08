@@ -65,6 +65,7 @@
     <Compile Include="Commands\AddFacebookEventCommand.cs" />
     <Compile Include="Commands\AddNewArtist.cs" />
     <Compile Include="Commands\AddNewEventCommand.cs" />
+    <Compile Include="Commands\AuthenticateWithFlickrCommand.cs" />
     <Compile Include="Commands\DeleteFacebookEventCommand.cs" />
     <Compile Include="Commands\Handlers\AddFacebookEventCommandHandler.cs" />
     <Compile Include="Commands\Handlers\AddNewEventCommandHandler.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Events\NotificationAdded.cs" />
     <Compile Include="FacebookEvent.cs" />
     <Compile Include="Exceptions\FacebookEventAlreadyExistsException.cs" />
+    <Compile Include="FlickrInfo.cs" />
     <Compile Include="Migrations\201210021549522_AddedLastFmAndNotifications.cs" />
     <Compile Include="Migrations\201210021549522_AddedLastFmAndNotifications.Designer.cs">
       <DependentUpon>201210021549522_AddedLastFmAndNotifications.cs</DependentUpon>

@@ -50,6 +50,10 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="FlickrNet, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2491df59efa5d132, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\FlickrNet.3.5.0\lib\net20\FlickrNet.dll</HintPath>
+    </Reference>
     <Reference Include="LinFu.DynamicProxy">
       <HintPath>..\packages\Ninject.Extensions.Interception.Linfu.3.0.0.8\lib\net35\LinFu.DynamicProxy.dll</HintPath>
     </Reference>
@@ -164,7 +168,10 @@
     <Compile Include="Areas\Admin\Controllers\AuthenticateController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExternalController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FlickrAuthController.cs" />
+    <Compile Include="Infrastructure\Flickr\FlickrConfig.cs" />
     <Compile Include="Areas\Admin\Controllers\GeneralController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PicturesController.cs" />
     <Compile Include="Areas\Admin\CustomViewPage.cs" />
     <Compile Include="Areas\Admin\Hubs\AdminHub.cs" />
     <Compile Include="Areas\Admin\Hubs\EventsHub.cs" />
@@ -202,6 +209,8 @@
     <Content Include="Content\images\add-event.png" />
     <Content Include="Content\images\Check_large.png" />
     <Content Include="Areas\Admin\Views\Shared\_Confirm.cshtml" />
+    <Content Include="Areas\Admin\Views\Pictures\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\FlickrAuth\AuthCallback.cshtml" />
     <None Include="Scripts\amplify-vsdoc.js" />
     <Content Include="Scripts\amplify.js" />
     <Content Include="Scripts\amplify.min.js" />
@@ -473,6 +482,10 @@
     <ProjectReference Include="..\Facebook\Facebook.csproj">
       <Project>{BC1D5DA5-FE51-42B4-98E4-E84617C7D4C0}</Project>
       <Name>Facebook</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Flickr\Flickr.csproj">
+      <Project>{E83C8B9D-837E-406E-9670-C5C4EC5CED4F}</Project>
+      <Name>Flickr</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{429E37A5-3142-432D-809E-5CA59EF7A55D}</Project>

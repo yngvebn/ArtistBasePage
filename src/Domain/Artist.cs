@@ -17,7 +17,7 @@ namespace Domain
 
         public DateTime Created { get; private set; }
 
-        public virtual Collection<ApiToken> ApiTokens { get; private set; } 
+        public virtual Collection<ApiToken> ApiTokens { get; private set; }
         public virtual Collection<UserLogin> Logins { get; private set; }
         public virtual Collection<GalleryImage> Gallery { get; private set; }
         public virtual Collection<Event> Events { get; private set; }
@@ -25,7 +25,8 @@ namespace Domain
         public virtual Collection<Article> News { get; private set; }
         public virtual Collection<SocialNetwork> SocialNetworks { get; private set; }
         public virtual Collection<Notification> Notifications { get; private set; }
-        public virtual Collection<FacebookEvent> FacebookEvents { get; private set; } 
+        public virtual Collection<FacebookEvent> FacebookEvents { get; private set; }
+        public virtual FlickrInfo FlickrInfo { get; private set; }
         public virtual LastFmInfo LastFmInfo { get; private set; }
 
         public void Update(Artist artist)
@@ -47,9 +48,9 @@ namespace Domain
 
         public void SetSocialNetwork(SocialNetworkType type, string url)
         {
-            if(SocialNetworks == null) SocialNetworks = new Collection<SocialNetwork>();
+            if (SocialNetworks == null) SocialNetworks = new Collection<SocialNetwork>();
             var existing = SocialNetworks.SingleOrDefault(c => c.Type == type);
-            if(existing != null)
+            if (existing != null)
             {
                 existing.ChangeUrl(url);
             }
@@ -65,10 +66,10 @@ namespace Domain
             return Logins.Any(c => c.Username == username && c.Password == password.Encrypt());
         }
 
-        
+
         public void CreateLogon(string username, string password)
         {
-            if(Logins == null) Logins = new Collection<UserLogin>();
+            if (Logins == null) Logins = new Collection<UserLogin>();
             if (Logins.Any(c => c.Username == username)) throw new UserAlreadyExistsException(username);
 
             Logins.Add(UserLogin.Create(username, password.Encrypt(), this));
@@ -91,7 +92,7 @@ namespace Domain
 
         public void UpdateLastFmInfo(string name, string bio)
         {
-            if (LastFmInfo == null) 
+            if (LastFmInfo == null)
                 LastFmInfo = LastFmInfo.Create(this, name, bio);
             else
             {
@@ -101,17 +102,17 @@ namespace Domain
 
         public void AddNotification(Notification connectToLastFmNotification)
         {
-            if(Notifications == null) Notifications = new Collection<Notification>();
-            if(Notifications.All(c => c.Type == connectToLastFmNotification.Type && !c.Read))
+            if (Notifications == null) Notifications = new Collection<Notification>();
+            if (Notifications.All(c => c.Type == connectToLastFmNotification.Type && !c.Read))
             {
-                Notifications.Add(connectToLastFmNotification);    
+                Notifications.Add(connectToLastFmNotification);
                 DomainEvents.Raise(new NotificationAdded()
                                        {
                                            Artist = this,
                                            LastNotification = connectToLastFmNotification
                                        });
             }
-            
+
         }
 
         public void ConnectToLastFm()
@@ -141,8 +142,14 @@ namespace Domain
 
         public void RemoveFacebookEvent(string facebookEventId)
         {
-            var ev =FacebookEvents.SingleOrDefault(c => c.FacebookId == facebookEventId);
+            var ev = FacebookEvents.SingleOrDefault(c => c.FacebookId == facebookEventId);
             FacebookEvents.Remove(ev);
         }
+
+        public void ConnectToFlickr(string token, string secret)
+        {
+            this.FlickrInfo = FlickrInfo.Connect(this, token, secret);
+        }
     }
+
 }
