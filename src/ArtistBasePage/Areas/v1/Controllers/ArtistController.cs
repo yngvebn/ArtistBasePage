@@ -23,7 +23,7 @@ namespace ArtistBasePage.Areas.v1.Controllers
         // GET api/general
         public ArtistViewModel Get()
         {
-         return _mapper.Map<ArtistViewModel>(_artistRepository.Get(ArtistId));
+            return _mapper.Map<ArtistViewModel>(_artistRepository.Get(ArtistId));
         }
 
         // POST api/general
@@ -33,11 +33,11 @@ namespace ArtistBasePage.Areas.v1.Controllers
 
         public void Put([FromBody]ArtistViewModel artist)
         {
-            MvcApplication.CommandExecutor.ExecuteCommand(new UpdateArtistCommand()
-                                                              {
-                                                                  ArtistId = ArtistId,
-                                                                  Artist = _mapper.Map<Artist>(artist)
-                                                              });
+            Execute(new UpdateArtistCommand()
+                        {
+                            ArtistId = ArtistId,
+                            Artist = _mapper.Map<Artist>(artist)
+                        });
         }
 
         // DELETE api/general/5
