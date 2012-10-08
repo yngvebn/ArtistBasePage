@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D98CE1A3-E6FF-4953-9C7F-66C9555430B3}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{290B25AE-63D6-49D7-B087-F75BC2C731A4}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestApplication</RootNamespace>
-    <AssemblyName>TestApplication</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Youtube</RootNamespace>
+    <AssemblyName>Youtube</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +24,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,8 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.10\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,23 +48,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Api\AutenticationApi.cs" />
+    <Compile Include="Api\UserApi.cs" />
+    <Compile Include="Api\YoutubeApiBase.cs" />
+    <Compile Include="Api\IAuthenticationApi.cs" />
+    <Compile Include="Api\IUserApi.cs" />
+    <Compile Include="Api\IYoutubeApi.cs" />
+    <Compile Include="Api\IYoutubeConfig.cs" />
+    <Compile Include="Api\Rest\FluentRestWrapper.cs" />
+    <Compile Include="Api\Rest\RestWrapper.cs" />
+    <Compile Include="Api\Rest\RestWrapperExtension.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="YoutubeApi.cs" />
+    <Compile Include="Models\AccessToken.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Venue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Facebook\Facebook.csproj">
-      <Project>{bc1d5da5-fe51-42b4-98e4-e84617c7d4c0}</Project>
-      <Name>Facebook</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Youtube\Youtube.csproj">
-      <Project>{290B25AE-63D6-49D7-B087-F75BC2C731A4}</Project>
-      <Name>Youtube</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

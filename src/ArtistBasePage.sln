@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facebook", "Facebook\Facebo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplication", "TestApplication\TestApplication.csproj", "{D98CE1A3-E6FF-4953-9C7F-66C9555430B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Youtube", "Youtube\Youtube.csproj", "{290B25AE-63D6-49D7-B087-F75BC2C731A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{D98CE1A3-E6FF-4953-9C7F-66C9555430B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D98CE1A3-E6FF-4953-9C7F-66C9555430B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D98CE1A3-E6FF-4953-9C7F-66C9555430B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{290B25AE-63D6-49D7-B087-F75BC2C731A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{290B25AE-63D6-49D7-B087-F75BC2C731A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{290B25AE-63D6-49D7-B087-F75BC2C731A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{290B25AE-63D6-49D7-B087-F75BC2C731A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

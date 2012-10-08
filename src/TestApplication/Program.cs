@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Facebook;
 using Facebook.Api;
+using Youtube;
+using Youtube.Api;
 
 namespace TestApplication
 {
@@ -13,19 +15,17 @@ namespace TestApplication
     {
         static void Main(string[] args)
         {
-            IFacebookConfig config = new FacebookConfig();
-            IFacebookApi facebook = new FacebookApi(config);
+            IYoutubeConfig config = new YoutubeConfig();
+            IYoutubeApi youtubeApi = new YoutubeApi(config);
 
-            var token = facebook.Auth.GetAccessToken();
 
-            var ev  = facebook.Event.GetEvent("413315265383656918398");
-            ev.Venue= facebook.Event.GetLocation(ev.Venue.Id);
+            var ev = youtubeApi.User.GetUserFeed("arnevatnoy");
         }
     }
 
-    internal class FacebookConfig : IFacebookConfig
+    internal class YoutubeConfig: IYoutubeConfig
     {
-        public string BaseUrl { get { return "https://graph.facebook.com/"; } }
+        public string BaseUrl { get { return "https://gdata.youtube.com/feeds/api"; } }
         public string ClientId { get { return "159997617394589"; } }
         public string Secret { get { return "ced7de09d14698199c88de1e6c2b35ad"; } }
         public string Token { get { return "159997617394589|lxqDIRGGL-6lNMVZtERkbJTNOeM"; } }
