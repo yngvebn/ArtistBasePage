@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 using Domain.Events;
 using Infrastructure.DomainEvents;
 
@@ -14,6 +14,7 @@ namespace Domain
         public bool UseEvents { get; private set; }
         public bool UseBio { get; private set; }
 
+        [ForeignKey("Id")]
         [Required]
         public virtual Artist AssociatedArtist { get; set; }
 

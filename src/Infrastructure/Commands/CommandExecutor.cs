@@ -33,7 +33,7 @@ namespace Infrastructure.Commands
 
             try
             {
-                var task =Task.Factory.StartNew(() => 
+                var task = Task.Run(() => 
                     {
                         handler.Handle(command as dynamic);
                         return CommandResult.Executed("Command executed successfully");
