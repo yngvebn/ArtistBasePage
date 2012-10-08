@@ -15,7 +15,6 @@ namespace ArtistBasePage
         protected void Application_Start()
         {
             GlobalHost.DependencyResolver = new NinjectDependencyResolver(DependencyResolver.Current.GetService<IKernel>());
-            RouteTable.Routes.MapHubs();
             AreaRegistration.RegisterAllAreas();
             
             WebApiConfig.Register(GlobalConfiguration.Configuration);
