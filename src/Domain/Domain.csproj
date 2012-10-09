@@ -69,8 +69,10 @@
     <Compile Include="Commands\DeleteFacebookEventCommand.cs" />
     <Compile Include="Commands\Handlers\AddFacebookEventCommandHandler.cs" />
     <Compile Include="Commands\Handlers\AddNewEventCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\AuthenticateWithFlickrCommandHandler.cs" />
     <Compile Include="Commands\Handlers\DeleteFacebookEventCommandHandler.cs" />
     <Compile Include="Commands\Handlers\HandleUserConnectedWithSignalR.cs" />
+    <Compile Include="Commands\Handlers\SetFlicrRequestTokenCommandHandler.cs" />
     <Compile Include="Commands\Handlers\UpdateLastFmInfoCommandHandler.cs" />
     <Compile Include="Commands\SetFlickrRequestToken.cs" />
     <Compile Include="Commands\UpdateLastFmInfoCommand.cs" />

@@ -168,7 +168,8 @@
     <Compile Include="Areas\Admin\Controllers\AuthenticateController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExternalController.cs" />
-    <Compile Include="Areas\v1\Controllers\FlickrAuthController.cs" />
+    <Compile Include="Areas\OAuth\Controllers\FlickrController.cs" />
+    <Compile Include="Areas\OAuth\OAuthAreaRegistration.cs" />
     <Compile Include="Infrastructure\Flickr\FlickrConfig.cs" />
     <Compile Include="Areas\Admin\Controllers\GeneralController.cs" />
     <Compile Include="Areas\Admin\Controllers\PicturesController.cs" />
@@ -211,6 +212,8 @@
     <Content Include="Areas\Admin\Views\Shared\_Confirm.cshtml" />
     <Content Include="Areas\Admin\Views\Pictures\Index.cshtml" />
     <Content Include="Areas\Admin\Views\FlickrAuth\AuthCallback.cshtml" />
+    <Content Include="Areas\OAuth\Views\Web.config" />
+    <Content Include="Areas\OAuth\Views\Flickr\Success.cshtml" />
     <None Include="Scripts\amplify-vsdoc.js" />
     <Content Include="Scripts\amplify.js" />
     <Content Include="Scripts\amplify.min.js" />
@@ -466,6 +469,8 @@
     <Folder Include="App_Data\Content\Images\News\" />
     <Folder Include="App_Data\Content\Music\" />
     <Folder Include="App_Data\Content\Videos\" />
+    <Folder Include="Areas\OAuth\Models\" />
+    <Folder Include="Areas\OAuth\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
