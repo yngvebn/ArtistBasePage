@@ -7,7 +7,13 @@
 </header>
 @section scripts{
     <script src="~/Areas/Admin/Scripts/ko.vm.general.js"></script>
-
+    <script type="text/javascript">
+        $(function() {
+            $("#flickr").click(function() {
+                window.open("/oauth/flickr/auth/@Token");
+            });
+        });
+    </script>
 }
 
 
@@ -48,7 +54,7 @@
         <div class="span4 module">
             <h3>Social networks</h3>
             <section class="content">
-                
+                <button id="flickr">Flickr Authentication</button>
                 
                 <table>
                     <thead>

@@ -21,10 +21,10 @@ namespace ArtistBasePage.Areas.OAuth.Controllers
             _artistRepository = artistRepository;
         }
 
-        public ActionResult Auth(string apiToken)
+        public ActionResult Auth(string id)
         {
-            var artist = _artistRepository.FindByToken(apiToken);
-            var token = _flickrApi.GetRequestToken();
+            var artist = _artistRepository.FindByToken(id);
+            var token = _flickrApi.GetRequestToken(id);
             
             MvcApplication.CommandExecutor.ExecuteCommand(new SetFlickrRequestToken()
             {
@@ -32,14 +32,14 @@ namespace ArtistBasePage.Areas.OAuth.Controllers
                 Token = token.Token,
                 Secret = token.TokenSecret
             });
-            var url = _flickrApi.GetAuthUrl(string.Format(token.Token, apiToken));
+            var url = _flickrApi.GetAuthUrl(token.Token);
             return Redirect(url);
         }
 
 
-        public ActionResult AuthCallback(string artistToken, string oauth_token, string oauth_verifier)
+        public ActionResult AuthCallback(string id, string oauth_token, string oauth_verifier)
         {
-            var artist = _artistRepository.FindByToken(artistToken);
+            var artist = _artistRepository.FindByToken(id);
             var requestToken = new OAuthRequestToken()
                 {
                     Token = artist.FlickrInfo.RequestToken,

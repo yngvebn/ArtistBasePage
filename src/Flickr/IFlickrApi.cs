@@ -9,7 +9,7 @@ namespace Flickr
 {
     public interface IFlickrApi
     {
-        OAuthRequestToken GetRequestToken();
+        OAuthRequestToken GetRequestToken(string apiToken);
         OAuthAccessToken GetAccessToken(OAuthRequestToken token, string verifier);
         string GetAuthUrl(string token);
     }
@@ -20,14 +20,16 @@ namespace Flickr
         private readonly FlickrNet.Flickr _flickr;
         public FlickrApi(IFlickrConfig config)
         {
+
+            
+            _config = config;
             _flickr = new FlickrNet.Flickr(_config.ApiKey, _config.Secret);
         
-            _config = config;
         }
 
-        public OAuthRequestToken GetRequestToken()
+        public OAuthRequestToken GetRequestToken(string apiToken)
         {
-            return _flickr.OAuthGetRequestToken(_config.OAuthRequestTokenCallbackUrl);
+            return _flickr.OAuthGetRequestToken(string.Format(_config.OAuthRequestTokenCallbackUrl, apiToken));
         }
 
         public OAuthAccessToken GetAccessToken(OAuthRequestToken token, string verifier)

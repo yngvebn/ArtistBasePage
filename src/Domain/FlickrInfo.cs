@@ -32,5 +32,11 @@ namespace Domain
             Secret = secret;
             IsConnected = true;
         }
+
+        public void Update(string token, string secret)
+        {
+            RequestToken = token;
+            RequestSecret = secret;
+        }
     }
 }

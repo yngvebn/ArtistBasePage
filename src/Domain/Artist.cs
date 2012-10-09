@@ -148,7 +148,12 @@ namespace Domain
 
         public void RequestFlickrToken(string token, string secret)
         {
+            if(FlickrInfo == null)
             FlickrInfo = FlickrInfo.Create(this, token, secret);
+            else
+            {
+                FlickrInfo.Update(token, secret);
+            }
         }
 
         public void ConnectToFlickr(string token, string secret)
