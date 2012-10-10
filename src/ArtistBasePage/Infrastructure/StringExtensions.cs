@@ -32,7 +32,10 @@ namespace ArtistBasePage.Infrastructure
             timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
             var utc = TimeZoneInfo.ConvertTimeToUtc(date, timeZoneInfo);
             var currentUtcOffset = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now);
-            return utc.Add(currentUtcOffset);
+            var adjusted = utc.Add(currentUtcOffset);
+            DateTime returnDate = new DateTime(adjusted.Year, adjusted.Month, adjusted.Day, adjusted.Hour, adjusted.Minute, adjusted.Second);
+            
+            return returnDate;
         }
 
     }
