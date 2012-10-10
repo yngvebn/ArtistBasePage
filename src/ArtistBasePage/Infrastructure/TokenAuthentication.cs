@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using ArtistBasePage.Areas.v1.Controllers;
+using ArtistBasePage.Areas.v1.Core;
 using Domain.Core;
 using ActionFilterAttribute = System.Web.Http.Filters.ActionFilterAttribute;
 

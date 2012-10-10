@@ -1,7 +1,5 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
+using ArtistBasePage.Areas.v1.Core;
 using ArtistBasePage.Infrastructure;
 using Domain;
 using Domain.Commands;
@@ -25,12 +23,7 @@ namespace ArtistBasePage.Areas.v1.Controllers
         {
             return _mapper.Map<ArtistViewModel>(_artistRepository.Get(ArtistId));
         }
-
-        // POST api/general
-        public void Post([FromBody]string value)
-        {
-        }
-
+        
         public void Put([FromBody]ArtistViewModel artist)
         {
             Execute(new UpdateArtistCommand()
@@ -40,9 +33,5 @@ namespace ArtistBasePage.Areas.v1.Controllers
                         });
         }
 
-        // DELETE api/general/5
-        public void Delete(int id)
-        {
-        }
     }
 }

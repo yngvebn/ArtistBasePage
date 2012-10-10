@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Web.Http;
+using ArtistBasePage.Areas.v1.Core;
 using ArtistBasePage.Areas.v1.ViewModels;
 using ArtistBasePage.Infrastructure;
 using Domain.Commands;

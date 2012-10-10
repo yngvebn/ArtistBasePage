@@ -170,6 +170,9 @@
     <Compile Include="Areas\Admin\Controllers\ExternalController.cs" />
     <Compile Include="Areas\OAuth\Controllers\FlickrController.cs" />
     <Compile Include="Areas\OAuth\OAuthAreaRegistration.cs" />
+    <Compile Include="Areas\v1\Orchestrators\EventOrchestrator.cs" />
+    <Compile Include="Areas\v1\Orchestrators\IEventOrchestrator.cs" />
+    <Compile Include="Areas\v1\Orchestrators\Orchestrator.cs" />
     <Compile Include="Infrastructure\Flickr\FlickrConfig.cs" />
     <Compile Include="Areas\Admin\Controllers\GeneralController.cs" />
     <Compile Include="Areas\Admin\Controllers\PicturesController.cs" />
@@ -177,15 +180,12 @@
     <Compile Include="Areas\Admin\Hubs\AdminHub.cs" />
     <Compile Include="Areas\Admin\Hubs\EventsHub.cs" />
     <Compile Include="Areas\Admin\ViewModels\NotificationViewModel.cs" />
-    <Compile Include="Areas\v1\Controllers\Default1Controller.cs" />
     <Compile Include="Areas\v1\Controllers\EventController.cs" />
     <Compile Include="Areas\v1\Controllers\LastFmController.cs" />
-    <Compile Include="Areas\v1\Controllers\PicturesController.cs" />
     <Compile Include="Areas\v1\ViewModels\EventViewModel.cs" />
     <Compile Include="Areas\v1\ViewModels\LastFmInfoViewModel.cs" />
     <Compile Include="Areas\v1\Controllers\NotificationController.cs" />
-    <Compile Include="Areas\v1\Controllers\SocialNetworksController.cs" />
-    <Compile Include="Areas\v1\Controllers\TokenApiController.cs" />
+    <Compile Include="Areas\v1\Core\TokenApiController.cs" />
     <Compile Include="Areas\v1\ViewModels\SocialNetworkViewModel.cs" />
     <Compile Include="Infrastructure\AuthenticationService.cs" />
     <Compile Include="Infrastructure\EventHandlers\DisplayLastFmOptionsWhenUserIsConnected.cs" />
@@ -231,6 +231,7 @@
     <Compile Include="Infrastructure\Installers\DotLastFmInstaller.cs" />
     <Compile Include="Infrastructure\Installers\FacebookApiInstaller.cs" />
     <Compile Include="Infrastructure\Installers\INinjectInstaller.cs" />
+    <Compile Include="Infrastructure\Installers\OrchestratorInstaller.cs" />
     <Compile Include="Infrastructure\LastFm\LastFmConfig.cs" />
     <Compile Include="Infrastructure\Mapper.cs" />
     <Compile Include="Infrastructure\Mappings\DomainMappings.cs" />

@@ -1,13 +1,8 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
-using System.Web.Mvc;
 using ArtistBasePage.Infrastructure;
-using Domain.Core;
 using Infrastructure.Commands;
 
-namespace ArtistBasePage.Areas.v1.Controllers
+namespace ArtistBasePage.Areas.v1.Core
 {
     [TokenAuthentication]
     public class TokenApiController: ApiController
@@ -19,9 +14,5 @@ namespace ArtistBasePage.Areas.v1.Controllers
         }
         public int ArtistId { get; set; }
         public bool CanWrite { get; set; }
-        public TokenApiController()
-        {
-        }
-
     }
 }
