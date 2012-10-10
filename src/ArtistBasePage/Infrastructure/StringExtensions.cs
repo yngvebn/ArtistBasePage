@@ -26,14 +26,11 @@ namespace ArtistBasePage.Infrastructure
     {
         public static DateTime ToLocalTime(this DateTime date, string timeZone)
         {
-            TimeZoneInfo timeZoneInfo;
-            DateTime dateTime;
-            //Set the time zone information to US Mountain Standard Time 
-            timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
+            var timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
             var utc = TimeZoneInfo.ConvertTimeToUtc(date, timeZoneInfo);
             var currentUtcOffset = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now);
             var adjusted = utc.Add(currentUtcOffset);
-            DateTime returnDate = new DateTime(adjusted.Year, adjusted.Month, adjusted.Day, adjusted.Hour, adjusted.Minute, adjusted.Second);
+            var returnDate = new DateTime(adjusted.Year, adjusted.Month, adjusted.Day, adjusted.Hour, adjusted.Minute, adjusted.Second);
             
             return returnDate;
         }

@@ -168,6 +168,7 @@
     <Compile Include="Areas\Admin\Controllers\AuthenticateController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExternalController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SongsController.cs" />
     <Compile Include="Areas\OAuth\Controllers\FlickrController.cs" />
     <Compile Include="Areas\OAuth\OAuthAreaRegistration.cs" />
     <Compile Include="Areas\v1\Orchestrators\EventOrchestrator.cs" />
