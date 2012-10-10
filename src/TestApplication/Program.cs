@@ -10,20 +10,48 @@ using Youtube.Api;
 
 namespace TestApplication
 {
-    class 
+    class
         Program
     {
         static void Main(string[] args)
         {
-            IYoutubeConfig config = new YoutubeConfig();
-            IYoutubeApi youtubeApi = new YoutubeApi(config);
+            DateTime dt = new DateTime(2012, 10, 30, 10, 30, 00);
+            var local = dt.ToLocalTime("Pacific standard time");
 
-
-            var ev = youtubeApi.User.GetUserFeed("arnevatnoy");
         }
     }
+    public static class DateTimeExtensions
+    {
+        public static DateTime ToLocalTime(this DateTime date, string timeZone)
+        {
+            TimeZoneInfo timeZoneInfo;
+            DateTime dateTime;
+            //Set the time zone information to US Mountain Standard Time 
+            timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
+            var utc = TimeZoneInfo.ConvertTimeToUtc(date, timeZoneInfo);
+            var currentUtcOffset = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now);
+            return utc.Add(currentUtcOffset);
+        }
 
-    internal class YoutubeConfig: IYoutubeConfig
+        public static DateTimeOffset ReadStringWithTimeZone(DateTime EnteredDate, TimeZoneInfo tzi)
+        {
+            DateTimeOffset cvUTCToTZI = TimeZoneInfo.ConvertTime(DateTimeOffset.UtcNow, tzi);
+            DateTimeOffset cvParsedDate = DateTimeOffset.MinValue;
+            DateTimeOffset.TryParse(EnteredDate + " " + cvUTCToTZI.ToString("zzz"), out cvParsedDate);
+            if (tzi.SupportsDaylightSavingTime)
+            {
+                TimeSpan getDiff = tzi.GetUtcOffset(cvParsedDate);
+                string MakeFinalOffset = (getDiff.Hours < 0 ? "-" : "+") + (getDiff.Hours > 9 ? "" : "0") + getDiff.Hours + ":" + (getDiff.Minutes > 9 ? "" : "0") + getDiff.Minutes;
+                DateTimeOffset.TryParse(EnteredDate + " " + MakeFinalOffset, out cvParsedDate);
+                return cvParsedDate;
+            }
+            else
+            {
+                return cvParsedDate;
+            }
+        }
+    }
+    internal class YoutubeConfig : IYoutubeConfig
     {
         public string BaseUrl { get { return "https://gdata.youtube.com/feeds/api"; } }
         public string ClientId { get { return "159997617394589"; } }

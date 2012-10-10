@@ -15,7 +15,7 @@ namespace ArtistBasePage.Infrastructure
         private readonly IArtistRepository _artistRepository;
         private readonly ITokenRepository _tokenRepository;
 
-        public TokenAuthentication(bool requireToken = false)
+        public TokenAuthentication(bool requireToken =true)
         {
             RequireToken = requireToken;
             _artistRepository = DependencyResolver.Current.GetService<IArtistRepository>();

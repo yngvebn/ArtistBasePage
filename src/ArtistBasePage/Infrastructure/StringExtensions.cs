@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -29,11 +30,11 @@ namespace ArtistBasePage.Infrastructure
             DateTime dateTime;
             //Set the time zone information to US Mountain Standard Time 
             timeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(timeZone);
-
-            dateTime = TimeZoneInfo.ConvertTime(date, timeZoneInfo, TimeZoneInfo.Local);
-            //Print out the date and time
-            return dateTime;
+            var utc = TimeZoneInfo.ConvertTimeToUtc(date, timeZoneInfo);
+            var currentUtcOffset = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now);
+            return utc.Add(currentUtcOffset);
         }
+
     }
 
     public static class TimeZones
