@@ -413,16 +413,16 @@ div.modal-overlay {
     background-color: #aaa;
     opacity: 0;
 }
+
 div#new-event {
     height: 400px;
 }
-div#new-event section > div {
-    height: 300px;
-    position: absolute;
-    top: 50px;
-    
 
-}
+    div#new-event section > div {
+        height: 300px;
+        position: absolute;
+        top: 50px;
+    }
 
 .event-source-selector {
     width: 480px;
@@ -443,17 +443,39 @@ div#new-event section > div {
         border: 3px solid #f3f3f3;
         text-align: center;
     }
-    .event-source-selector .selector > * {
-        margin: 10px;
-    }
-    .event-source-selector .selector p {
-        position: absolute;
-        bottom: 0;
-    }
+
+        .event-source-selector .selector > * {
+            margin: 10px;
+        }
+
+        .event-source-selector .selector p {
+            position: absolute;
+            bottom: 0;
+        }
 
         .event-source-selector .selector:hover {
-               -webkit-box-shadow: -2px 0px 20px 0px rgba(1, 1, 1, 0.5);
-    box-shadow: -2px 0px 20px 0px rgba(1, 1, 1, 0.5);
-    background-color: #e8f2f9;
- 
+            -webkit-box-shadow: -2px 0px 20px 0px rgba(1, 1, 1, 0.5);
+            box-shadow: -2px 0px 20px 0px rgba(1, 1, 1, 0.5);
+            background-color: #e8f2f9;
         }
+
+#step2_facebook input {
+    width: 80%;   
+}
+
+ul.facebook-autocomplete {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+    ul.facebook-autocomplete li {
+        background-color: aliceblue;
+        line-height: 24px;
+        padding: 20px;
+    }
+
+        ul.facebook-autocomplete li a {
+            
+        }
+
