@@ -207,6 +207,7 @@
     <Content Include="Areas\Admin\Scripts\ko.vm.general.js" />
     <Content Include="Areas\Admin\Scripts\ko.vm.newevent.js" />
     <Content Include="Areas\Admin\Scripts\resources.js" />
+    <Content Include="Areas\Admin\Scripts\throttleSearch.js" />
     <Content Include="Content\icons\mail.png" />
     <Content Include="Content\images\add-event.png" />
     <Content Include="Content\images\Check_large.png" />
@@ -219,6 +220,7 @@
     <Content Include="Scripts\amplify.js" />
     <Content Include="Scripts\amplify.min.js" />
     <Content Include="Scripts\GPL-LICENSE.txt" />
+    <Content Include="Scripts\jsuri-1.1.1.min.js" />
     <Content Include="Scripts\lib\ajaxDataAccess.js" />
     <Content Include="Content\admin\header-bg.png" />
     <Content Include="Content\admin\navigation-hover.png" />
@@ -249,6 +251,8 @@
     <Compile Include="Infrastructure\StringExtensions.cs" />
     <Compile Include="Infrastructure\TokenAuthentication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_Viewstart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />

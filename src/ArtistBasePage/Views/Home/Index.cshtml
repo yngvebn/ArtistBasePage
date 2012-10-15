@@ -3,3 +3,23 @@
 }
 
 <h2>Index</h2>
+
+<input type="text" id="name" />
+<div id="results"></div>
+@section scripts
+{
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/jsuri-1.1.1.min.js"></script>
+    <script src="~/Areas/Admin/Scripts/throttleSearch.js"></script>
+    <script type="text/javascript">
+        var throttleSearch = new ThrottleSearch();
+
+        throttleSearch.init("https://graph.facebook.com/search?type=event&q=&access_token=AAACRhFkmU50BAM6eYIH0RdXP36uUum79ei8jvEVvxc6ky1SRirPs6GXamDpbhrrDMGItELZB34xvVZAFoZCXGQkHhA9SKzaPQ8RjqHcZAAZDZD", "q", function(data) {
+            $("#results").text(JSON.stringify(data));
+        });
+
+        $("#name").keyup(function() {
+            throttleSearch.query($(this).val());
+        });
+    </script>
+}
