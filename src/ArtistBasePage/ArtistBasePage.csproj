@@ -168,7 +168,7 @@
     <Compile Include="Areas\Admin\Controllers\AuthenticateController.cs" />
     <Compile Include="Areas\Admin\Controllers\EventsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExternalController.cs" />
-    <Compile Include="Areas\Admin\Controllers\SongsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MusicController.cs" />
     <Compile Include="Areas\OAuth\Controllers\FlickrController.cs" />
     <Compile Include="Areas\OAuth\OAuthAreaRegistration.cs" />
     <Compile Include="Areas\v1\Orchestrators\EventOrchestrator.cs" />
@@ -207,6 +207,7 @@
     <Content Include="Areas\Admin\Scripts\ko.vm.controls.js" />
     <Content Include="Areas\Admin\Scripts\ko.vm.events.js" />
     <Content Include="Areas\Admin\Scripts\ko.vm.general.js" />
+    <Content Include="Areas\Admin\Scripts\ko.vm.music.js" />
     <Content Include="Areas\Admin\Scripts\ko.vm.newevent.js" />
     <Content Include="Areas\Admin\Scripts\resources.js" />
     <Content Include="Areas\Admin\Scripts\throttleSearch.js" />
@@ -218,6 +219,7 @@
     <Content Include="Areas\Admin\Views\FlickrAuth\AuthCallback.cshtml" />
     <Content Include="Areas\OAuth\Views\Web.config" />
     <Content Include="Areas\OAuth\Views\Flickr\Success.cshtml" />
+    <Content Include="Areas\Admin\Views\Music\Index.cshtml" />
     <None Include="Scripts\amplify-vsdoc.js" />
     <Content Include="Scripts\amplify.js" />
     <Content Include="Scripts\amplify.min.js" />

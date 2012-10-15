@@ -1,10 +1,6 @@
-﻿console.log(Helpers.currentScriptTag().data("token"));
-
-
+﻿
 
 function NewEventViewModel() {
-    var eventDataAccess = new AjaxDataAccess();
-    
     var self = this;
     self.facebookUrl = ko.observable();
     self.title = ko.observable();
@@ -34,7 +30,7 @@ function NewEventViewModel() {
 
     self.selectFacebookEvent = function(item) {
         self.facebookEventId(item.id);
-        eventDataAccess.create(Resources.api.event, ko.toJSON({ FacebookEventId: self.facebookEventId() }), function () {
+        API.event.create(ko.toJSON({ FacebookEventId: self.facebookEventId() }), function () {
             $("#step2_facebook").fadeOut(200);
             $("#finish_facebook").fadeIn(200);
             amplify.publish(Resources.amplify.eventWasAdded);
@@ -68,7 +64,7 @@ Startup.registerStart(function () {
     
     var facebookTokenAccess = new AjaxDataAccess();
 
-    facebookTokenAccess.get(Resources.api.facebookToken, function (data) {
+    API.facebookToken.get(function (data) {
         newEventViewModel.setFacebookToken(data);
     });
 

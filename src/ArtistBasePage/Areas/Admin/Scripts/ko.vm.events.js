@@ -14,14 +14,13 @@
         }
     });
     self.remove = function(item) {
-        var eventsDataAccess = new AjaxDataAccess();
         var deleteText = "";
         if (self.source() == 1) {
             deleteText = "This event is created on Facebook. Deleting it will only hide it from your site, it will still exist on Facebook. To permanently delete it you have to do so on Facebook";
         }
 
         dialog.confirm("Really delete this event?", deleteText, function() {
-            eventsDataAccess.remove(Resources.api.event+"/"+item.id()+"?source="+self.source(), null, function() {
+            API.event.remove({ id: item.id(), source: self.source() }, function() {
                 amplify.publish(Resources.amplify.eventWasAdded);
             });
         });
@@ -30,11 +29,10 @@
 
 function EventsViewModel() {
     var self = this;
-    var eventsDataAccess = new AjaxDataAccess();
     self.events = ko.observableArray();
 
     self.load = function() {
-        eventsDataAccess.get(Resources.api.event, function (data) {
+        API.event.get(function (data) {
             self.events([]);
             $.each(data, function(i, ev) {
                 self.events.push(new EventViewModel(ev));

@@ -40,7 +40,7 @@
             
             self.save = function() {
                 self.saving(true);
-                lastFmDataAccess.save("/api/v1/lastfm", ko.mapping.toJSON(this), function() {
+                API.lastfm.save(ko.mapping.toJSON(this), function() {
                     self.saving(false);
                 });
             };
@@ -50,9 +50,8 @@
 
         var lastFmSettingsViewModel;
         $(function () {
-            lastFmDataAccess = new AjaxDataAccess();
             lastFmSettingsViewModel = new LastFmSettingsViewModel();
-            lastFmDataAccess.get("/api/v1/lastfm", function (data) {
+            API.lastfm.get(function (data) {
                 ko.mapping.fromJS(data, {}, lastFmSettingsViewModel);
             });
             ko.applyBindings(lastFmSettingsViewModel, document.getElementById('main'));

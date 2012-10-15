@@ -460,7 +460,7 @@ div#new-event {
         }
 
 #step2_facebook input {
-    width: 80%;   
+    width: 80%;
 }
 
 ul.facebook-autocomplete {
@@ -476,6 +476,54 @@ ul.facebook-autocomplete {
     }
 
         ul.facebook-autocomplete li a {
-            
         }
 
+
+ul.horizontal {
+    list-style: none;
+}
+
+    ul.horizontal li {
+        float: left;
+        margin: 30px;
+    }
+
+
+.playlist {
+    display: block;
+    height: 165px;
+    width: 90px;
+    font-size: 18px;
+    line-height: 165px;
+    color: #7D8F9D;
+    text-align: center;
+    outline: solid 6px #7D8F9D;
+    cursor: pointer;
+}
+
+.playlist > span {
+    padding-top: 10px;
+    display: block;
+    line-height: 18px;
+}
+.playlist > span > em {
+    font-weight: bold;
+    color: #333;
+}
+.new-playlist {
+    float: left;
+    display: block;
+    height: 165px;
+    width: 90px;
+    font-size: 48px;
+    line-height: 150px;
+    color: #999;
+    text-align: center;
+    outline: dashed 6px #999;
+    cursor: pointer;
+}
+
+    .new-playlist:hover {
+        color: #555;
+        outline: dashed 6px #555;
+    }

@@ -1,6 +1,7 @@
-﻿var AjaxDataAccess = (function () {
-
-    var ajax = function (method, url, successCallback, data) {
+﻿var AjaxDataAccess = (function (apiUrl) {
+    var url = apiUrl;
+    
+    var ajax = function (method, successCallback, data) {
         $.ajax({
             headers:
                 {
@@ -18,17 +19,17 @@
     };
 
 
-    var get = function (url, success) {
-        ajax('get', url, success);
+    var get = function (success) {
+        ajax('get', success);
     };
-    var save = function(url, data, success) {
-        ajax('put', url, success, data);
+    var save = function(data, success) {
+        ajax('put', success, data);
     };
-    var create = function(url, data, success) {
-        ajax('post', url, success, data);
+    var create = function(data, success) {
+        ajax('post', success, data);
     };
-    var remove = function (url, data, success) {
-        ajax('delete', url, success, data);
+    var remove = function (data, success) {
+        ajax('delete', success, data);
     };
 
     return {

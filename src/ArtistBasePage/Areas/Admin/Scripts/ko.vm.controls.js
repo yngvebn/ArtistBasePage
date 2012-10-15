@@ -29,15 +29,14 @@ function ControlsViewModel() {
         return self.unreadNotifications().length;
     });
 
-    var notificationDataAccess = new AjaxDataAccess();
-    notificationDataAccess.get("/api/v1/notification", function (data) {
+    API.notification.get(function (data) {
         self.unreadNotifications.push(data);
     });
 
     $.connection.adminHub.notify = function (message) {
         self.unreadNotifications.push(message);
 
-        var apiDataAccess = new AjaxDataAccess();
+        
 
         var notificationBox = $(".notification");
         notificationBox.find("h3").text(message.Title);
@@ -45,7 +44,8 @@ function ControlsViewModel() {
         content.text(message.Content);
         notificationBox.find("button").text(message.CancelText);
         content.click(function () {
-            apiDataAccess.create(message.AcceptAction, {}, function () {
+            var apiDataAccess = new AjaxDataAccess(message.AcceptAction);
+            apiDataAccess.create({}, function () {
                 console.log('done');
             });
         });

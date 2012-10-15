@@ -1,6 +1,4 @@
-﻿var artistDataAccess = new AjaxDataAccess();
-
-function GeneralViewModel() {
+﻿function GeneralViewModel() {
     var self = this;
     self.loading = ko.observable(true);
     self.saving = ko.observable(false);
@@ -11,7 +9,7 @@ function GeneralViewModel() {
 
     self.save = function () {
         self.saving(true);
-        artistDataAccess.save(Resources.api.artist, ko.mapping.toJSON(this), function (data) {
+        API.artist.save(ko.mapping.toJSON(this), function (data) {
             self.saving(false);
         });
     };
@@ -21,7 +19,7 @@ function GeneralViewModel() {
 function MainViewModel() {
     var self = this;
     self.general = ko.observable(new GeneralViewModel());
-    artistDataAccess.get(Resources.api.artist, function (data) {
+    API.artist.get(function (data) {
         ko.mapping.fromJS(data, {}, self.general);
         self.general().loading(false);
     });
