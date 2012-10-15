@@ -203,6 +203,7 @@
     <Compile Include="Areas\v1\v1AreaRegistration.cs" />
     <Compile Include="Areas\v1\ViewModels\ApiSessionViewModel.cs" />
     <Content Include="Areas\Admin\Scripts\dialog.js" />
+    <Content Include="Areas\Admin\Scripts\fileUpload.js" />
     <Content Include="Areas\Admin\Scripts\ko.extensions.js" />
     <Content Include="Areas\Admin\Scripts\ko.vm.controls.js" />
     <Content Include="Areas\Admin\Scripts\ko.vm.events.js" />
