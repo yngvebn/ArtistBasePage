@@ -2,13 +2,6 @@
 
 namespace ArtistBasePage.Areas.v1.ViewModels
 {
-    public class CreateEventViewModel
-    {
-        public string Title { get; set; }
-        public DateTime Start { get; set; }
-        public string FacebookEventId { get; set; }
-    }
-
     public class EventViewModel
     {
         public string Id { get; set; }
@@ -27,12 +20,5 @@ namespace ArtistBasePage.Areas.v1.ViewModels
                         : Description;
             }
         }
-    }
-
-    public enum EventOrigin
-    {
-        Site,
-        Facebook,
-        LastFm
     }
 }

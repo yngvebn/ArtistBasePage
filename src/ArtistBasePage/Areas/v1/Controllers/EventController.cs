@@ -27,15 +27,6 @@ namespace ArtistBasePage.Areas.v1.Controllers
             return _orchestrator.Get(ArtistId);
         }
 
-        [HttpGet]
-        public EventViewModel Facebook(string url)
-        {
-            Uri uri = new Uri(url);
-            var id = uri.Segments[2].Replace("/", "");
-            var ev = _facebookExternalRepository.GetEvent(id);
-            return _mapper.Map<EventViewModel>(ev);
-        }
-
         [HttpDelete]
         public void Delete(string id, int source)
         {
