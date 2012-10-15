@@ -4,22 +4,38 @@
 
 <h2>Index</h2>
 
-<input type="text" id="name" />
+<input type="text" id="name" data-bind="valueUpdate: 'keyup', value: search" />
+<ul data-bind="foreach: results">
+    <li data-bind="text: name"></li>
+</ul>
 <div id="results"></div>
 @section scripts
 {
     <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/knockout-2.1.0.js"></script>
     <script src="~/Scripts/jsuri-1.1.1.min.js"></script>
     <script src="~/Areas/Admin/Scripts/throttleSearch.js"></script>
     <script type="text/javascript">
-        var throttleSearch = new ThrottleSearch();
+        
+        function MyViewModel() {
+            var self = this;
+            self.search = ko.observable();
+            self.results = ko.observableArray();
+            var throttleSearch = new ThrottleSearch();
 
-        throttleSearch.init("https://graph.facebook.com/search?type=event&q=&access_token=AAACRhFkmU50BAM6eYIH0RdXP36uUum79ei8jvEVvxc6ky1SRirPs6GXamDpbhrrDMGItELZB34xvVZAFoZCXGQkHhA9SKzaPQ8RjqHcZAAZDZD", "q", function(data) {
-            $("#results").text(JSON.stringify(data));
-        });
+            throttleSearch.init("https://graph.facebook.com/search?type=event&q=&access_token=AAACRhFkmU50BACuyLZBwBLZALFzOFBxZCTHiLXH407a1xZAkGMEvn4XqNYcG2OuRLnKNADT78jjV3osyKt18q3gyIyWF43zKColrsunl9gZDZD", "q", function (data) {
+                if (data !== null)
+                    self.results(data.data);
+            });
 
-        $("#name").keyup(function() {
-            throttleSearch.query($(this).val());
-        });
+
+            self.search.subscribe(function() {
+                throttleSearch.query(self.search());
+            });
+        }
+
+        var vm = new MyViewModel();
+        ko.applyBindings(vm);
+       
     </script>
 }
