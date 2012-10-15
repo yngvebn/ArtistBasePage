@@ -18,30 +18,21 @@
         <div id="step2_facebook" style="display: none;">
             <p>
                 <label for="facebook_url">Paste the address to your event here:</label><br />
-                <input data-bind="value: facebookUrl" type="text" style="width: 95%;" name="facebook_url" /><br />
-                <em>How? Go to the event on Facebook, and copy the address from the address-bar on your browser. It will look something like
-                        this: https://www.facebook.com/events/331218348435
-                </em>
-                <p>
-                    <button class="btn" data-bind="click: lookupFacebookEvent">Continue</button>
-                </p>
-            </p>
-        </div>
-        <div id="step3_facebook" style="display:none;">
-            <p>
-                
-                <strong>This is what we found:</strong>
-                <h4 data-bind="text: title"></h4>
-                <p data-bind="text: description"></p>
+                <input data-bind="value: facebookUrl, valueUpdate: 'keyup'" type="text" style="width: 95%;" name="facebook_url" /><br />
+                <ul data-bind="foreach: results">
+                    <li><a href="#"  data-bind="click: $parent.selectFacebookEvent, text: name"></a></li>
+                </ul>
 
             </p>
-            <p><button class="btn" data-bind="click: addFacebookEvent">Yup, that's the one. Add it!</button></p>
-
         </div>
-        <div id="finish_facebook" style="display:none; padding-top:40px; text-align:center;">
+        <div id="step3_facebook" style="display: none;">
+      
+        </div>
+        <div id="finish_facebook" style="display: none; padding-top: 40px; text-align: center;">
             <p>
                 <h3>Great! All done</h3>
-                <p>You've added the event <em data-bind="text: title"></em> to your events. Any changes you make on Facebook will be reflected when this event is displayed on your web-site.
+                <p>
+                    You've added the event <em data-bind="text: title"></em>to your events. Any changes you make on Facebook will be reflected when this event is displayed on your web-site.
 
                 </p>
                 <p>

@@ -5,6 +5,7 @@ namespace Domain.Core
     public interface IFacebookExternalRepository
     {
         Facebook.Models.Event GetEvent(string id);
+        string GetAccessToken();
     }
 
     public class FacebookExternalRepository : IFacebookExternalRepository
@@ -23,6 +24,11 @@ namespace Domain.Core
                 ev.Venue = _api.Event.GetLocation(ev.Venue.Id);
 
             return ev;
+        }
+
+        public string GetAccessToken()
+        {
+            return _api.Auth.GetAccessToken().Token;
         }
     }
 }

@@ -1,40 +1,56 @@
-﻿function NewEventViewModel() {
-    var eventDataAccess = new AjaxDataAccess();
+﻿console.log(Helpers.currentScriptTag().data("token"));
 
+
+
+function NewEventViewModel() {
+    var eventDataAccess = new AjaxDataAccess();
+    
     var self = this;
     self.facebookUrl = ko.observable();
     self.title = ko.observable();
     self.description = ko.observable();
     self.facebookEventId = ko.observable();
+    self.facebookToken = ko.observable();
+    self.results = ko.observableArray();
+    
     self.createFromFacebook = function () {
         console.log('create from facebook');
         $("#step1").fadeOut(200);
         $("#step2_facebook").fadeIn(200);
     };
 
-    self.lookupFacebookEvent = function () {
-        eventDataAccess.get(Resources.api.event + "/facebook?url=" + self.facebookUrl(), function (data) {
-            console.log(data);
-            $("#step2_facebook").fadeOut(200);
-            self.facebookEventId(data.id);
-            self.title(data.title);
-            self.description(data.shortDescription);
-            $("#step3_facebook").fadeIn(200);
+    self.throttleSearch = new ThrottleSearch();
+
+    self.setFacebookToken = function (token) {
+        console.log("Facebook token: " + token);
+        self.facebookToken(token);
+        
+        self.throttleSearch.init("https://graph.facebook.com/search?type=event&q=&access_token="+self.facebookToken(), "q", function (data) {
+            if (data !== null)
+                self.results(data.data);
         });
+
     };
 
-    self.addFacebookEvent = function () {
+    self.selectFacebookEvent = function(item) {
+        self.facebookEventId(item.id);
         eventDataAccess.create(Resources.api.event, ko.toJSON({ FacebookEventId: self.facebookEventId() }), function () {
-            $("#step3_facebook").fadeOut(200);
+            $("#step2_facebook").fadeOut(200);
             $("#finish_facebook").fadeIn(200);
             amplify.publish(Resources.amplify.eventWasAdded);
         });
     };
+
+    self.facebookUrl.subscribe(function () {
+        self.throttleSearch.query(self.facebookUrl());
+    });
+   
     self.reset = function() {
         self.facebookUrl('');
         self.description('');
         self.facebookEventId('');
         self.title('');
+        self.results([]);
     };
     self.facebookDone = function () {
         $("#finish_facebook").fadeOut(400, function () {
@@ -45,6 +61,15 @@
 }
 
 Startup.registerStart(function () {
+    
+
     var newEventViewModel = new NewEventViewModel();
     ko.applyBindings(newEventViewModel, document.getElementById("new-event"));
+    
+    var facebookTokenAccess = new AjaxDataAccess();
+
+    facebookTokenAccess.get(Resources.api.facebookToken, function (data) {
+        newEventViewModel.setFacebookToken(data);
+    });
+
 });

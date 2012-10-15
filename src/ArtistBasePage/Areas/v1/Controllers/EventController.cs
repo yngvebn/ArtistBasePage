@@ -4,22 +4,32 @@ using System.Web.Http;
 using ArtistBasePage.Areas.v1.Core;
 using ArtistBasePage.Areas.v1.Orchestrators;
 using ArtistBasePage.Areas.v1.ViewModels;
-using ArtistBasePage.Infrastructure;
 using Domain.Core;
 
 namespace ArtistBasePage.Areas.v1.Controllers
 {
+
+    public class FacebookTokenController: TokenApiController
+    {
+        private readonly IFacebookExternalRepository _facebookExternalRepository;
+
+        public FacebookTokenController(IFacebookExternalRepository facebookExternalRepository)
+        {
+            _facebookExternalRepository = facebookExternalRepository;
+        }
+
+        public string Get()
+        {
+            return _facebookExternalRepository.GetAccessToken();
+        }
+    }
     public class EventController : TokenApiController
     {
         private readonly IEventOrchestrator _orchestrator;
-        private readonly IMapper _mapper;
-        private readonly IFacebookExternalRepository _facebookExternalRepository;
 
-        public EventController(IEventOrchestrator orchestrator, IMapper mapper, IFacebookExternalRepository facebookExternalRepository)
+        public EventController(IEventOrchestrator orchestrator)
         {
             _orchestrator = orchestrator;
-            _mapper = mapper;
-            _facebookExternalRepository = facebookExternalRepository;
         }
 
         public IEnumerable<EventViewModel> Get()

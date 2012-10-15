@@ -2,10 +2,18 @@
     accessToken: '',
     api: {
         artist: '/api/v1/artist',
-        event: '/api/v1/event'
+        event: '/api/v1/event',
+        facebookToken: '/api/v1/facebookToken'
     },
     amplify: {
         eventWasAdded: 'eventWasAdded'
+    }
+};
+
+var Helpers = {
+    currentScriptTag: function() {
+        var thisScript = document.getElementsByTagName('script');
+        return $(thisScript[thisScript.length - 1]);
     }
 };
 
