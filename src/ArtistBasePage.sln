@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Youtube", "Youtube\Youtube.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flickr", "Flickr\Flickr.csproj", "{E83C8B9D-837E-406E-9670-C5C4EC5CED4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalApi", "ExternalApi\ExternalApi.csproj", "{945E4DF1-37CB-4273-93A3-D922DB89676C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{E83C8B9D-837E-406E-9670-C5C4EC5CED4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E83C8B9D-837E-406E-9670-C5C4EC5CED4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E83C8B9D-837E-406E-9670-C5C4EC5CED4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{945E4DF1-37CB-4273-93A3-D922DB89676C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{945E4DF1-37CB-4273-93A3-D922DB89676C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{945E4DF1-37CB-4273-93A3-D922DB89676C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{945E4DF1-37CB-4273-93A3-D922DB89676C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

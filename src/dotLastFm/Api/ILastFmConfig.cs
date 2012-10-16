@@ -4,6 +4,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System.Collections.Generic;
+using RestSharp;
+
 namespace DotLastFm.Api
 {
     /// <summary>
@@ -34,5 +37,6 @@ namespace DotLastFm.Api
         {
             get;
         }
+
     }
 }
