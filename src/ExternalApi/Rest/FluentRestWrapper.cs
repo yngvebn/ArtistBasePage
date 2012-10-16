@@ -30,16 +30,19 @@ namespace ExternalApi.Rest
         /// </summary>
         private readonly string method;
 
+        private readonly string resource;
         /// <summary>
         /// Initializes a new instance of the <see cref="FluentRestWrapper"/> class.
         /// </summary>
         /// <param name="restWrapper">The rest wrapper.</param>
         /// <param name="method">The method.</param>
-        public FluentRestWrapper(RestWrapper restWrapper, string method)
+        public FluentRestWrapper(RestWrapper restWrapper, string method = "", string resource = "")
         {
             this.parameters = new List<Parameter>();
             this.restWrapper = restWrapper;
             this.method = method;
+            this.resource = resource;
+
         }
 
         /// <summary>
@@ -61,7 +64,7 @@ namespace ExternalApi.Rest
         /// <returns>Returning type</returns>
         public ApiResponse<TModel> Execute<TModel>() where TModel : new()
         {
-            return this.restWrapper.Execute<TModel>(this.method, this.parameters.ToArray());
+            return this.restWrapper.Execute<TModel>(this.method, resource, this.parameters.ToArray());
         }
     }
 }

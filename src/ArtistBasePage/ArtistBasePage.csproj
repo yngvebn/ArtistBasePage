@@ -491,17 +491,17 @@
       <Project>{F0E4CE0D-99E0-480F-813A-EB88C0E719CF}</Project>
       <Name>Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dotLastFm\dotLastFm.csproj">
+    <ProjectReference Include="..\dotLastFm\Api.LastFm.csproj">
       <Project>{E20DADDD-C52D-4E51-8974-E4EF1E7A34B0}</Project>
-      <Name>dotLastFm</Name>
+      <Name>Api.LastFm</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Facebook\Facebook.csproj">
+    <ProjectReference Include="..\Facebook\Api.Facebook.csproj">
       <Project>{BC1D5DA5-FE51-42B4-98E4-E84617C7D4C0}</Project>
-      <Name>Facebook</Name>
+      <Name>Api.Facebook</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Flickr\Flickr.csproj">
+    <ProjectReference Include="..\Flickr\Api.Flickr.csproj">
       <Project>{E83C8B9D-837E-406E-9670-C5C4EC5CED4F}</Project>
-      <Name>Flickr</Name>
+      <Name>Api.Flickr</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{429E37A5-3142-432D-809E-5CA59EF7A55D}</Project>

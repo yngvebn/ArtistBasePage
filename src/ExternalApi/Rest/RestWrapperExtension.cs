@@ -17,9 +17,9 @@ namespace ExternalApi.Rest
         /// <param name="wrapper">The wrapper.</param>
         /// <param name="method">The method.</param>
         /// <returns>Fluent wrapper</returns>
-        public static FluentRestWrapper Method(this RestWrapper wrapper, string method)
+        public static FluentRestWrapper Method(this RestWrapper wrapper, string method = "", string resource = "")
         {
-            return new FluentRestWrapper(wrapper, method);
+            return new FluentRestWrapper(wrapper, method, resource);
         }
     }
 }

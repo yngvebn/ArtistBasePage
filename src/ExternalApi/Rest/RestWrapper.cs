@@ -65,29 +65,30 @@ namespace ExternalApi.Rest
         /// <param name="method">The method.</param>
         /// <param name="parameters">The parameters.</param>
         /// <returns>Created model</returns>
-        public ApiResponse<TModel> Execute<TModel>(string method, params Parameter[] parameters) where TModel : new()
+        public ApiResponse<TModel> Execute<TModel>(string method, string resource = null, params Parameter[] parameters) where TModel : new()
         {
-            var request = new RestRequest(Method.GET);
+            var request = new RestRequest(resource ?? "", Method.GET);
 
             request.AddParameter("method", method, ParameterType.GetOrPost);
             foreach (var p in parameters)
             {
                 request.AddParameter(p);
             }
+                
+            var responseObject = Client.Execute(request);
+            var response = Newtonsoft.Json.JsonConvert.DeserializeObject<TModel>(responseObject.Content);
 
-            var response = Client.Execute<TModel>(request);
-
-            if (response.StatusCode != HttpStatusCode.OK)
+            if (responseObject.StatusCode != HttpStatusCode.OK)
             {
-                return ApiResponse<TModel>.Fail(new WebException(string.Format("API has returned {0} HTTP error: {1}", (int) response.StatusCode, response.ErrorMessage)));
+                return ApiResponse<TModel>.Fail(new WebException(string.Format("API has returned {0} HTTP error: {1}", (int)responseObject.StatusCode, responseObject.ErrorMessage)));
             }
 
-            if (response.Data == null)
+            if (response == null)
             {
                 return ApiResponse<TModel>.Fail(new InvalidOperationException("Response cannot get data."));
             }
 
-            return ApiResponse<TModel>.Success(response.Data);
+            return ApiResponse<TModel>.Success(response);
         }
     }
 }

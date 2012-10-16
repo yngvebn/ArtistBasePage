@@ -36,11 +36,6 @@ namespace Facebook
 
         public IAuthenticationApi Auth { get; private set; }
 
-        public void Authenticate()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public IEventApi Event
         {
             get;
