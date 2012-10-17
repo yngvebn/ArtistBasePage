@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+
+
+<div class="form center">
+<h1>Register a free account!</h1>    
+    @using(Html.BeginForm())
+    {
+        <p><label for="username">Username</label><input type="text" name="username" /></p>
+        <p><label for="password">Password</label><input type="password" name="password" /></p>
+        <p><label for="password">Confirm password</label><input type="password" name="comparePassword" /></p>
+        <p><input type="submit" value="Register" class="btn-primary"/></p>
+    }
+</div>

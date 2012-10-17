@@ -7,6 +7,7 @@ namespace Domain.Core
     {
         UserLogin Get(string username);
         UserLogin GetByConnectionId(string connectionId);
+        void Create(string username, string password);
     }
 
     public class UserLoginRepository: IUserLoginRepository
@@ -35,6 +36,14 @@ namespace Domain.Core
             {
                 return
                     session.Session.Set<UserLogin>().SingleOrDefault(c => c.SignalRConnections.Any(s => s.ConnectionId == connectionId));
+            }
+        }
+
+        public void Create(string username, string password)
+        {
+            using(var session = _sessionManager.OpenSession())
+            {
+                session.Session.Set<UserLogin>().Add(UserLogin.Create(username, password));
             }
         }
     }

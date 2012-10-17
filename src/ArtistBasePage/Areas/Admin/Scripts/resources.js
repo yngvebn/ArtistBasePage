@@ -23,7 +23,7 @@ var API = {
 var Helpers = {
     currentScriptTag: function() {
         var thisScript = document.getElementsByTagName('script');
-        return $(thisScript[thisScript.length - 1]);
+        return thisScript[thisScript.length - 1];
     }
 };
 

@@ -3,27 +3,24 @@
 }
 
 
-      <div class="span5 module">
-          <h3>Pleas log in</h3>
-          
-              <section class="content">
-          
-                  @using (Html.BeginForm())
-                  {
-                      <p class="text">
-                          <label for="username">Username</label>
-                          <input type="text" name="username" />
-                      </p>
-                      <p class="text">
-                          <label for="password">Password</label>
-                          <input type="password" name="password" />
-                      </p>
-                      <p>
-                          <input type="submit" value="Log in" class="btn-primary" />
-                      </p>
-                      <input type="hidden" name="returnUrl" value="@Request["ReturnUrl"]"/>
-                  }
-              </section>
-          
-          
-      </div>
+<div class="form center">
+    <h1>Please log in</h1>
+
+        @using (Html.BeginForm())
+        {
+            <p class="text">
+                <label for="username">Username</label>
+                <input type="text" name="username" />
+            </p>
+            <p class="text">
+                <label for="password">Password</label>
+                <input type="password" name="password" />
+            </p>
+            <p>
+                <input type="submit" value="Log in" class="btn-primary" />
+            </p>
+            <input type="hidden" name="returnUrl" value="@Request["ReturnUrl"]"/>
+        }
+    <footer><a href="/admin/authenticate/register">Not registered?</a></footer>
+
+</div>

@@ -24,6 +24,11 @@ namespace ArtistBasePage.Infrastructure
             return login.Artists;
         }
 
+        public bool Validate(string username, string password)
+        {
+            return _userLoginRepository.Get(username).Password.Equals(password.Encrypt());
+        }
+
         public void Login(string username)
         {
             FormsAuthentication.SetAuthCookie(username, true);

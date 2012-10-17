@@ -8,6 +8,7 @@ h1, h2, h3, h4, h5 {
     font-weight: bold;
     margin: 0 0 .5em;
     line-height: 1em;
+    color: #444;
 }
 
 h2 {
@@ -526,4 +527,51 @@ ul.horizontal {
     .new-playlist:hover {
         color: #555;
         outline: dashed 6px #555;
+    }
+
+
+    .form {
+        width: 360px;
+        margin-top: 40px;
+    }
+
+    .form label {
+        font-size: 24px;
+        display: block;
+    }
+    .form h1 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .form input[type=text] {
+        font-size: 24px;
+        line-height: 36px;
+        height: 36px;
+        border-radius: 8px;
+        width: 350px;
+    }
+    .form input[type=password] {
+        font-size: 24px;
+        border-radius: 8px;
+        line-height: 36px;
+        height: 36px;
+        width: 350px;
+    }
+    .form input[type=submit] {
+             font-size: 24px;
+        border-radius: 8px;
+        line-height: 36px;
+        height: 36px;
+        width: 365px;
+    }
+
+    input.centered {
+        text-align: center;
+    }
+
+    .center {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
     }

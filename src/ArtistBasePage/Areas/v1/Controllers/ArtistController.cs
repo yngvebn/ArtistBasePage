@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Web;
+using System.Web.Http;
 using ArtistBasePage.Areas.v1.Core;
 using ArtistBasePage.Infrastructure;
 using Domain;
@@ -22,6 +23,16 @@ namespace ArtistBasePage.Areas.v1.Controllers
         public ArtistViewModel Get()
         {
             return _mapper.Map<ArtistViewModel>(_artistRepository.Get(ArtistId));
+        }
+
+        [TokenAuthentication(RequireToken = false)]
+        public void Post([FromBody]NewArtistViewModel artist)
+        {
+            Execute(new AddNewArtist()
+                        {
+                            Creator = artist.Creator,
+                            Name = artist.Name
+                        });
         }
         
         public void Put([FromBody]ArtistViewModel artist)

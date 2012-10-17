@@ -8,5 +8,6 @@ namespace ArtistBasePage.Infrastructure
         IEnumerable<Artist> GetUserArtists(string username, string password);
         void Login(string username);
         void Logout();
+        bool Validate(string username, string password);
     }
 }

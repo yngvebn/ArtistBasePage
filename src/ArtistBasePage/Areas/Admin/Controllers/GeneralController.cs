@@ -23,5 +23,10 @@ namespace ArtistBasePage.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult NewArtist()
+        {
+            return View();
+        }
+
     }
 }

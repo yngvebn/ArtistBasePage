@@ -12,4 +12,10 @@ namespace ArtistBasePage.Areas.v1.Controllers
         public string Bio { get; set; }
         public DateTime Created { get; set; }
     }
+
+    public class NewArtistViewModel
+    {
+        public string Creator { get; set; }
+        public string Name { get; set; }
+    }
 }

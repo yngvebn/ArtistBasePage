@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "NewArtist";
+}
+
+@section scripts{
+    <script src="~/Areas/Admin/Scripts/ko.vm.newartist.js" data-username="@User.Identity.Name"></script>
+}
+
+<div class="form center">
+    <h1>Create a new artist</h1>    
+    <input type="text" class="centered" data-bind="value: name" placeholder="Enter the name of the artist"/>
+    <button type="button" class="btn-primary" data-bind="click: create">Create!</button>
+</div>
+

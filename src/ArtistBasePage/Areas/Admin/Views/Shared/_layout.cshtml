@@ -9,6 +9,10 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/admin/site.css" rel="stylesheet" />
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <link href="~/Content/admin/anonymous.css" rel="stylesheet" />
+    }
     <script src="~/Scripts/jquery-1.8.2.min.js"></script>
     <script src="~/Scripts/jsuri-1.1.1.min.js"></script>
     <script src="~/Scripts/lib/ajaxDataAccess.js"></script>

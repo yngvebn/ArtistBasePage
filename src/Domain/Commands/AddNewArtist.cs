@@ -5,6 +5,7 @@ namespace Domain.Commands
 {
     public class AddNewArtist: Command
     {
-        public string Email { get; set; }    
+        public string Creator { get; set; }
+        public string Name { get; set; }    
     }
 }

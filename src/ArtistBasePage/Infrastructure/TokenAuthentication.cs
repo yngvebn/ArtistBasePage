@@ -15,17 +15,19 @@ namespace ArtistBasePage.Infrastructure
         private readonly IArtistRepository _artistRepository;
         private readonly ITokenRepository _tokenRepository;
 
-        public TokenAuthentication(bool requireToken =true)
+        public TokenAuthentication()
         {
-            RequireToken = requireToken;
             _artistRepository = DependencyResolver.Current.GetService<IArtistRepository>();
             _tokenRepository = DependencyResolver.Current.GetService<ITokenRepository>();
         }
 
-        public bool RequireToken { get; set; }
+        public bool RequireToken = true;
 
         public override void OnActionExecuting(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
+            var filters = actionContext.ActionDescriptor.GetFilters();
+            var tokenFilter = filters.OfType<TokenAuthentication>().SingleOrDefault();
+            if (tokenFilter != null) RequireToken = tokenFilter.RequireToken;
             if (!RequireToken)
             {
                 base.OnActionExecuting(actionContext);

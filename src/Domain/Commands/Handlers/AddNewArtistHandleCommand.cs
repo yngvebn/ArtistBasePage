@@ -1,4 +1,5 @@
-﻿using Domain.Core;
+﻿using System;
+using Domain.Core;
 using Domain.Events;
 using Infrastructure.Commands;
 using Infrastructure.DomainEvents;
@@ -7,20 +8,19 @@ namespace Domain.Commands.Handlers
 {
     public class AddNewArtistHandleCommand: IHandleCommand<AddNewArtist>
     {
-        private readonly ISessionManager _sessionManager;
+        private readonly IUserLoginRepository _userLoginRepository;
 
-        public AddNewArtistHandleCommand(ISessionManager sessionManager)
+        public AddNewArtistHandleCommand(IUserLoginRepository userLoginRepository)
         {
-            _sessionManager = sessionManager;
+            _userLoginRepository = userLoginRepository;
         }
 
         public void Handle(AddNewArtist command)
         {
-            var artist = Artist.Create(command.Email);
-            using(var session = _sessionManager.OpenSession())
-            {
-                session.Session.Set<Artist>().Add(artist);
-            }
+            var user = _userLoginRepository.Get(command.Creator);
+            if(user == null) throw new InvalidOperationException("Username is invalid");
+            var artist = Artist.Create(command.Name);
+            user.AddArtist(artist);
             DomainEvents.Raise(new ArtistWasAdded() { Artist = artist });
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using ArtistBasePage.Areas.Admin.ViewModels;
 using ArtistBasePage.Areas.v1.Controllers;
 using ArtistBasePage.Infrastructure;
 using Domain;
@@ -61,14 +62,48 @@ namespace ArtistBasePage.Areas.Admin.Controllers
             return Redirect(string.IsNullOrEmpty(returnUrl) ? "/admin/general/index" : returnUrl);
         }
 
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegisterNewUserViewModel viewModel)
+        {
+            if(ModelState.IsValid)
+            {
+                MvcApplication.CommandExecutor.ExecuteCommand(new RegisterNewUserCommand()
+                                                                  {
+                                                                      Username = viewModel.Username,
+                                                                      Password = viewModel.Password
+                                                                  });
+                _authenticationService.Login(viewModel.Username);
+                return Redirect("/admin/general/newartist");
+            }
+            else
+            {
+                return View(viewModel);
+            }
+        }
+
         [HttpPost]
         public ActionResult Login(string username, string password, string returnUrl = null)
         {
+            if(_authenticationService.Validate(username, password))
+            {
+                _authenticationService.Login(username);    
+            }
+            else
+            {
+                return View();
+            }
+
             var artists = _authenticationService.GetUserArtists(username, password);
             var userArtists = artists as Artist[] ?? artists.ToArray();
+            
             if (userArtists.Any())
             {
-                _authenticationService.Login(username);
+                
                 if (userArtists.Count() == 1)
                 {
                     Guid correlationId = Guid.NewGuid();
@@ -86,6 +121,10 @@ namespace ArtistBasePage.Areas.Admin.Controllers
                 {
                     return string.IsNullOrEmpty(returnUrl) ? Redirect("/admin/authenticate/selectartist?returnUrl=" + returnUrl) : Redirect("/admin/authenticate/selectartist");
                 }
+            }
+            else
+            {
+                return Redirect("/admin/general/newartist");
             }
             return View();
         }
