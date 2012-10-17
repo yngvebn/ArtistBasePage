@@ -1,10 +1,4 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="RestWrapper.cs" company="IxoneCz">
-//  Copyright (c) 2011 Tomas Pastorek, www.Ixone.Cz. All rights reserved.
-// </copyright>
-//-----------------------------------------------------------------------
-
-using System;
+﻿using System;
 using System.Net;
 using ExternalApi.Models;
 using RestSharp;
@@ -12,33 +6,17 @@ using RestSharp.Deserializers;
 
 namespace ExternalApi.Rest
 {
-    /// <summary>
-    /// Rest wrapper for simple calling
-    /// </summary>
     public class RestWrapper
     {
-        /// <summary>
-        /// Last.fm configuration
-        /// </summary>
         private readonly IApiConfig config;
 
-        /// <summary>
-        /// Rest client
-        /// </summary>
         private RestClient client;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RestWrapper"/> class.
-        /// </summary>
-        /// <param name="config">The config.</param>
         public RestWrapper(IApiConfig config)
         {
             this.config = config;
         }
 
-        /// <summary>
-        /// Gets the client.
-        /// </summary>
         protected virtual RestClient Client
         {
             get
@@ -58,13 +36,6 @@ namespace ExternalApi.Rest
             }
         }
 
-        /// <summary>
-        /// Executes the specified method.
-        /// </summary>
-        /// <typeparam name="TModel">The type of the model.</typeparam>
-        /// <param name="method">The method.</param>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns>Created model</returns>
         public ApiResponse<TModel> Execute<TModel>(string method, string resource = null, params Parameter[] parameters) where TModel : new()
         {
             var request = new RestRequest(resource ?? "", Method.GET);

@@ -1,6 +1,4 @@
-﻿using RestSharp;
-
-namespace ExternalApi.Rest
+﻿namespace ExternalApi.Rest
 {
     public class ExternalApiBase
     {

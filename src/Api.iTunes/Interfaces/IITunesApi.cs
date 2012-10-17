@@ -1,4 +1,4 @@
-namespace Api.iTunes
+namespace Api.iTunes.Interfaces
 {
     public interface IITunesApi
     {

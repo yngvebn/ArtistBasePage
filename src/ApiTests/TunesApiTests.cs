@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Api.iTunes;
+using Api.iTunes.Interfaces;
 using ExternalApi.Models;
 using Moq;
 using NUnit.Framework;
-using RestSharp;
 
 namespace ApiTests
 {
@@ -17,14 +15,9 @@ namespace ApiTests
         private IITunesApi api;
         public TunesApiTests()
         {
-            List<Parameter> Params = new List<Parameter>()
-                                         {
-                                             new Parameter(){ Name = "accept", Type = ParameterType.GetOrPost, Value = "application/json"}
-                                         };
             var config = new Mock<ITunesConfig>();
             config.Setup(c => c.BaseUrl).Returns("http://itunes.apple.com/");
-            config.Setup(c => c.DefaultParameters).Returns(Params);
-            api = new ITunesApi(config.Object);
+            api = new MainApi(config.Object);
         }
 
         [Test]
@@ -32,7 +25,7 @@ namespace ApiTests
         {
             var result = api.Search.Query("Madonna");
             Assert.That(result.Status, Is.EqualTo(ApiResponseStatus.Success));
-            //Assert.That(result.Data.results.Count > 0);
+            Assert.That(result.Data.Results.Count > 0);
         }
     }
 }

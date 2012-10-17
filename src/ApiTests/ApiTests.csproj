@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SoundCloudApiTests.cs" />
     <Compile Include="TunesApiTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -61,6 +62,10 @@
     <ProjectReference Include="..\Api.iTunes\Api.iTunes.csproj">
       <Project>{F43C9592-2FB9-4BBE-898A-C5E70E871F5C}</Project>
       <Name>Api.iTunes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Api.SoundCloud\Api.SoundCloud.csproj">
+      <Project>{6ED65517-3EAB-498D-A083-DEBCC118814A}</Project>
+      <Name>Api.SoundCloud</Name>
     </ProjectReference>
     <ProjectReference Include="..\ExternalApi\ExternalApi.csproj">
       <Project>{945E4DF1-37CB-4273-93A3-D922DB89676C}</Project>

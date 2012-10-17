@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F43C9592-2FB9-4BBE-898A-C5E70E871F5C}</ProjectGuid>
+    <ProjectGuid>{6ED65517-3EAB-498D-A083-DEBCC118814A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Api.iTunes</RootNamespace>
-    <AssemblyName>Api.iTunes</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Api.SoundCloud</RootNamespace>
+    <AssemblyName>Api.SoundCloud</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -39,14 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ITunesConfig.cs" />
-    <Compile Include="Interfaces\IITunesApi.cs" />
-    <Compile Include="Interfaces\ISearch.cs" />
-    <Compile Include="MainApi.cs" />
-    <Compile Include="Models\SearchResponse.cs" />
+    <Compile Include="Interfaces\ISoundCloudApi.cs" />
+    <Compile Include="Interfaces\IUsersApi.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\SearchResult.cs" />
-    <Compile Include="Search.cs" />
+    <Compile Include="SoundCloudApi.cs" />
+    <Compile Include="SoundCloudConfig.cs" />
+    <Compile Include="Users.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExternalApi\ExternalApi.csproj">

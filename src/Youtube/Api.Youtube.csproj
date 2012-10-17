@@ -58,7 +58,6 @@
     <Compile Include="Api\Rest\FluentRestWrapper.cs" />
     <Compile Include="Api\Rest\RestWrapper.cs" />
     <Compile Include="Api\Rest\RestWrapperExtension.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="YoutubeApi.cs" />
     <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Models\Event.cs" />

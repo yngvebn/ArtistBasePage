@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
-namespace Api.iTunes
+namespace Api.iTunes.Models
 {
-    public class ITunesSearchResults
+    public class SearchResponse
     {
         public List<SearchResult> Results { get; set; }
     }
