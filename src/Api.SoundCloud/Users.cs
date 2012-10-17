@@ -15,7 +15,7 @@ namespace Api.SoundCloud
         public ApiResponse<List<User>> Search(string term)
         {
             var call = Rest.Method(resource: "users.json").AddParam("q", term);
-            return call.Execute<List<User>>();
+            return call.Execute<List<User>>();  
         }
     }
 }

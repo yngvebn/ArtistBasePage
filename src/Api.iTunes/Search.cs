@@ -14,7 +14,7 @@ namespace Api.iTunes
 
         public ApiResponse<SearchResponse> Query(string term)
         {
-            var call = Rest.Method(resource: "search.json").AddParam("term", term);
+            var call = Rest.Method(resource: "search").AddParam("term", term);
             return call.Execute<SearchResponse>();
         }
     }

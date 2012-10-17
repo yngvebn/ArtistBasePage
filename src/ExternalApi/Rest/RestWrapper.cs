@@ -39,8 +39,8 @@ namespace ExternalApi.Rest
         public ApiResponse<TModel> Execute<TModel>(string method, string resource = null, params Parameter[] parameters) where TModel : new()
         {
             var request = new RestRequest(resource ?? "", Method.GET);
-
-            request.AddParameter("method", method, ParameterType.GetOrPost);
+            if(!string.IsNullOrEmpty(method))
+                request.AddParameter("method", method, ParameterType.GetOrPost);
             foreach (var p in parameters)
             {
                 request.AddParameter(p);
