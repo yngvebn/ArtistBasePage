@@ -11,19 +11,13 @@ namespace ArtistBasePage.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IArtistRepository _artistRepository;
 
-        public HomeController(IArtistRepository artistRepository)
+        public HomeController()
         {
-            _artistRepository = artistRepository;
         }
 
         public ActionResult Index()
         {
-            //MvcApplication.CommandExecutor.ExecuteCommandAsync(new AsyncCommandTest()
-            //                                                  {
-            //                                                      Hello = "lakdsjf"
-            //                                                  });
             return View();
         }
 

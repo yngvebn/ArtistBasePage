@@ -19,7 +19,6 @@ namespace ArtistBasePage.Infrastructure.Mappings
                 .ForMember(c => c.Token, opt => opt.MapFrom(f => f.Token));
 
             AutoMapper.Mapper.CreateMap<Artist, ArtistViewModel>();
-            AutoMapper.Mapper.CreateMap<SocialNetwork, SocialNetworkViewModel>();
 
             AutoMapper.Mapper.CreateMap<Notification, NotificationViewModel>();
 

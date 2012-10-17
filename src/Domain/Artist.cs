@@ -23,7 +23,6 @@ namespace Domain
         public virtual Collection<Event> Events { get; private set; }
         public virtual Collection<Album> Albums { get; private set; }
         public virtual Collection<Article> News { get; private set; }
-        public virtual Collection<SocialNetwork> SocialNetworks { get; private set; }
         public virtual Collection<Notification> Notifications { get; private set; }
         public virtual Collection<FacebookEvent> FacebookEvents { get; private set; }
         public virtual FlickrInfo FlickrInfo { get; private set; }
@@ -37,27 +36,13 @@ namespace Domain
             Bio = artist.Bio;
         }
 
-        public static Artist Create(string email)
+        public static Artist Create(string name)
         {
             return new Artist()
                 {
                     Created = DateTime.Now,
-                    Email = email
+                    Name = name
                 };
-        }
-
-        public void SetSocialNetwork(SocialNetworkType type, string url)
-        {
-            if (SocialNetworks == null) SocialNetworks = new Collection<SocialNetwork>();
-            var existing = SocialNetworks.SingleOrDefault(c => c.Type == type);
-            if (existing != null)
-            {
-                existing.ChangeUrl(url);
-            }
-            else
-            {
-                SocialNetworks.Add(SocialNetwork.Create(type, url));
-            }
         }
 
 
@@ -74,12 +59,7 @@ namespace Domain
 
             Logins.Add(UserLogin.Create(username, password.Encrypt(), this));
         }
-
-        public void RemoveSocialNetwork(SocialNetworkType type)
-        {
-            SocialNetworks.Remove(SocialNetworks.SingleOrDefault(c => c.Type == type));
-        }
-
+        
         public void CreateAuthenticatedToken(Guid correlationId)
         {
             ApiTokens.Add(ApiToken.ReadWrite(this, correlationId));
