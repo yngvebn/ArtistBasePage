@@ -67,10 +67,12 @@
     <Compile Include="Commands\AddNewEventCommand.cs" />
     <Compile Include="Commands\AuthenticateWithFlickrCommand.cs" />
     <Compile Include="Commands\DeleteFacebookEventCommand.cs" />
+    <Compile Include="Commands\FindArtistInformationOnExternalServices.cs" />
     <Compile Include="Commands\Handlers\AddFacebookEventCommandHandler.cs" />
     <Compile Include="Commands\Handlers\AddNewEventCommandHandler.cs" />
     <Compile Include="Commands\Handlers\AuthenticateWithFlickrCommandHandler.cs" />
     <Compile Include="Commands\Handlers\DeleteFacebookEventCommandHandler.cs" />
+    <Compile Include="Commands\Handlers\FindArtistInformationOnExternalServicesHandler.cs" />
     <Compile Include="Commands\Handlers\HandleUserConnectedWithSignalR.cs" />
     <Compile Include="Commands\Handlers\RegisterNewUserCommandHandler.cs" />
     <Compile Include="Commands\Handlers\SetFlicrRequestTokenCommandHandler.cs" />
@@ -85,7 +87,7 @@
     <Compile Include="Commands\ConnectArtistToLastFm.cs" />
     <Compile Include="Commands\CreateReadOnlyToken.cs" />
     <Compile Include="Commands\Handlers\AddArtistLogonHandleCommand.cs" />
-    <Compile Include="Commands\Handlers\AddNewArtistHandleCommand.cs" />
+    <Compile Include="Commands\Handlers\AddNewArtistCommandHandler.cs" />
     <Compile Include="Commands\Handlers\ConnectArtistToLastFmCommandHandler.cs" />
     <Compile Include="Commands\Handlers\LookForLastFmInformationHandler.cs" />
     <Compile Include="Commands\Handlers\UpdateArtistHandleCommand.cs" />
@@ -346,6 +348,10 @@
     <ProjectReference Include="..\Facebook\Api.Facebook.csproj">
       <Project>{BC1D5DA5-FE51-42B4-98E4-E84617C7D4C0}</Project>
       <Name>Api.Facebook</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gateway\Gateway.csproj">
+      <Project>{2885AA2D-B7CD-4C80-8F06-F95C356E2242}</Project>
+      <Name>Gateway</Name>
     </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{429E37A5-3142-432D-809E-5CA59EF7A55D}</Project>

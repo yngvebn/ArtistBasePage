@@ -6,11 +6,11 @@ using Infrastructure.DomainEvents;
 
 namespace Domain.Commands.Handlers
 {
-    public class AddNewArtistHandleCommand: IHandleCommand<AddNewArtist>
+    public class AddNewArtistCommandHandler: IHandleCommand<AddNewArtist>
     {
         private readonly IUserLoginRepository _userLoginRepository;
 
-        public AddNewArtistHandleCommand(IUserLoginRepository userLoginRepository)
+        public AddNewArtistCommandHandler(IUserLoginRepository userLoginRepository)
         {
             _userLoginRepository = userLoginRepository;
         }

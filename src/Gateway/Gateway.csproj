@@ -39,8 +39,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ExternalApiGateway.cs" />
+    <Compile Include="Interfaces\IExternalApiGateway.cs" />
+    <Compile Include="Models\ExternalApiUser.cs" />
+    <Compile Include="Models\Origin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Api.iTunes\Api.iTunes.csproj">
+      <Project>{f43c9592-2fb9-4bbe-898a-c5e70e871f5c}</Project>
+      <Name>Api.iTunes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Api.SoundCloud\Api.SoundCloud.csproj">
+      <Project>{6ed65517-3eab-498d-a083-debcc118814a}</Project>
+      <Name>Api.SoundCloud</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Api.Spotify\Api.Spotify.csproj">
+      <Project>{d8e87850-84a7-4d6b-9627-d5c730cff491}</Project>
+      <Name>Api.Spotify</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dotLastFm\Api.LastFm.csproj">
+      <Project>{e20daddd-c52d-4e51-8974-e4ef1e7a34b0}</Project>
+      <Name>Api.LastFm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExternalApi\ExternalApi.csproj">
+      <Project>{945e4df1-37cb-4273-93a3-d922db89676c}</Project>
+      <Name>ExternalApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Facebook\Api.Facebook.csproj">
+      <Project>{bc1d5da5-fe51-42b4-98e4-e84617c7d4c0}</Project>
+      <Name>Api.Facebook</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Flickr\Api.Flickr.csproj">
+      <Project>{e83c8b9d-837e-406e-9670-c5c4ec5ced4f}</Project>
+      <Name>Api.Flickr</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Youtube\Api.Youtube.csproj">
+      <Project>{290b25ae-63d6-49d7-b087-f75bc2c731a4}</Project>
+      <Name>Api.Youtube</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
