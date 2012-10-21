@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Domain.Commands;
-using Domain.Core;
+﻿using Domain;
 using Domain.Events;
 using Infrastructure.Commands;
 using Infrastructure.DomainEvents;

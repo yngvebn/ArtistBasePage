@@ -1,0 +1,3 @@
+﻿Startup.registerSignalR(function() {
+
+});

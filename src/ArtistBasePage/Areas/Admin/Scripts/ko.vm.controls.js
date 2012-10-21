@@ -1,4 +1,4 @@
-﻿if (Resources.token == "") {
+﻿if (Resources.token != "") {
     $.connection.hub.start().done(function () {
         $.each(Startup.signalRFunctions, function (i, func) {
             func();

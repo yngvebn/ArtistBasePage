@@ -92,6 +92,16 @@
         console.log('setting token to @Token');
         Resources.token = '@Token';
 
+        Startup.registerSignalR(function () {
+            $.connection.userConnectionHub.disconnected = function () {
+                console.log('logged out');
+            };
+            $.connection.userConnectionHub.connected = function () {
+                console.log('connected');
+            };
+        });
+
+
         $(function () {
             $.each(Startup.startFunctions, function (i, func) {
                 func();

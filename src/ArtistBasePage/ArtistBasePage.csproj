@@ -169,6 +169,7 @@
     <Compile Include="Areas\Admin\Controllers\EventsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExternalController.cs" />
     <Compile Include="Areas\Admin\Controllers\MusicController.cs" />
+    <Compile Include="Areas\Admin\Hubs\UserConnectionHub.cs" />
     <Compile Include="Areas\Admin\ViewModels\RegisterNewUserViewModel.cs" />
     <Compile Include="Areas\OAuth\Controllers\FlickrController.cs" />
     <Compile Include="Areas\OAuth\OAuthAreaRegistration.cs" />
@@ -213,6 +214,7 @@
     <Content Include="Areas\Admin\Scripts\ko.vm.newartist.js" />
     <Content Include="Areas\Admin\Scripts\ko.vm.newevent.js" />
     <Content Include="Areas\Admin\Scripts\resources.js" />
+    <Content Include="Areas\Admin\Scripts\signalR.connection.js" />
     <Content Include="Areas\Admin\Scripts\throttleSearch.js" />
     <Content Include="Content\admin\anonymous.css" />
     <Content Include="Content\icons\mail.png" />
