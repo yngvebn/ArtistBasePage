@@ -24,8 +24,8 @@
     <script src="/signalr/hubs"></script>
     <script src="~/Scripts/knockout-2.1.0.js"></script>
     <script src="~/Scripts/knockout.mapping-latest.js"></script>
-    
-    
+
+
     <script src="~/Areas/Admin/Scripts/ko.extensions.js"></script>
     <title>_layout</title>
 
@@ -92,14 +92,6 @@
         console.log('setting token to @Token');
         Resources.token = '@Token';
 
-        Startup.registerSignalR(function () {
-            $.connection.userConnectionHub.disconnected = function () {
-                console.log('logged out');
-            };
-            $.connection.userConnectionHub.connected = function () {
-                console.log('connected');
-            };
-        });
 
 
         $(function () {
@@ -110,6 +102,18 @@
 
 
     </script>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <script type="text/javascript">
+            $.connection.statusHub.disconnected = function () {
+                console.log('logged out');
+            };
+            $.connection.statusHub.connected = function () {
+                console.log('connected');
+            };
+        </script>
+    }
+
     @RenderSection("dialogs", false)
     @Html.Partial("_Confirm")
 </body>

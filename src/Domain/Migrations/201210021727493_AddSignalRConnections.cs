@@ -17,7 +17,7 @@ namespace Domain.Migrations
                         UserLogin_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.UserLogins", t => t.UserLogin_Id)
+                .ForeignKey("dbo.UserLogins", t => t.UserLogin_Id, cascadeDelete:true)
                 .Index(t => t.UserLogin_Id);
             
         }

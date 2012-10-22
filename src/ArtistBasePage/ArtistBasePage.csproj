@@ -169,7 +169,7 @@
     <Compile Include="Areas\Admin\Controllers\EventsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ExternalController.cs" />
     <Compile Include="Areas\Admin\Controllers\MusicController.cs" />
-    <Compile Include="Areas\Admin\Hubs\UserConnectionHub.cs" />
+    <Compile Include="Areas\Admin\Hubs\StatusHub.cs" />
     <Compile Include="Areas\Admin\ViewModels\RegisterNewUserViewModel.cs" />
     <Compile Include="Areas\OAuth\Controllers\FlickrController.cs" />
     <Compile Include="Areas\OAuth\OAuthAreaRegistration.cs" />

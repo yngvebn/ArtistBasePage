@@ -11,25 +11,8 @@ using SignalR.Hubs;
 namespace ArtistBasePage.Areas.Admin.Hubs
 {
 
-    public class Status : Hub, IDisconnect, IConnected
-    {
-        public Task Disconnect()
-        {
-            return Clients.leave(Context.ConnectionId, DateTime.Now.ToString());
-        }
 
-        public Task Connect()
-        {
-            return Clients.joined(Context.ConnectionId, DateTime.Now.ToString());
-        }
-
-        public Task Reconnect(IEnumerable<string> groups)
-        {
-            return Clients.rejoined(Context.ConnectionId, DateTime.Now.ToString());
-        }
-    }
-
-    public class UserConnectionHub : Hub, IConnected, IDisconnect
+    public class StatusHub : Hub, IConnected, IDisconnect
     {
         // This will only work on a single server
         private static readonly ConcurrentDictionary<string, List<string>> _userConnections = new ConcurrentDictionary<string, List<string>>();
@@ -39,6 +22,7 @@ namespace ArtistBasePage.Areas.Admin.Hubs
 
         public Task Connect()
         {
+            if (string.IsNullOrEmpty(Context.User.Identity.Name)) return null;
             EnsureAuthented();
 
             // Make a new slot of get a list of connections for this user name
@@ -91,6 +75,11 @@ namespace ArtistBasePage.Areas.Admin.Hubs
                 {
                     // Remove the connection from the list of connections
                     connections.Remove(Context.ConnectionId);
+
+                    MvcApplication.CommandExecutor.ExecuteCommand(new RemoveConnectionIdToUserCommand()
+                    {
+                        ConnectionId = Context.ConnectionId
+                    });
                 }
 
                 // In case this is a browser refresh, wait a few milli seconds before removing all connections
@@ -101,13 +90,9 @@ namespace ArtistBasePage.Areas.Admin.Hubs
                 {
                     _userConnections.TryRemove(userName, out connections);
 
-                    MvcApplication.CommandExecutor.ExecuteCommand(new RemoveConnectionIdToUserCommand()
-                                                                      {
-                                                                          ConnectionId = Context.ConnectionId
-                                                                      });
 
 
-                    return Clients[Context.ConnectionId].disconnected(Context.User.Identity);
+                    return null;
                 }
             }
 
